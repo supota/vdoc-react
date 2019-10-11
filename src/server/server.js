@@ -9,14 +9,6 @@ const app = express();
 
 app.use(express.static(path.join("./", "dist")));
 
-app.get("/api/test1", (req, res) => {
-    res.send({ api: "test1" })
-});
-
-app.get("/api/test2", (req, res) => {
-    res.send({ api: "test2" })
-})
-
 app.get("*", (req, res) => {
     res.sendFile(path.join("./", "dist", "index.html"));
 });
