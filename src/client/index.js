@@ -2,21 +2,19 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import axios from "axios";
-import Button from "./component/Button";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+import Header from "./component/Header";
+import Footer from "./component/Footer";
 import "./scss/style.scss";
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-            <div>
-                
-            </div>
-        );
-    }
-}
-
-ReactDOM.render(<App />, document.getElementById("index"));
+ReactDOM.render(
+    <BrowserRouter>
+        <Header />
+        <Switch>
+            
+        </Switch>
+        <Footer />
+    </BrowserRouter>,
+    document.getElementById("body")
+)
