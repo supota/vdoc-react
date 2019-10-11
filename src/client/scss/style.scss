@@ -183,7 +183,7 @@ section {
 .main-visual {
     padding: 100px 3% 0 3%;
     margin-top: 62px;
-    background-image: url(../img/top.png);
+    background-image: url(/src/client/img/top.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 80% 50%;
@@ -404,7 +404,7 @@ section {
     color: white;
     padding: 50px 3% 50px 3%;
     margin-top: 62px;
-    background-image: url(../img/corfball/key.png);
+    background-image: url(/src/client/img/corfball/key.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
@@ -642,7 +642,7 @@ section {
                 content: "";
                 display: inline-block;
                 vertical-align: top;
-                background-image: url("/img/achievement.png");
+                background-image: url(/src/client/img/achievement.png);
                 background-size: 100% 100%;
                 background-repeat: no-repeat;
                 margin-right: 5px;

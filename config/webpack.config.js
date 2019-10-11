@@ -12,8 +12,14 @@ module.exports = {
     mode: process.env.NODE_ENV,
     entry: "./src/client/index.js",
     output: {
-        path: path.resolve('dist'),
-        filename: '[name].js'
+        path: path.resolve("dist"),
+        filename: "[name].js"
+    },
+    resolve: {
+        alias: {
+            "$utils": path.resolve("src/client/utils")
+        },
+        extensions: [".js"],
     },
     module: {
         rules: [
