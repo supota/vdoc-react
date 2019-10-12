@@ -1,6 +1,6 @@
 import React from "react";
 
-import { img } from "$utils/image";
+import { img } from "@utils/image";
 
 export default () => {
     return (

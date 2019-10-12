@@ -17,9 +17,10 @@ module.exports = {
     },
     resolve: {
         alias: {
-            "$utils": path.resolve("src/client/utils")
+            "@utils": path.resolve("src/client/utils"),
+            "@scss": path.resolve("src/client/scss")
         },
-        extensions: [".js"],
+        extensions: [".scss", ".css", ".js"],
     },
     module: {
         rules: [
@@ -35,7 +36,7 @@ module.exports = {
                 use: [
                     "style-loader",
                     {
-                        loader: "css-loader",
+                        loader: "css-loader?modules",
                         options: {
                             url: false,
                             importLoaders: 2
