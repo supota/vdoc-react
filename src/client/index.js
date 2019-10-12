@@ -4,7 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Container from "./component/Container";
+import Container from "./component/BaseContainer";
 
 import Top from "./pages/Top";
 import Sports from "./pages/Sports";
@@ -16,17 +16,11 @@ import "@scss/style.scss";
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
-            <Route exact path="/" component={ () => { 
-                return (<Container Component={ Top } />)
-             } }></Route>
+            <Route exact path="/" component={ Top }></Route>
 
-            <Route path="/sports" component={ () => {
-                return (<Container Component={ Sports } />)
-            } }></Route>
+            <Route path="/sports" component={ Sports }></Route>
 
-            <Route path="/player" component={ () => {
-                return (<Container Component={ Player } />)
-            } }></Route>
+            <Route path="/player" component={ Player }></Route>
             
             <Route component={ NotFound }></Route>
         </Switch>
