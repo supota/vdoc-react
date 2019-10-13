@@ -1,10 +1,31 @@
-import React from "react";
+import React, {
+    useState,
+    useEffect
+} from "react";
 
 import BaseContainer from "../component/BaseContainer";
 
 import { img } from "@utils/image";
+import axios from "@utils/axios";
+import getRandomNumArray from "@utils/getRandomNumArray";
 
 export default () => {
+    let [players, setPlayers] = useState([]);
+    useEffect(() => {
+        const getAllPlayers = async () => {
+            try {
+                const playersData = await axios.get("/players");
+                console.log(playersData);
+                // get random 10 players
+                const players = getRandomNumArray(playersData.data.players, 10);
+                console.log(players);
+                setPlayers(players);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        getAllPlayers();
+    }, []);
     return (
         <BaseContainer>
             <main className="sports">
@@ -33,7 +54,16 @@ export default () => {
                 </section>
                 <section className="newsbox">
                     <h3>アスリート一覧</h3>
-                    <ul className="player-list" id="player-list"></ul>
+                    <ul className="player-list" id="player-list">
+                        { players.map((player) => {
+                            return (
+                                <li key={ player.id } className="player-box">
+                                    <img className="icon" src={ img(player.image_url) }></img>
+                                    <p className="name">{ player.first_name + " " + player.last_name }</p>
+                                </li>
+                            )
+                        }) }
+                    </ul>
                 </section>
             </main>
         </BaseContainer>

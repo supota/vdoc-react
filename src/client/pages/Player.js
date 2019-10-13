@@ -9,14 +9,21 @@ import { img } from "@utils/image";
 import axios from "@utils/axios";
 
 export default (props) => {
+    // set state params
     let [player, setPlayer] = useState({
         "first_name": "",
         "last_name": "",
         "first_roma": "",
-        "last_roma": ""
+        "last_roma": "",
+        "twitter_id": "",
+        "facebook_id": "",
+        "site_url": "",
+        "image_url": ""
     });
+
+    // get player from server after mount
     useEffect(() => {
-        const getPlayer = async () => {
+        const getOnePlayer = async () => {
             try {
                 const playerData = await axios.get(`/players/${props.match.params.id}`);
                 setPlayer(playerData.data.player);
@@ -24,8 +31,10 @@ export default (props) => {
                 console.log(e);
             }
         }
-        getPlayer();
+        getOnePlayer();
     }, []);
+
+    // render
     return (
         <BaseContainer>
             <main className="player">

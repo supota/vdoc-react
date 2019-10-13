@@ -20,6 +20,13 @@ app.get("/api/players/:id", (req, res) => {
     });
 });
 
+app.get("/api/players", (req, res) => {
+    const players = playersJson.players;
+    res.json({
+        players: players
+    });
+});
+
 app.get("*", (req, res) => {
     res.sendFile(path.join("./", "dist", "index.html"));
 });
