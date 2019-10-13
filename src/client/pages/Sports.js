@@ -9,7 +9,7 @@ import { img } from "@utils/image";
 import axios from "@utils/axios";
 import getRandomNumArray from "@utils/getRandomNumArray";
 
-export default () => {
+export default (props) => {
     let [players, setPlayers] = useState([]);
     useEffect(() => {
         const getAllPlayers = async () => {
@@ -57,7 +57,7 @@ export default () => {
                     <ul className="player-list" id="player-list">
                         { players.map((player) => {
                             return (
-                                <li key={ player.id } className="player-box">
+                                <li key={ player.id } className="player-box" onClick={ () => {props.history.push(`/player/${ player.id }`)} }>
                                     <img className="icon" src={ img(player.image_url) }></img>
                                     <p className="name">{ player.first_name + " " + player.last_name }</p>
                                 </li>
