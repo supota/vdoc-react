@@ -4,8 +4,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Container from "./component/BaseContainer";
-
 import Top from "./pages/Top";
 import Sports from "./pages/Sports";
 import Player from "./pages/Player";
@@ -20,7 +18,7 @@ ReactDOM.render(
 
             <Route path="/sports" component={ Sports }></Route>
 
-            <Route path="/player" component={ Player }></Route>
+            <Route path="/player/:id(\d+)" component={ Player }></Route>
             
             <Route component={ NotFound }></Route>
         </Switch>
