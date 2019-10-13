@@ -7,9 +7,9 @@ This is a template for web development using react and express api.
 ### clone and setup
 
 ```
-$ git clone https://github.com/tenmakamatani/react-express-template.git
-$ cd react-express-template
-$ yarn install
+$ git clone https://github.com/tenmakamatani/vdoc-react.git
+$ cd vdoc-react
+$ yarn
 ```
 
 ### development
@@ -17,7 +17,8 @@ $ yarn install
 ```
 $ yarn dev
 ```
-then wait a few minutes and the browser will open automatically.
+then wait a few minutes and the browser will open automatically.(http://localhost:8080)
+react and scss are autosave
 
 ### production
 
