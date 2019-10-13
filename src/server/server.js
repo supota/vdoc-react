@@ -27,6 +27,12 @@ app.get("/api/players", (req, res) => {
     });
 });
 
+app.post("/api/register", (req, res) => {
+    res.json({
+        code: 202
+    });
+});
+
 app.get("*", (req, res) => {
     res.sendFile(path.join("./", "dist", "index.html"));
 });
