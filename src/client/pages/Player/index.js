@@ -1,6 +1,6 @@
 import React from "react";
 
-import BaseContainer from "../../component/BaseContainer";
+import BaseContainer from "@component/BaseContainer";
 import PlayerDetail from "./PlayerDetail";
 
 

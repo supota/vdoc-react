@@ -2,7 +2,7 @@ import React, {
     useState
 } from "react";
 
-import BaseContainer from "../component/BaseContainer";
+import BaseContainer from "@component/BaseContainer";
 import axios from "@utils/axios";
 import { isString } from "@utils/validate";
 

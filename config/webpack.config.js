@@ -21,6 +21,7 @@ module.exports = {
             "@utils": path.resolve("src/client/utils"),
             "@scss": path.resolve("src/client/scss"),
             "@config": path.resolve("src/config.js"),
+            "@component": path.resolve("src/client/component")
         },
         extensions: [".scss", ".css", ".js"],
     },
