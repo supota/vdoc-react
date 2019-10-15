@@ -51,15 +51,14 @@ export default (props) => {
     // validate and submit state data when button pushed
     const handleSubmit = () => {
         // trim and eliminate blank line in bio
-        axios.post("/register", Object.assign(data, {
-            bio: data.bio.trim().split("\n").filter(line => line != "")
-        }))
-        .then(() => {
+        try {
+            const result = await axios.post("/v2/players", Object.assign(data, {
+                bio: data.bio.trim().split("\n").filter(line => line != "")
+            }));
             props.history.push("/");
-        }).catch((err) => {
+        } catch (e) {
             props.history.push("/404");
-            console.log(err);
-        });
+        }
     }
 
     return (

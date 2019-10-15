@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/api/players/:id", (req, res) => {
+app.get("/api/v1/players/:id", (req, res) => {
     const player = playersJson.players.find((player) => {
         return player.id == req.params.id;
     });
@@ -24,14 +24,14 @@ app.get("/api/players/:id", (req, res) => {
     });
 });
 
-app.get("/api/players", (req, res) => {
+app.get("/api/v1/players", (req, res) => {
     const players = playersJson.players;
     res.json({
         players: players
     });
 });
 
-app.post("/api/register", (req, res) => {
+app.post("/api/v2/players", (req, res) => {
     res.json({
         code: 202
     });

@@ -23,7 +23,7 @@ export default (props) => {
     useEffect(() => {
         const getOnePlayer = async () => {
             try {
-                const playerData = await axios.get(`/players/${props.id}`);
+                const playerData = await axios.get(`/v1/players/${props.id}`);
                 setPlayer(playerData.data.player);
             } catch (e) {
                 console.log(e);
