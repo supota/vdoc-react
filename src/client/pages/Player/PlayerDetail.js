@@ -3,9 +3,7 @@ import React, {
     useState
 } from "react";
 
-import {
-    img
-} from "@utils/image";
+import { img } from "@utils/image";
 import axios from "@utils/axios";
 
 export default (props) => {

@@ -16,10 +16,9 @@ export default () => {
         const getAllPlayers = async () => {
             try {
                 const playersData = await axios.get("/players");
-                console.log(playersData);
+                
                 // get random 10 players
                 const players = getRandomNumArray(playersData.data.players, 10);
-                console.log(players);
                 setPlayers(players);
             } catch (e) {
                 console.log(e);
