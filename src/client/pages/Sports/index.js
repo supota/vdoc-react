@@ -1,31 +1,11 @@
-import React, {
-    useState,
-    useEffect
-} from "react";
+import React from "react";
 
-import BaseContainer from "../component/BaseContainer";
+import BaseContainer from "../../component/BaseContainer";
+import PlayerList from "./PlayerList";
 
 import { img } from "@utils/image";
-import axios from "@utils/axios";
-import getRandomNumArray from "@utils/getRandomNumArray";
 
-export default (props) => {
-    let [players, setPlayers] = useState([]);
-    useEffect(() => {
-        const getAllPlayers = async () => {
-            try {
-                const playersData = await axios.get("/players");
-                console.log(playersData);
-                // get random 10 players
-                const players = getRandomNumArray(playersData.data.players, 10);
-                console.log(players);
-                setPlayers(players);
-            } catch (e) {
-                console.log(e);
-            }
-        }
-        getAllPlayers();
-    }, []);
+export default () => {
     return (
         <BaseContainer>
             <main className="sports">
@@ -54,16 +34,7 @@ export default (props) => {
                 </section>
                 <section className="newsbox">
                     <h3>アスリート一覧</h3>
-                    <ul className="player-list" id="player-list">
-                        { players.map((player) => {
-                            return (
-                                <li key={ player.id } className="player-box" onClick={ () => {props.history.push(`/player/${ player.id }`)} }>
-                                    <img className="icon" src={ img(player.image_url) }></img>
-                                    <p className="name">{ player.first_name + " " + player.last_name }</p>
-                                </li>
-                            )
-                        }) }
-                    </ul>
+                    <PlayerList />
                 </section>
             </main>
         </BaseContainer>
