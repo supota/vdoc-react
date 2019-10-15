@@ -15,7 +15,7 @@ export default () => {
     useEffect(() => {
         const getAllPlayers = async () => {
             try {
-                const playersData = await axios.get("/players");
+                const playersData = await axios.get("/v1/players");
                 
                 // get random 10 players
                 const players = getRandomNumArray(playersData.data.players, 10);
