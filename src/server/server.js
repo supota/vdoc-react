@@ -2,6 +2,7 @@
 
 import express from "express";
 import path from "path";
+import bodyParser from "body-parser";
 
 const PORT = process.env.PORT || 3000;
 
@@ -10,6 +11,9 @@ const app = express();
 const playersJson = require("./players.json");
 
 app.use(express.static(path.join("/", "dist")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/api/players/:id", (req, res) => {
     const player = playersJson.players.find((player) => {
