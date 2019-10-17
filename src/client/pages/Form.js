@@ -49,10 +49,11 @@ export default (props) => {
     }
 
     // validate and submit state data when button pushed
-    const handleSubmit = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         // trim and eliminate blank line in bio
         try {
-            const result = await axios.post("/v2/players", Object.assign(data, {
+            await axios.post("/v2/players", Object.assign(data, {
                 bio: data.bio.trim().split("\n").filter(line => line != "")
             }));
             props.history.push("/");
@@ -65,7 +66,7 @@ export default (props) => {
         <BaseContainer>
             <main className="form">
                 <h3>情報を入力するだけで<br />自分のページを作成できます。</h3>
-                <form action="">
+                <form action="" onSubmit={ handleSubmit }>
                     <p>姓</p>
                     <input type="text" placeholder="日本語の姓" alt="" name="japanese_first_name" onChange={ handleChange } required />
                     <p>名</p>
@@ -76,7 +77,7 @@ export default (props) => {
                     <input type="text" placeholder="英語の名" alt="" name="english_last_name" onChange={ handleChange } required />
                     <p>実績</p>
                     <textarea rows="10" placeholder="改行して入力してください" name="bio" onChange={ handleChange } required />
-                    <button onClick={ handleSubmit }>確認画面へ</button>
+                    <button type="submit">確認画面へ</button>
                 </form>
             </main>
         </BaseContainer>
