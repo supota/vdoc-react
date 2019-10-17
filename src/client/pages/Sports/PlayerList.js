@@ -2,12 +2,13 @@ import React, {
     useState,
     useEffect
 } from "react";
+import { withRouter }  from "react-router";
 
 import { img } from "@utils/image";
 import axios from "@utils/axios";
 import getRandomNumArray from "@utils/getRandomNumArray";
 
-export default () => {
+export default withRouter((props) => {
     // setup state
     let [players, setPlayers] = useState([]);
 
@@ -39,4 +40,4 @@ export default () => {
             }) }
         </ul>
     )
-}
+})
