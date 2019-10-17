@@ -1,8 +1,9 @@
 {
-    "name": "react-api-study",
+    "name": "vdoc-react",
     "version": "1.0.0",
     "main": "index.js",
-    "license": "MIT",
+    "license": "NOLICENSE",
+    "author": "supota",
     "scripts": {
         "server": "nodemon src/server/server.js  --exec babel-node",
         "client": "webpack-dev-server --config ./config/webpack.config.dev.js",
