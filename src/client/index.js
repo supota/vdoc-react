@@ -19,7 +19,7 @@ ReactDOM.render(
 
             <Route path="/sports" component={ Sports }></Route>
 
-            <Route path="/player/:id(\d+)" component={ Player }></Route>
+            <Route path="/players/:id(\d+)" component={ Player }></Route>
 
             <Route path="/form" component={ Form }></Route>
             
