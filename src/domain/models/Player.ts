@@ -1,5 +1,4 @@
 import Entity from "./Entity";
-import { Person } from "normalize-package-data";
 
 class Player extends Entity {
   id: number;
@@ -8,7 +7,7 @@ class Player extends Entity {
   romanFirstName: string;
   romanLastName: string;
   age: number;
-  sex: number;
+  sex: Sex;
   imageUrl: string;
   bio: string;
   twitterID?: string;
@@ -19,6 +18,12 @@ class Player extends Entity {
     super();
     Object.assign(this, init);
   }
+}
+
+enum Sex {
+  Male,
+  Femail,
+  Unknown
 }
 
 export default Player;
