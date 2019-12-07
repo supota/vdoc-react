@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import BaseContainer from "../../component/BaseContainer";
 import PlayerList from "./PlayerList";

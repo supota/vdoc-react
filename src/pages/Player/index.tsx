@@ -1,10 +1,10 @@
-import React from "react";
+import * as React from "react";
 
 import BaseContainer from "../../component/BaseContainer";
 import PlayerDetail from "./PlayerDetail";
 
 
-export default (props) => {
+export default (props: any) => {
     // render
     return (
         <BaseContainer>

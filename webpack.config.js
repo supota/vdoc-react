@@ -10,18 +10,21 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
 
 module.exports = {
   mode: process.env.NODE_ENV,
-  entry: ["@babel/polyfill", "./src/index.js"],
+  entry: ["./src/index.tsx"],
   output: {
     path: path.resolve("dist"),
     filename: "[name].js",
     publicPath: "/"
   },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js"]
+  },
   module: {
     rules: [{
-        test: /\.js$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: "ts-loader"
         }
       },
       {

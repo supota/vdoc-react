@@ -5,9 +5,9 @@
  * 
  * @return {Array}
  */
-export default (array, num) => {
+export default (array: Array<any>, num: number) => {
     let a = array;
-    let t = [];
+    let t: any[] = [];
     let r = [];
     let l = a.length;
     let n = num < l ? num : l;

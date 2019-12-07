@@ -1,10 +1,11 @@
-import React, {
-    useState
-} from "react";
+import * as React from "react";
+import {
+  useState
+} from 'react';
 
 import BaseContainer from "../component/BaseContainer";
 
-export default (props) => {
+export default (props: any) => {
     // setup state as object
     const [data, setData] = useState({
         japaneseFirstName: "",
@@ -15,7 +16,7 @@ export default (props) => {
     });
 
     // set state in response to input name
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
         switch (e.target.name) {
             case "japanese_first_name":
                 setData(Object.assign(data, {
@@ -48,7 +49,7 @@ export default (props) => {
     }
 
     // validate and submit state data when button pushed
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
     }
 
@@ -66,7 +67,7 @@ export default (props) => {
                     <p>Name</p>
                     <input type="text" placeholder="英語の名" alt="" name="english_last_name" onChange={ handleChange } required />
                     <p>実績</p>
-                    <textarea rows="10" placeholder="改行して入力してください" name="bio" onChange={ handleChange } required />
+                    <textarea rows={ 10 } placeholder="改行して入力してください" name="bio" onChange={ handleChange } required />
                     <button type="submit">確認画面へ</button>
                 </form>
             </main>

@@ -1,11 +1,11 @@
-import React, {
-    useEffect,
-    useState
-} from "react";
+import * as React from "react";
+import {
+  useState
+} from 'react';
 
 import { img } from "../../utils/image";
 
-export default (props) => {
+export default (props: any) => {
     // set state params
     let [player, setPlayer] = useState({
         "first_name": "",
