@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import BaseContainer from "../component/BaseContainer";
-import PlayerList from "./PlayerList";
+import BaseContainer from "vdoc/presentation/component/BaseContainer";
+import PlayerList from "vdoc/presentation/Sports/PlayerList";
 
 import { img } from "../../utils/image";
 

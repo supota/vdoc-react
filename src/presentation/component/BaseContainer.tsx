@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "vdoc/presentation/component/Header";
+import Footer from "vdoc/presentation/component/Footer";
 
 // add Header and Footer to children component
 export default (props: any) => {

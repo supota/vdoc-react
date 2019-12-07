@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": "src/client",
+    "baseUrl": "./",
+    "paths": {
+      "vdoc/*": ["src/*"]
+    },
     "strictNullChecks": true,
     "noUnusedLocals": false,
     "noImplicitThis": true,

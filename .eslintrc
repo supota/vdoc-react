@@ -31,7 +31,7 @@
       "error",
       {
         "tabWidth": 2,
-        "quotes": "single"
+        "singleQuote": true
       }
     ],
     "indent": [

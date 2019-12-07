@@ -17,6 +17,9 @@ module.exports = {
     publicPath: "/"
   },
   resolve: {
+    alias: {
+      "vdoc": path.resolve(__dirname, "src")
+    },
     extensions: [".ts", ".tsx", ".js"]
   },
   module: {

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 
-import { img } from "../../utils/image";
+import { img } from "vdoc/utils/image";
 
 export default (props: any) => {
   // set state params

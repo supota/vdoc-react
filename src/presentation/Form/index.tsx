@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 
-import BaseContainer from "../component/BaseContainer";
+import BaseContainer from "vdoc/presentation/component/BaseContainer";
 
 export default (props: any) => {
   // setup state as object

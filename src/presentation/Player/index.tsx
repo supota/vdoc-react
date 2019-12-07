@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import BaseContainer from "../component/BaseContainer";
-import PlayerDetail from "./PlayerDetail";
+import BaseContainer from "vdoc/presentation/component/BaseContainer";
+import PlayerDetail from "vdoc/presentation/Player/PlayerDetail";
 
 export default (props: any) => {
   // render

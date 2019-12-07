@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { withRouter } from "react-router";
 
-import { img } from "../../utils/image";
+import { img } from "vdoc/utils/image";
 
 export default withRouter((props: any) => {
   // setup state

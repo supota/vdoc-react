@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import "../../scss/notfound.scss";
+import "vdoc/public/scss/notfound.scss";
 
 export default () => {
   return (
