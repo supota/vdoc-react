@@ -3,7 +3,7 @@ import React, {
     useState
 } from "react";
 
-import { img } from "@utils/image";
+import { img } from "../../utils/image";
 
 export default (props) => {
     // set state params

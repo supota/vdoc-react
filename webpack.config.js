@@ -16,15 +16,6 @@ module.exports = {
     filename: "[name].js",
     publicPath: "/"
   },
-  resolve: {
-    alias: {
-      "@utils": path.resolve("src/utils"),
-      "@scss": path.resolve("src/scss"),
-      "@config": path.resolve("src/config.js"),
-      "@component": path.resolve("src/component")
-    },
-    extensions: [".scss", ".css", ".js"],
-  },
   module: {
     rules: [{
         test: /\.js$/,

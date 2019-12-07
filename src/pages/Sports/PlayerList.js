@@ -4,7 +4,7 @@ import React, {
 } from "react";
 import { withRouter }  from "react-router";
 
-import { img } from "@utils/image";
+import { img } from "../../utils/image";
 
 export default withRouter((props) => {
     // setup state

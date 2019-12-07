@@ -10,7 +10,7 @@ import Player from "./pages/Player";
 import Form from "./pages/Form";
 import NotFound from "./pages/NotFound";
 
-import "@scss/style.scss";
+import "./scss/style.scss";
 
 ReactDOM.render(
     <BrowserRouter>
