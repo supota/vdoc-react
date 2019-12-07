@@ -3,7 +3,6 @@ import React, {
 } from "react";
 
 import BaseContainer from "@component/BaseContainer";
-import axios from "@utils/axios";
 
 export default (props) => {
     // setup state as object
@@ -51,15 +50,6 @@ export default (props) => {
     // validate and submit state data when button pushed
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // trim and eliminate blank line in bio
-        try {
-            await axios.post("/v2/players", Object.assign(data, {
-                bio: data.bio.trim().split("\n").filter(line => line != "")
-            }));
-            props.history.push("/");
-        } catch (e) {
-            props.history.push("/404");
-        }
     }
 
     return (

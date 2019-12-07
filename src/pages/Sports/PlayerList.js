@@ -5,28 +5,10 @@ import React, {
 import { withRouter }  from "react-router";
 
 import { img } from "@utils/image";
-import axios from "@utils/axios";
-import getRandomNumArray from "@utils/getRandomNumArray";
 
 export default withRouter((props) => {
     // setup state
     let [players, setPlayers] = useState([]);
-
-    // get 10 players from api
-    useEffect(() => {
-        const getAllPlayers = async () => {
-            try {
-                const playersData = await axios.get("/v1/players");
-                
-                // get random 10 players
-                const players = getRandomNumArray(playersData.data.players, 10);
-                setPlayers(players);
-            } catch (e) {
-                console.log(e);
-            }
-        }
-        getAllPlayers();
-    }, []);
 
     return (
         <ul className="player-list" id="player-list">

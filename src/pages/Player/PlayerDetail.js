@@ -4,7 +4,6 @@ import React, {
 } from "react";
 
 import { img } from "@utils/image";
-import axios from "@utils/axios";
 
 export default (props) => {
     // set state params
@@ -18,19 +17,6 @@ export default (props) => {
         "site_url": "",
         "image_url": ""
     });
-
-    // get player from server after mount
-    useEffect(() => {
-        const getOnePlayer = async () => {
-            try {
-                const playerData = await axios.get(`/v1/players/${props.id}`);
-                setPlayer(playerData.data.player);
-            } catch (e) {
-                console.log(e);
-            }
-        }
-        getOnePlayer();
-    }, []);
     return (
         <section className="player-detail -purple">
             <div className="player-icon">
