@@ -4,11 +4,11 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Top from "./pages/Top";
-import Sports from "./pages/Sports";
-import Player from "./pages/Player";
-import Form from "./pages/Form";
-import NotFound from "./pages/NotFound";
+import Top from "./presentation/Top";
+import Sports from "./presentation/Sports";
+import Player from "./presentation/Player";
+import Form from "./presentation/Form";
+import NotFound from "./presentation/NotFound";
 
 import "./scss/style.scss";
 
