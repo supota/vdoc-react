@@ -13,18 +13,18 @@ import NotFound from "./pages/NotFound";
 import "./scss/style.scss";
 
 ReactDOM.render(
-    <BrowserRouter>
-        <Switch>
-            <Route exact path="/" component={ Top }></Route>
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={Top}></Route>
 
-            <Route path="/sports" component={ Sports }></Route>
+      <Route path="/sports" component={Sports}></Route>
 
-            <Route path="/players/:id(\d+)" component={ Player }></Route>
+      <Route path="/players/:id(\d+)" component={Player}></Route>
 
-            <Route path="/form" component={ Form }></Route>
-            
-            <Route component={ NotFound }></Route>
-        </Switch>
-    </BrowserRouter>,
-    document.getElementById("body")
-)
+      <Route path="/form" component={Form}></Route>
+
+      <Route component={NotFound}></Route>
+    </Switch>
+  </BrowserRouter>,
+  document.getElementById("body")
+);
