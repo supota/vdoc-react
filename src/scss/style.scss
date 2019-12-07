@@ -623,8 +623,6 @@ section {
   margin: auto;
   width: 100%;
 
-  >.swiper-container>.swiper-wrapper {}
-
   >.swiper-container>.swiper-wrapper>.swiper-slide {
     min-height: 350px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -664,7 +662,6 @@ section {
       &:before {
         content: "";
         display: block;
-        vertical-align: middle;
         background-color: #FFA462;
         margin: 0 10px 0 0;
         width: 15px;
