@@ -54,5 +54,8 @@
   },
   "eslintIgnore": [
     "node_modules"
+  ],
+  "pre-commit": [
+    "build"
   ]
 }
