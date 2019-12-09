@@ -10,7 +10,7 @@ import Player from "./presentation/Player";
 import Form from "./presentation/Form";
 import NotFound from "./presentation/NotFound";
 
-import "./scss/style.scss";
+import "./public/scss/style.scss";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -26,5 +26,5 @@ ReactDOM.render(
       <Route component={NotFound}></Route>
     </Switch>
   </BrowserRouter>,
-  document.getElementById("body")
+  document.getElementById("not-found")
 );

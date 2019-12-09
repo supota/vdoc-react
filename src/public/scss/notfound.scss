@@ -59,7 +59,7 @@
 
 @media (max-width: 600px) {
 
-    body,
+    #not-found,
     #message {
         margin-top: 0;
         background: white;
@@ -67,7 +67,7 @@
         position: initial;
     }
 
-    body {
+    not-found {
         border-top: 16px solid #000;
     }
 }
