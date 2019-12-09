@@ -1,8 +1,5 @@
 import firebase from 'firebase';
 
-import { config as dotenvConfig } from 'dotenv';
-dotenvConfig();
-
 let firebaseConfig: Object;
 
 switch(process.env.NODE_ENV) {
@@ -17,6 +14,7 @@ switch(process.env.NODE_ENV) {
       messagingSenderId: process.env.FB_DEV_MESSAGING_SENDER_ID,
       appId: process.env.FB_DEV_APP_ID
     };
+    break;
 
   case 'production':
     firebaseConfig = {
@@ -29,9 +27,11 @@ switch(process.env.NODE_ENV) {
       appId: process.env.FB_PROD_APP_ID,
       measurementId: process.env.FB_PROD_MEASUREMENT_ID
     }
+    break;
   
   default:
     firebaseConfig = {};
+    break;
 
 }
 

@@ -2,6 +2,13 @@
 
 const path = require('path')
 
+// Enable environment values
+const dotenv = require('dotenv');
+dotenv.config();
+
+// Use DefinePlugin
+const { DefinePlugin } = require('webpack');
+
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
   template: "./src/index.html",
@@ -16,7 +23,6 @@ module.exports = {
     filename: "[name].js",
     publicPath: "/"
   },
-  target: 'node',
   resolve: {
     alias: {
       "vdoc": path.resolve(__dirname, "src")
@@ -49,7 +55,12 @@ module.exports = {
       }
     ]
   },
-  plugins: [htmlWebpackPlugin],
+  plugins: [
+    htmlWebpackPlugin,
+    new DefinePlugin({
+      'process.env': JSON.stringify(process.env)
+    })
+  ],
   devServer: {
     open: true
   }

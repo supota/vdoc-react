@@ -3,15 +3,8 @@ import * as React from "react";
 import BaseContainer from "vdoc/presentation/component/BaseContainer";
 
 import { img } from "vdoc/utils/image";
-import { firestore } from 'vdoc/application/firebase';
 
 export default () => {
-
-  (async () => {
-    await firestore.collection('test').add({
-      test: 'aaa'
-    });
-  })();
 
   return (
     <BaseContainer>
