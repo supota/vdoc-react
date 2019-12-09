@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "development": "vdoc-development",
+    "production": "vdoc-production"
+  }
+}
