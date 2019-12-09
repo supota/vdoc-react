@@ -1,75 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';"> -->
-    <link rel="icon" type="image/png" href="https://www.supota.com/img/icon.png">
-    <title>V Doc. | SUPOTA</title>
-    <meta name="description"
-        content="SUPOTAとは、自分の応援したいスポーツ選手を直接的にサポートできるサービスです。「トークンエコノミー」を用いて、スポーツの課題を解決するサービスを提供します。私たちは、「全てのアスリートがもっと自由に活動できる環境づくり」を目指します。" />
-    <meta name="keywords" content="ベンチャースポーツ,e-Sports,トークンエコノミー,スポーツ,仮想通貨,SUPOTA,河合佑真,VSports" />
-    <meta name="author" content="@supota_" />
-    <meta property="og:title" content="V Doc." />
-    <meta property="og:image" content="https://www.supota.com/img/icon.png" />
-    <meta property="og:url" content="https://v-doc.supota.com/" />
-    <meta property="og:site_name" content="V Doc." />
-    <meta property="og:description"
-        content="SUPOTAとは、自分の応援したいスポーツ選手を直接的にサポートできるサービスです。「トークンエコノミー」を用いて、スポーツの課題を解決するサービスを提供します。私たちは、「全てのアスリートがもっと自由に活動できる環境づくり」を目指します。" />
-    <meta name="twitter:title" content="SUPOTA" />
-    <meta name="twitter:image" content="https://www.supota.com/img/icon.png" />
-    <meta name="twitter:url" content="https://v-doc.supota.com/" />
-    <meta name="twitter:card" content="summary" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';"> -->
+  <link rel="icon" type="image/png" href="https://www.supota.com/img/icon.png">
+  <title>V Doc. | SUPOTA</title>
+  <meta name="description"
+    content="SUPOTAとは、自分の応援したいスポーツ選手を直接的にサポートできるサービスです。「トークンエコノミー」を用いて、スポーツの課題を解決するサービスを提供します。私たちは、「全てのアスリートがもっと自由に活動できる環境づくり」を目指します。" />
+  <meta name="keywords" content="ベンチャースポーツ,e-Sports,トークンエコノミー,スポーツ,仮想通貨,SUPOTA,河合佑真,VSports" />
+  <meta name="author" content="@supota_" />
+  <meta property="og:title" content="V Doc." />
+  <meta property="og:image" content="https://www.supota.com/img/icon.png" />
+  <meta property="og:url" content="https://v-doc.supota.com/" />
+  <meta property="og:site_name" content="V Doc." />
+  <meta property="og:description"
+    content="SUPOTAとは、自分の応援したいスポーツ選手を直接的にサポートできるサービスです。「トークンエコノミー」を用いて、スポーツの課題を解決するサービスを提供します。私たちは、「全てのアスリートがもっと自由に活動できる環境づくり」を目指します。" />
+  <meta name="twitter:title" content="SUPOTA" />
+  <meta name="twitter:image" content="https://www.supota.com/img/icon.png" />
+  <meta name="twitter:url" content="https://v-doc.supota.com/" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"></script>
 </head>
+
 <body>
-    <div id="not-found"></div>
+  <div id="not-found"></div>
 </body>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="/__/firebase/7.5.2/firebase-app.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.5.2/firebase-analytics.js"></script>
 
 <!-- Initialize Firebase -->
 <script src="/__/firebase/init.js"></script>
 <script>
-    console.log(firebase);
-    var mySwiper = new Swiper('.swiper-container', {
-        // オプションパラメータ(一部のみ抜粋)
-        loop: true,
-        // 最後のスライドまで到達した場合、最初に戻らずに続けてスライド可能にするか。
-        speed: 600,
-        // スライドが切り替わるトランジション時間(ミリ秒)。
-        slidesPerView: 3,
-        // 何枚のスライドを表示するか
-        direction: 'horizontal',
-        // スライド方向。 'horizontal'(水平) か 'vertical'(垂直)。effectオプションが 'slide' 以外は無効。
-        effect: 'slide',
-        // "slide", "fade"(フェード), "cube"(キューブ回転), "coverflow"(カバーフロー) または "flip"(平面回転)
-        pagination: {
-            el: '.swiper-pagination' // ページネーションを表示するセレクタ
-        },
-        centeredSlides: true,
-        spaceBetween: 20,
-        // レスポンシブ化条件
-        breakpoints: {
-            // 980ピクセル幅以下になったら
-            980: {
-                slidesPerView: 2
-            },
-            // 640ピクセル幅以下になったら
-            640: {
-                slidesPerView: 1.5
-            },
-            540: {
-                slidesPerView: 1.2
-            }
-        }
-    });
-</script> -->
+  var mySwiper = new Swiper('.swiper-container', {
+    // オプションパラメータ(一部のみ抜粋)
+    loop: true,
+    // 最後のスライドまで到達した場合、最初に戻らずに続けてスライド可能にするか。
+    speed: 600,
+    // スライドが切り替わるトランジション時間(ミリ秒)。
+    slidesPerView: 3,
+    // 何枚のスライドを表示するか
+    direction: 'horizontal',
+    // スライド方向。 'horizontal'(水平) か 'vertical'(垂直)。effectオプションが 'slide' 以外は無効。
+    effect: 'slide',
+    // "slide", "fade"(フェード), "cube"(キューブ回転), "coverflow"(カバーフロー) または "flip"(平面回転)
+    pagination: {
+      el: '.swiper-pagination' // ページネーションを表示するセレクタ
+    },
+    centeredSlides: true,
+    spaceBetween: 20,
+    // レスポンシブ化条件
+    breakpoints: {
+      // 980ピクセル幅以下になったら
+      980: {
+        slidesPerView: 2
+      },
+      // 640ピクセル幅以下になったら
+      640: {
+        slidesPerView: 1.5
+      },
+      540: {
+        slidesPerView: 1.2
+      }
+    }
+  });
+</script>
+
 </html>

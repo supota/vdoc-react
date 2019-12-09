@@ -16,6 +16,7 @@ module.exports = {
     filename: "[name].js",
     publicPath: "/"
   },
+  target: 'node',
   resolve: {
     alias: {
       "vdoc": path.resolve(__dirname, "src")

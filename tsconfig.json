@@ -16,7 +16,9 @@
       "dom",
       "es2018"
     ],
-    "module": "ES2015",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "es6",
     "target": "es5",
     "jsx": "react",
   }
