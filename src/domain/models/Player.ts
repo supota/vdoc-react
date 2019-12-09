@@ -26,4 +26,4 @@ enum Sex {
   Unknown
 }
 
-export default Player;
+export { Player };

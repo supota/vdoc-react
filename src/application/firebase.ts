@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import Firebase from 'firebase';
 
 let firebaseConfig: Object;
 
@@ -35,7 +35,6 @@ switch(process.env.NODE_ENV) {
 
 }
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+const firebase = Firebase.initializeApp(firebaseConfig);
 
-const firestore = firebaseApp.firestore();
-export { firestore };
+export { firebase };

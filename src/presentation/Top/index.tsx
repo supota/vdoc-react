@@ -4,7 +4,16 @@ import BaseContainer from "vdoc/presentation/component/BaseContainer";
 
 import { img } from "vdoc/utils/image";
 
+import 'vdoc/infrastracture/repositories/FirestorePlayerRepository';
+import { FirestorePlayerRepository } from "vdoc/infrastracture/repositories/FirestorePlayerRepository";
+
 export default () => {
+
+  const firestorePlayerRepository = new FirestorePlayerRepository();
+  (async () => {
+    const players = await firestorePlayerRepository.getAllPlayers();
+    console.log(players);
+  })();
 
   return (
     <BaseContainer>

@@ -1,9 +1,9 @@
-import Player from "vdoc/domain/models/Player";
+import { Player } from "vdoc/domain/models/Player";
 
 abstract class PlayerRepository {
-  abstract getAllPlayers(): Promise<Player[]>;
+  abstract async getAllPlayers(): Promise<Player[]>;
 
-  abstract getPlayer(id: number): Promise<Player>;
+  abstract async getPlayer(id: string): Promise<Player>;
 }
 
-export default PlayerRepository;
+export { PlayerRepository };
