@@ -1,7 +1,7 @@
 import * as React from "react";
 import { withRouter } from "react-router";
 
-export default withRouter(props => {
+const Header = withRouter(props => {
   return (
     <header>
       <p
@@ -15,3 +15,5 @@ export default withRouter(props => {
     </header>
   );
 });
+
+export { Header };

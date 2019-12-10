@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useState } from "react";
 
-import BaseContainer from "vdoc/presentation/component/BaseContainer";
+import { BaseContainer } from "vdoc/presentation/component/BaseContainer";
 
-export default (props: any) => {
+const Form = (props: any) => {
   // setup state as object
   const [data, setData] = useState({
     japaneseFirstName: "",
@@ -120,3 +120,5 @@ export default (props: any) => {
     </BaseContainer>
   );
 };
+
+export { Form };

@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import Header from "vdoc/presentation/component/Header";
-import Footer from "vdoc/presentation/component/Footer";
+import { Header } from "vdoc/presentation/component/Header";
+import { Footer } from "vdoc/presentation/component/Footer";
 
 // add Header and Footer to children component
-export default (props: any) => {
+const BaseContainer = (props: any) => {
   return (
     <React.Fragment>
       <Header />
@@ -13,3 +13,5 @@ export default (props: any) => {
     </React.Fragment>
   );
 };
+
+export { BaseContainer };

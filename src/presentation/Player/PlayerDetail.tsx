@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { img } from "vdoc/utils/image";
 
-export default (props: any) => {
+const PlayerDetail = (props: any) => {
   // set state params
   let [player, setPlayer] = useState({
     first_name: "",
@@ -60,3 +60,5 @@ export default (props: any) => {
     </section>
   );
 };
+
+export { PlayerDetail };

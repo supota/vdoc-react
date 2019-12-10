@@ -2,7 +2,7 @@ import * as React from "react";
 
 import "vdoc/public/scss/notfound.scss";
 
-export default () => {
+const NotFound = () => {
   return (
     <div id="message">
       <h2>404｜Page Not Found</h2>
@@ -17,3 +17,5 @@ export default () => {
     </div>
   );
 };
+
+export { NotFound };

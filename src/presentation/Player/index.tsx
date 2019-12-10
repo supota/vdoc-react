@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import BaseContainer from "vdoc/presentation/component/BaseContainer";
-import PlayerDetail from "vdoc/presentation/Player/PlayerDetail";
+import { BaseContainer } from "vdoc/presentation/component/BaseContainer";
+import { PlayerDetail } from "vdoc/presentation/Player/PlayerDetail";
 
-export default (props: any) => {
+const Player = (props: any) => {
   // render
   return (
     <BaseContainer>
@@ -50,3 +50,5 @@ export default (props: any) => {
     </BaseContainer>
   );
 };
+
+export { Player };

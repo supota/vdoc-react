@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 
 import { img } from "vdoc/utils/image";
 
-export default withRouter((props: any) => {
+const PlayerList = withRouter((props: any) => {
   // setup state
   let [players, setPlayers] = useState([]);
 
@@ -27,3 +27,5 @@ export default withRouter((props: any) => {
     </ul>
   );
 });
+
+export { PlayerList };

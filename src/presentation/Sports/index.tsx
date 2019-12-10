@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import BaseContainer from "vdoc/presentation/component/BaseContainer";
-import PlayerList from "vdoc/presentation/Sports/PlayerList";
+import { BaseContainer } from "vdoc/presentation/component/BaseContainer";
+import { PlayerList } from "vdoc/presentation/Sports/PlayerList";
 
 import { img } from "../../utils/image";
 
-export default () => {
+const Sports = () => {
   return (
     <BaseContainer>
       <main className="sports">
@@ -64,3 +64,5 @@ export default () => {
     </BaseContainer>
   );
 };
+
+export { Sports };
