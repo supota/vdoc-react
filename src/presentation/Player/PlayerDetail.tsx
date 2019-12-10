@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 
-import { img } from "vdoc/utils/image";
+import { ImageProvider } from "vdoc/application/ImageProvider";
 
 const PlayerDetail = (props: any) => {
   // set state params
@@ -18,7 +18,7 @@ const PlayerDetail = (props: any) => {
   return (
     <section className="player-detail -purple">
       <div className="player-icon">
-        <img src={img(player.image_url)} alt="" id="player-img" />
+        <img src={player.image_url} alt="" id="player-img" />
         <ul className="sns-share">
           <li>
             <a
@@ -26,7 +26,7 @@ const PlayerDetail = (props: any) => {
               id="facebook"
               target="_blank"
             >
-              <img src={img("sns/facebook.png")} alt="" />
+              <img src={ImageProvider.Facebook} alt="" />
             </a>
           </li>
           <li>
@@ -35,12 +35,12 @@ const PlayerDetail = (props: any) => {
               id="twitter"
               target="_blank"
             >
-              <img src={img("sns/twitter.png")} alt="" />
+              <img src={ImageProvider.Twitter} alt="" />
             </a>
           </li>
           <li>
             <a href={player.site_url} id="site" target="_blank">
-              <img src={img("sns/link.png")} alt="" />
+              <img src={ImageProvider.Link} alt="" />
             </a>
           </li>
         </ul>

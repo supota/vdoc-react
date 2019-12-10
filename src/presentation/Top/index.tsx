@@ -2,9 +2,7 @@ import * as React from "react";
 
 import { BaseContainer } from "vdoc/presentation/component/BaseContainer";
 
-import { img } from "vdoc/utils/image";
-
-import "vdoc/infrastracture/repositories/FirestorePlayerRepository";
+import { ImageProvider } from "vdoc/application/ImageProvider";
 
 const Top = () => {
   return (
@@ -28,23 +26,23 @@ const Top = () => {
           <h2>今注目のアスリート</h2>
           <ul className="player-list">
             <li className="player-box">
-              <img className="icon" src={img("icon.png")} alt="" />
+              <img className="icon" src={ImageProvider.Icon} alt="" />
               <p className="name">田中太郎</p>
             </li>
             <li className="player-box">
-              <img className="icon" src={img("icon.png")} alt="" />
+              <img className="icon" src={ImageProvider.Icon} alt="" />
               <p className="name">田中太郎</p>
             </li>
             <li className="player-box">
-              <img className="icon" src={img("icon.png")} alt="" />
+              <img className="icon" src={ImageProvider.Icon} alt="" />
               <p className="name">田中太郎</p>
             </li>
             <li className="player-box">
-              <img className="icon" src={img("icon.png")} alt="" />
+              <img className="icon" src={ImageProvider.Icon} alt="" />
               <p className="name">田中太郎</p>
             </li>
             <li className="player-box">
-              <img className="icon" src={img("icon.png")} alt="" />
+              <img className="icon" src={ImageProvider.Icon} alt="" />
               <p className="name">もっと見る</p>
             </li>
             <li className="player-box"></li>
@@ -55,62 +53,62 @@ const Top = () => {
           <ul className="tag-list">
             <li className="tag">
               <a href="">
-                <img src={img("tag.png")} alt="" />
+                <img src={ImageProvider.Tag} alt="" />
               </a>
             </li>
             <li className="tag">
               <a href="">
-                <img src={img("tag.png")} alt="" />
+                <img src={ImageProvider.Tag} alt="" />
               </a>
             </li>
             <li className="tag">
               <a href="">
-                <img src={img("tag.png")} alt="" />
+                <img src={ImageProvider.Tag} alt="" />
               </a>
             </li>
             <li className="tag">
               <a href="">
-                <img src={img("tag.png")} alt="" />
+                <img src={ImageProvider.Tag} alt="" />
               </a>
             </li>
             <li className="tag">
               <a href="">
-                <img src={img("tag.png")} alt="" />
+                <img src={ImageProvider.Tag} alt="" />
               </a>
             </li>
             <li className="tag">
               <a href="">
-                <img src={img("tag.png")} alt="" />
+                <img src={ImageProvider.Tag} alt="" />
               </a>
             </li>
             <li className="tag">
               <a href="">
-                <img src={img("tag.png")} alt="" />
+                <img src={ImageProvider.Tag} alt="" />
               </a>
             </li>
             <li className="tag">
               <a href="">
-                <img src={img("tag.png")} alt="" />
+                <img src={ImageProvider.Tag} alt="" />
               </a>
             </li>
             <li className="tag">
               <a href="">
-                <img src={img("tag.png")} alt="" />
+                <img src={ImageProvider.Tag} alt="" />
               </a>
             </li>
             <li className="tag">
               <a href="">
-                <img src={img("tag.png")} alt="" />
+                <img src={ImageProvider.Tag} alt="" />
               </a>
             </li>
             <li className="tag">
               <a href="">
-                <img src={img("tag.png")} alt="" />
+                <img src={ImageProvider.Tag} alt="" />
               </a>
             </li>
             <li className="tag">
               <a href="">
-                <img src={img("tag.png")} alt="" />
+                <img src={ImageProvider.Tag} alt="" />
               </a>
             </li>
           </ul>
@@ -119,7 +117,7 @@ const Top = () => {
           <h2>いつも使っているSNSのように</h2>
           <div className="comment-box">
             <li className="player-box">
-              <img className="icon" src={img("icon.png")} alt="" />
+              <img className="icon" src={ImageProvider.Icon} alt="" />
               <p className="name">田中太郎</p>
             </li>
             <p className="comment">
@@ -134,7 +132,7 @@ const Top = () => {
           </div>
           <div className="comment-box -reverse">
             <li className="player-box">
-              <img className="icon" src={img("icon.png")} alt="" />
+              <img className="icon" src={ImageProvider.Icon} alt="" />
               <p className="name">田中太郎</p>
             </li>
             <p className="comment">
@@ -150,8 +148,8 @@ const Top = () => {
         </section>
         <section className="-white">
           <div className="promotion-box">
-            <img src={img("mock.png")} alt="" />
-            <img src={img("catchcopy.png")} alt="" />
+            <img src={ImageProvider.Mock} alt="" />
+            <img src={ImageProvider.CatchCopy} alt="" />
           </div>
         </section>
       </main>

@@ -21,7 +21,7 @@ module.exports = {
   output: {
     path: path.resolve("dist"),
     filename: "[name].js",
-    publicPath: "/"
+    publicPath: '/'
   },
   resolve: {
     alias: {
@@ -38,13 +38,13 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         use: [
           "style-loader",
           {
             loader: "css-loader?modules",
             options: {
-              url: false,
+              url: true,
               importLoaders: 2
             }
           },
@@ -52,6 +52,10 @@ module.exports = {
             loader: "sass-loader"
           }
         ]
+      },
+      {
+        test: /\.(jpg|png)$/,
+        loaders: ["url-loader"]
       }
     ]
   },
@@ -62,6 +66,7 @@ module.exports = {
     })
   ],
   devServer: {
-    open: true
+    open: true,
+    historyApiFallback: true
   }
 };

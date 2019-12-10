@@ -2,8 +2,6 @@ import * as React from "react";
 import { useState } from "react";
 import { withRouter } from "react-router";
 
-import { img } from "vdoc/utils/image";
-
 const PlayerList = withRouter((props: any) => {
   // setup state
   let [players, setPlayers] = useState([]);
@@ -19,7 +17,7 @@ const PlayerList = withRouter((props: any) => {
               props.history.push(`/player/${player.id}`);
             }}
           >
-            <img className="icon" src={img(player.image_url)}></img>
+            <img className="icon" src={player.imageUrl}></img>
             <p className="name">{player.first_name + " " + player.last_name}</p>
           </li>
         );

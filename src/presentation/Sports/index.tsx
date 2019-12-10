@@ -3,7 +3,7 @@ import * as React from "react";
 import { BaseContainer } from "vdoc/presentation/component/BaseContainer";
 import { PlayerList } from "vdoc/presentation/Sports/PlayerList";
 
-import { img } from "../../utils/image";
+import { ImageProvider } from "vdoc/application/ImageProvider";
 
 const Sports = () => {
   return (
@@ -29,27 +29,27 @@ const Sports = () => {
             <div className="swiper-wrapper">
               {/*各スライド*/}
               <div className="swiper-slide">
-                <img src={img("demo.png")} alt="" />
+                <img src={ImageProvider.Demo} alt="" />
                 <p>sports</p>
               </div>
               <div className="swiper-slide">
-                <img src={img("demo.png")} alt="" />
+                <img src={ImageProvider.Demo} alt="" />
                 <p>sports</p>
               </div>
               <div className="swiper-slide">
-                <img src={img("demo.png")} alt="" />
+                <img src={ImageProvider.Demo} alt="" />
                 <p>sports</p>
               </div>
               <div className="swiper-slide">
-                <img src={img("demo.png")} alt="" />
+                <img src={ImageProvider.Demo} alt="" />
                 <p>sports</p>
               </div>
               <div className="swiper-slide">
-                <img src={img("demo.png")} alt="" />
+                <img src={ImageProvider.Demo} alt="" />
                 <p>sports</p>
               </div>
               <div className="swiper-slide">
-                <img src={img("demo.png")} alt="" />
+                <img src={ImageProvider.Demo} alt="" />
                 <p>sports</p>
               </div>
             </div>
