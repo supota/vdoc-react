@@ -7,14 +7,11 @@ class FirestorePlayerRepository extends PlayerRepository {
   async getAllPlayers(): Promise<Player[]> {
     // Get all players
     let playersSnapshot;
-    try {
-      playersSnapshot = await firebase
-        .firestore()
-        .collection("players")
-        .get();
-    } catch {
-      throw new Error("Could not get players.");
-    }
+
+    playersSnapshot = await firebase
+      .firestore()
+      .collection("players")
+      .get();
 
     // Translate to array of Player
     const players = playersSnapshot.docs.map(
@@ -29,18 +26,22 @@ class FirestorePlayerRepository extends PlayerRepository {
   async getPlayer(id: string): Promise<Player> {
     // Get player from id
     let playerSnapshot;
-    try {
-      playerSnapshot = await firebase
-        .firestore()
-        .collection("players")
-        .doc(id)
-        .get();
-    } catch {
-      throw new Error(`Could not get player ${id}.`);
-    }
+
+    playerSnapshot = await firebase
+      .firestore()
+      .collection("players")
+      .doc(id)
+      .get();
 
     const player = new Player(playerSnapshot.data());
     return player;
+  }
+
+  async postPlayer(player: Player): Promise<void> {
+    await firebase
+      .firestore()
+      .collection("players")
+      .add(player.toMap());
   }
 }
 
