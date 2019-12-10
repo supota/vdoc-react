@@ -5,7 +5,7 @@
  *
  * @return {Array}
  */
-export default (array: Array<any>, num: number) => {
+const getRandomNumArray = (array: Array<any>, num: number) => {
   let a = array;
   let t: any[] = [];
   let r = [];
@@ -19,3 +19,5 @@ export default (array: Array<any>, num: number) => {
   }
   return r;
 };
+
+export { getRandomNumArray };
