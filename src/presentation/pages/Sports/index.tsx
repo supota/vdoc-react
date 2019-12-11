@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import { BaseContainer } from "vdoc/presentation/component/BaseContainer";
-import { PlayerList } from "vdoc/presentation/Sports/PlayerList";
+import { BaseContainer } from "vdoc/presentation/pages/component/BaseContainer";
+import { PlayerList } from "vdoc/presentation/pages/Sports/PlayerList";
 
 import { ImageProvider } from "vdoc/application/ImageProvider";
 
-const Sports = () => {
+const SportsPage = () => {
   return (
     <BaseContainer>
       <main className="sports">
@@ -65,4 +65,4 @@ const Sports = () => {
   );
 };
 
-export { Sports };
+export { SportsPage };

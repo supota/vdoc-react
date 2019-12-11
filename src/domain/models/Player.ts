@@ -11,8 +11,8 @@ class Player extends Entity {
   imageUrl: string;
   idPhotoUrl: string;
   bio: string;
-  twitterID?: string;
-  facebookID?: string;
+  twitterUrl?: string;
+  facebookUrl?: string;
   siteUrl?: string;
 
   constructor(init?: Partial<Player>) {
@@ -32,8 +32,8 @@ class Player extends Entity {
       iamgeUrl: this.imageUrl,
       idPhotoUrl: this.idPhotoUrl,
       bio: this.bio,
-      twitterID: this.twitterID,
-      facebookID: this.facebookID,
+      twitterUrl: this.twitterUrl,
+      facebookUrl: this.facebookUrl,
       siteURL: this.siteUrl
     };
   }
@@ -42,7 +42,7 @@ class Player extends Entity {
 enum Sex {
   Male,
   Femail,
-  Unknown
+  Other
 }
 
 export { Player };

@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { BaseContainer } from "vdoc/presentation/component/BaseContainer";
+import { BaseContainer } from "vdoc/presentation/pages/component/BaseContainer";
 
 import { ImageProvider } from "vdoc/application/ImageProvider";
 
-const Top = () => {
+const TopPage = () => {
   return (
     <BaseContainer>
       <main>
@@ -157,4 +157,4 @@ const Top = () => {
   );
 };
 
-export { Top };
+export { TopPage };

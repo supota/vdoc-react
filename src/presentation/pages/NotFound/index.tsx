@@ -2,7 +2,7 @@ import * as React from "react";
 
 import "vdoc/public/scss/notfound.scss";
 
-const NotFound = () => {
+const NotFoundPage = () => {
   return (
     <div id="message">
       <h2>404｜Page Not Found</h2>
@@ -18,4 +18,4 @@ const NotFound = () => {
   );
 };
 
-export { NotFound };
+export { NotFoundPage };
