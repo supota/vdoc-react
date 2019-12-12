@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { RouteComponentProps } from "react-router";
 
 import { BaseContainer } from "vdoc/presentation/pages/component/BaseContainer";
 
@@ -9,7 +10,7 @@ import { Player } from "vdoc/domain/models/Player";
 
 import { FirestorePlayerRepository } from "vdoc/infrastracture/repositories/FirestorePlayerRepository";
 
-const PlayerPage = () => {
+const PlayerPage = (props: RouteComponentProps<{ id: string }>) => {
   const [player, setPlayer] = useState(new Player());
 
   // Get data from firestore
@@ -17,9 +18,11 @@ const PlayerPage = () => {
   useEffect(() => {
     (async () => {
       const player: Player = await firestorePlayerRepository.getPlayer(
-        "1xGyRxP4RPcoVm44FT9w"
+        props.match.params.id
       );
-      console.log(player);
+      if (!player.id) {
+        props.history.push("/404");
+      }
       setPlayer(player);
     })();
   }, []);
