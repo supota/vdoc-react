@@ -2,10 +2,10 @@ import { Entity } from "./Entity";
 
 class Player extends Entity {
   id: number;
-  japaneseFirstName: string;
-  japaneseLastName: string;
-  romanFirstName: string;
-  romanLastName: string;
+  japaneseFirstName: string = "";
+  japaneseLastName: string = "";
+  romanFirstName: string = "";
+  romanLastName: string = "";
   age: number;
   sex: Sex;
   imageUrl: string;
