@@ -6,11 +6,16 @@ class Player extends Entity {
   japaneseLastName: string = "";
   romanFirstName: string = "";
   romanLastName: string = "";
-  age: number;
+  year: number;
+  month: number;
+  day: number;
   sex: Sex;
+  profile: string;
+  performances: string[];
+  email: string;
+  password: string;
   imageUrl: string;
-  idPhotoUrl: string;
-  bio: string;
+  proofPhotoUrl?: string;
   twitterUrl?: string;
   facebookUrl?: string;
   siteUrl?: string;
@@ -27,11 +32,16 @@ class Player extends Entity {
       japaneseLastName: this.japaneseLastName,
       romanFirstName: this.romanFirstName,
       romanLastName: this.romanLastName,
-      age: this.age,
+      year: this.year,
+      month: this.month,
+      day: this.day,
       sex: this.sex,
+      profile: this.profile,
+      performances: this.performances,
+      email: this.email,
+      password: this.password,
       iamgeUrl: this.imageUrl,
-      idPhotoUrl: this.idPhotoUrl,
-      bio: this.bio,
+      proofPhotoUrl: this.proofPhotoUrl,
       twitterUrl: this.twitterUrl,
       facebookUrl: this.facebookUrl,
       siteURL: this.siteUrl

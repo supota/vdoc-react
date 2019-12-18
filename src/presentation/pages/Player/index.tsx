@@ -76,7 +76,7 @@ const PlayerPage = (props: RouteComponentProps<IProps>) => {
                   {player.romanFirstName + " " + player.romanLastName}
                 </span>
               </h3>
-              <p id="profile">{player.bio}</p>
+              <p id="profile">{player.profile}</p>
             </div>
           </section>
           <section className="-white achievement">
