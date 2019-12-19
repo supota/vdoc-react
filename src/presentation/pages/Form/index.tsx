@@ -106,6 +106,22 @@ const FormPage = (props: any) => {
             onChange={handleChange}
             required
           />
+          <select name="sex">
+            <option value="0">男性</option>
+            <option value="1">女性</option>
+            <option value="2">その他</option>
+          </select>
+          <p>誕生日</p>
+          <input type="number" name="year" />年
+          <input type="number" name="month" />月
+          <input type="number" name="day" />日<p>プロフィール</p>
+          <input
+            type="text"
+            placeholder="あなたのプロフィール"
+            alt=""
+            name="profile"
+            required
+          />
           <p>実績</p>
           <textarea
             rows={10}
@@ -114,6 +130,20 @@ const FormPage = (props: any) => {
             onChange={handleChange}
             required
           />
+          <p>Twittr URL</p>
+          <input type="text" name="twitterUrl" />
+          <p>Facebook URL</p>
+          <input type="text" name="facebookUrl" />
+          <p>Site URL</p>
+          <input type="text" name="siteUrl" />
+          <p>メールアドレス</p>
+          <input type="text" name="email" />
+          <p>パスワード</p>
+          <input type="text" name="password" />
+          <p>プロフィール</p>
+          <input type="file" />
+          <p>証明写真</p>
+          <input type="file" />
           <button type="submit">確認画面へ</button>
         </form>
       </main>
