@@ -6,6 +6,7 @@ import Mock from "vdoc/public/img/mock.png";
 import Tag from "vdoc/public/img/tag.png";
 import Top from "vdoc/public/img/top.png";
 import Arrow from "vdoc/public/img/arrow.png";
+import Birthday from "vdoc/public/img/birthday.png";
 
 import Facebook from "vdoc/public/img/sns/facebook.png";
 import Link from "vdoc/public/img/sns/link.png";
@@ -21,6 +22,7 @@ class ImageProvider {
   static Tag = Tag;
   static Top = Top;
   static Arrow = Arrow;
+  static Birthday = Birthday;
 
   static Facebook = Facebook;
   static Link = Link;
