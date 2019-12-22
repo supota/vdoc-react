@@ -42,7 +42,7 @@ const TopPage = () => {
               <p className="name">田中太郎</p>
             </li>
             <li className="player-box">
-              <img className="icon" src={ImageProvider.Icon} alt="" />
+              <img className="icon" src={ImageProvider.Arrow} alt="" />
               <p className="name">もっと見る</p>
             </li>
             <li className="player-box"></li>
