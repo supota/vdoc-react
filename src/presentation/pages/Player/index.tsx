@@ -76,14 +76,18 @@ const PlayerPage = (props: RouteComponentProps<IProps>) => {
                   {player.romanFirstName + " " + player.romanLastName}
                 </span>
               </h3>
+              <div className="birthday">
+                <span>2019/10/14</span>
+              </div>
               <p id="profile">{player.profile}</p>
             </div>
           </section>
           <section className="-white achievement">
-            <h2>実績・活動など</h2>
-            <div className="swiper-slide">
+            <div>
               <h4>実績</h4>
               <ul>
+                <li>全日本野球選手権大会 BEST 8</li>
+                <li>全日本野球選手権大会 BEST 8</li>
                 <li>全日本野球選手権大会 BEST 8</li>
               </ul>
             </div>
