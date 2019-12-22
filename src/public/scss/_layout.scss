@@ -1,0 +1,38 @@
+/* header,footer */
+
+header {
+  z-index: 124;
+  background-color: #000;
+  box-shadow: 0 2px 8px rgba(30, 30, 80, .3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px 3%;
+  width: 94%;
+
+  >.ttl {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    letter-spacing: 0.04em;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.footer {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  padding: 15px 0;
+  background: #333333;
+
+  .footer_copyright {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 13px;
+    line-height: 15px;
+    margin: 0 0 0 3%;
+    color: #fff;
+  }
+}
