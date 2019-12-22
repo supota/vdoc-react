@@ -1,0 +1,262 @@
+section {
+  position: relative;
+  padding: 10px 0 30px 0;
+  margin-bottom: 30px;
+
+  &:before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: -40px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 40px 100vw;
+  }
+
+  &:after {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 40px 100vw 0 0;
+  }
+
+  &.-purple {
+    background-color: #F8F9FF;
+
+    &:before {
+      border-color: transparent transparent $secondary transparent;
+    }
+
+    &:after {
+      border-color: $secondary transparent transparent transparent;
+    }
+  }
+
+  &.-white {
+    background-color: #FFF;
+
+    &:before {
+      border-color: transparent transparent #FFF transparent;
+    }
+
+    &:after {
+      border-color: #FFF transparent transparent transparent;
+    }
+  }
+}
+
+/* top */
+
+
+.main-visual {
+  padding: 100px 3% 0 3%;
+  margin-top: 62px;
+  background-image: url(../img/top.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 80% 50%;
+  width: 94%;
+  min-height: calc(80vh - 162px);
+  max-height: calc(100vh - 162px);
+
+  >.ttl {
+    color: white;
+  }
+
+  >.txt {
+    color: white;
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 3rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    >.txt {
+      font-size: 1.25rem;
+      line-height: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 896px) {
+    >.txt {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    >.txt {
+      margin-top: 10px;
+      font-size: 0.7rem;
+      line-height: 1.5rem;
+    }
+  }
+}
+
+.player-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 0;
+  width: 896px;
+
+  >.player-box {
+    margin: 20px 20px;
+  }
+
+  @media screen and (max-width: 896px) {
+    width: 480px;
+
+    >.player-box {
+      margin: 10px 20px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 280px;
+  }
+}
+
+.player-box {
+  text-align: center;
+  width: 125px;
+  cursor: pointer;
+
+  :hover {
+    opacity: 0.7;
+    transition: 0.3s;
+  }
+
+  >.icon {
+    width: 100%;
+    border-radius: 100%;
+  }
+
+  >.name {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  @media screen and (max-width: 896px) {
+    width: 100px;
+  }
+}
+
+
+.tag-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto 30px auto;
+  max-width: 660px;
+  width: 100%;
+
+  >.tag {
+    margin: 10px;
+  }
+
+  >.tag img {
+    width: 200px;
+  }
+
+  @media screen and (max-width: 480px) {
+    >.tag {
+      margin: 5px;
+    }
+
+    >.tag img {
+      width: 150px;
+    }
+  }
+}
+
+.comment-box {
+  position: relative;
+  justify-content: center;
+  left: -13px;
+  display: flex;
+  margin: 40px auto 0 auto;
+  max-width: 440px;
+  width: 100%;
+
+  >.comment {
+    word-wrap: break-word;
+    position: relative;
+    left: 25px;
+    background-color: white;
+    box-shadow: rgba(51, 51, 51, 0.15) 0 0 20px;
+    padding: 20px;
+    width: calc(100% - 200px);
+    border-radius: 10px;
+
+    &:before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 30px;
+      left: -10px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 20px 25px 20px 0;
+      border-color: transparent white transparent transparent;
+
+    }
+  }
+
+  &.-reverse {
+    flex-direction: row-reverse;
+
+    >.player-box {
+      position: relative;
+      left: 25px;
+    }
+
+    >.comment {
+      position: relative;
+      left: 0;
+
+      &:before {
+        left: initial;
+        right: -10px;
+        border-width: 20px 0 20px 25px;
+        border-color: transparent transparent transparent white;
+      }
+    }
+  }
+}
+
+
+
+.promotion-box {
+  text-align: center;
+  padding-top: 30px;
+  font-size: 0;
+
+  >img {
+    display: inline-block;
+    max-width: 400px;
+    width: 50%;
+  }
+
+  @media screen and (max-width: 896px) {
+    padding-top: 0;
+
+    >img {
+      margin: 0 auto 20px auto;
+      display: block;
+    }
+
+    >img:last-child {
+      margin-bottom: -20px;
+    }
+
+  }
+}

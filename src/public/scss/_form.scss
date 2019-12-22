@@ -1,0 +1,39 @@
+.form {
+  margin: auto;
+  padding-top: 100px;
+  width: 90%;
+  max-width: 500px;
+
+  >h3 {
+    line-height: 1.5;
+  }
+
+  >form {
+    p {
+      margin: 20px 0 7px 10px;
+      font-size: 0.75rem;
+      color: #5C5C5C;
+    }
+
+    input,
+    textarea,
+    button {
+      padding: 10px 3%;
+      width: 94%;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      outline: none;
+      resize: none;
+    }
+
+    button {
+      display: block;
+      background: linear-gradient(90deg, #000, #333);
+      color: white;
+      margin: 40px auto 60px auto;
+      width: 200px;
+      border-radius: 100px;
+      border: none;
+    }
+  }
+}
