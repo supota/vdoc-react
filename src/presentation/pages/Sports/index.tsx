@@ -23,40 +23,6 @@ const SportsPage = () => {
           </ul>
         </section>
         <section className="newsbox">
-          <h3>最新のニュース</h3>
-          <div className="swiper-container">
-            {/*全スライドをまとめるラッパー*/}
-            <div className="swiper-wrapper">
-              {/*各スライド*/}
-              <div className="swiper-slide">
-                <img src={ImageProvider.Demo} alt="" />
-                <p>sports</p>
-              </div>
-              <div className="swiper-slide">
-                <img src={ImageProvider.Demo} alt="" />
-                <p>sports</p>
-              </div>
-              <div className="swiper-slide">
-                <img src={ImageProvider.Demo} alt="" />
-                <p>sports</p>
-              </div>
-              <div className="swiper-slide">
-                <img src={ImageProvider.Demo} alt="" />
-                <p>sports</p>
-              </div>
-              <div className="swiper-slide">
-                <img src={ImageProvider.Demo} alt="" />
-                <p>sports</p>
-              </div>
-              <div className="swiper-slide">
-                <img src={ImageProvider.Demo} alt="" />
-                <p>sports</p>
-              </div>
-            </div>
-            <div className="swiper-pagination"></div>
-          </div>
-        </section>
-        <section className="newsbox">
           <h3>アスリート一覧</h3>
           <PlayerList />
         </section>
