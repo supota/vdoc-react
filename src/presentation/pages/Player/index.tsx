@@ -81,32 +81,11 @@ const PlayerPage = (props: RouteComponentProps<IProps>) => {
           </section>
           <section className="-white achievement">
             <h2>実績・活動など</h2>
-            <div className="swiper-container">
-              {/*全スライドをまとめるラッパー*/}
-              <div className="swiper-wrapper">
-                {/*各スライド*/}
-                <div className="swiper-slide">
-                  <h4>実績</h4>
-                  <ul>
-                    <li>全日本野球選手権大会 BEST 8</li>
-                  </ul>
-                </div>
-                <div className="swiper-slide">
-                  <h4>実績</h4>
-                  <ul>
-                    <li>全日本野球選手権大会 BEST 8</li>
-                  </ul>
-                </div>
-                <div className="swiper-slide">
-                  <h4>実績</h4>
-                  <ul>
-                    <li>全日本野球選手権大会 BEST 8</li>
-                    <li>全日本野球選手権大会 BEST 8</li>
-                    <li>全日本野球選手権大会 BEST 8</li>
-                  </ul>
-                </div>
-              </div>
-              <div className="swiper-pagination"></div>
+            <div className="swiper-slide">
+              <h4>実績</h4>
+              <ul>
+                <li>全日本野球選手権大会 BEST 8</li>
+              </ul>
             </div>
           </section>
         </main>
