@@ -4,63 +4,7 @@ import { useState } from "react";
 import { BaseContainer } from "vdoc/presentation/pages/component/BaseContainer";
 
 const FormPage = (props: any) => {
-  // setup state as object
-  const [data, setData] = useState({
-    japaneseFirstName: "",
-    japaneseLastName: "",
-    englishFirstName: "",
-    englishLastName: "",
-    bio: ""
-  });
-
-  // set state in response to input name
-  const handleChange = (e: any) => {
-    switch (e.target.name) {
-      case "japanese_first_name":
-        setData(
-          Object.assign(data, {
-            japaneseFirstName: e.target.value
-          })
-        );
-        break;
-      case "japanese_last_name":
-        setData(
-          Object.assign(data, {
-            japaneseLastName: e.target.value
-          })
-        );
-        break;
-      case "english_first_name":
-        setData(
-          Object.assign(data, {
-            englishFirstName: e.target.value
-          })
-        );
-        break;
-      case "english_last_name":
-        setData(
-          Object.assign(data, {
-            englishLastName: e.target.value
-          })
-        );
-        break;
-      case "bio":
-        setData(
-          Object.assign(data, {
-            bio: e.target.value
-          })
-        );
-        break;
-      default:
-        break;
-    }
-  };
-
-  // validate and submit state data when button pushed
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-  };
-
+  const handleSubmit = async () => {};
   return (
     <BaseContainer>
       <main className="form">
@@ -76,7 +20,6 @@ const FormPage = (props: any) => {
             placeholder="日本語の姓"
             alt=""
             name="japanese_first_name"
-            onChange={handleChange}
             required
           />
           <p>名</p>
@@ -85,7 +28,6 @@ const FormPage = (props: any) => {
             placeholder="日本語の名"
             alt=""
             name="japanese_last_name"
-            onChange={handleChange}
             required
           />
           <p>Surname</p>
@@ -94,7 +36,6 @@ const FormPage = (props: any) => {
             placeholder="英語の姓"
             alt=""
             name="english_first_name"
-            onChange={handleChange}
             required
           />
           <p>Name</p>
@@ -103,7 +44,6 @@ const FormPage = (props: any) => {
             placeholder="英語の名"
             alt=""
             name="english_last_name"
-            onChange={handleChange}
             required
           />
           <select name="sex">
@@ -127,7 +67,6 @@ const FormPage = (props: any) => {
             rows={10}
             placeholder="改行して入力してください"
             name="bio"
-            onChange={handleChange}
             required
           />
           <p>Twittr URL</p>

@@ -13,3 +13,5 @@ class FirebaeImageService extends ImageService {
     return filename;
   }
 }
+
+export { FirebaeImageService };

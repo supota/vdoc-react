@@ -8,7 +8,6 @@ class Player extends Entity {
   year: number;
   month: number;
   day: number;
-  sex: Sex;
   profile: string;
   performances: string[];
   email: string;
@@ -33,7 +32,6 @@ class Player extends Entity {
       year: this.year,
       month: this.month,
       day: this.day,
-      sex: this.sex,
       profile: this.profile,
       performances: this.performances,
       email: this.email,
@@ -54,12 +52,6 @@ class Player extends Entity {
       this.romanLastName !== ""
     );
   }
-}
-
-enum Sex {
-  Male,
-  Femail,
-  Other
 }
 
 export { Player };
