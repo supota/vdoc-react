@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import "vdoc/public/scss/notfound.scss";
-
 const NotFoundPage = () => {
   return (
     <div id="message">
