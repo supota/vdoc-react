@@ -134,3 +134,5 @@ Temporary Items
 
 # Project unique files
 dist
+*.xml
+*.iml

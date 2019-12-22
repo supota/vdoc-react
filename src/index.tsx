@@ -26,5 +26,5 @@ ReactDOM.render(
       <Route component={NotFoundPage}></Route>
     </Switch>
   </BrowserRouter>,
-  document.getElementById("not-found")
+  document.getElementById("wrapper")
 );
