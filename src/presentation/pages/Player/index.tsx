@@ -25,7 +25,7 @@ const PlayerPage = (props: RouteComponentProps<IProps>) => {
       const player: Player = await firestorePlayerRepository.getPlayer(
         props.match.params.id
       );
-      if (!player.id) {
+      if (!player.isExists()) {
         props.history.push("/404");
       }
       setPlayer(player);

@@ -1,7 +1,6 @@
 import { Entity } from "./Entity";
 
 class Player extends Entity {
-  id: number;
   japaneseFirstName: string = "";
   japaneseLastName: string = "";
   romanFirstName: string = "";
@@ -27,7 +26,6 @@ class Player extends Entity {
 
   toMap(): Object {
     return {
-      id: this.id,
       japaneseFirstName: this.japaneseFirstName,
       japaneseLastName: this.japaneseLastName,
       romanFirstName: this.romanFirstName,
@@ -46,6 +44,15 @@ class Player extends Entity {
       facebookUrl: this.facebookUrl,
       siteURL: this.siteUrl
     };
+  }
+
+  isExists(): boolean {
+    return (
+      this.japaneseFirstName !== "" &&
+      this.japaneseLastName !== "" &&
+      this.romanFirstName !== "" &&
+      this.romanLastName !== ""
+    );
   }
 }
 

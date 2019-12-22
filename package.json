@@ -42,7 +42,8 @@
     "firebase": "^7.5.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-router-dom": "^5.0.1"
+    "react-router-dom": "^5.0.1",
+    "uuidv4": "^6.0.0"
   },
   "husky": {
     "hooks": {
