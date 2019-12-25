@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { Input } from "../component/Input";
+import { Select } from "../component/Select";
 
 const FormContainer: React.FC = () => {
   return (
@@ -33,11 +34,6 @@ const FormContainer: React.FC = () => {
         placeholder="英語の名"
         isRequired={true}
       />
-      <select name="sex">
-        <option value="0">男性</option>
-        <option value="1">女性</option>
-        <option value="2">その他</option>
-      </select>
       <p>誕生日</p>
       <input type="number" name="year" />年
       <input type="number" name="month" />月

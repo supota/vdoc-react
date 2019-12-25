@@ -35,3 +35,5 @@ const Select: React.FC<IProps> = props => {
     </React.Fragment>
   );
 };
+
+export { Select };
