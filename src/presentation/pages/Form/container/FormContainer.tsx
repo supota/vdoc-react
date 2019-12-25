@@ -1,15 +1,16 @@
 import * as React from "react";
 
+import { Input } from "../component/Input";
+
 const FormContainer: React.FC = () => {
   return (
     <form action="">
-      <p>姓</p>
-      <input
+      <Input
+        title="姓"
+        name="japanese_first_name"
         type="text"
         placeholder="日本語の姓"
-        alt=""
-        name="japanese_first_name"
-        required
+        isRequired={true}
       />
       <p>名</p>
       <input
