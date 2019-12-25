@@ -12,29 +12,26 @@ const FormContainer: React.FC = () => {
         placeholder="日本語の姓"
         isRequired={true}
       />
-      <p>名</p>
-      <input
+      <Input
+        title="名"
+        name="japanese_last_name"
         type="text"
         placeholder="日本語の名"
-        alt=""
-        name="japanese_last_name"
-        required
+        isRequired={true}
       />
-      <p>Surname</p>
-      <input
+      <Input
+        title="Surname"
+        name="roman_first_name"
         type="text"
         placeholder="英語の姓"
-        alt=""
-        name="english_first_name"
-        required
+        isRequired={true}
       />
-      <p>Name</p>
-      <input
+      <Input
+        title="Name"
+        name="roman_last_name"
         type="text"
         placeholder="英語の名"
-        alt=""
-        name="english_last_name"
-        required
+        isRequired={true}
       />
       <select name="sex">
         <option value="0">男性</option>
