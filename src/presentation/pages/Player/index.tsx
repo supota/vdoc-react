@@ -47,7 +47,11 @@ const PlayerPage = (props: RouteComponentProps<IProps>) => {
           </section>
           <section className="player-detail -purple">
             <div className="player-icon">
-              <img src={player.imageUrl} alt="" id="player-img" />
+              <img
+                src={player.imageUrl}
+                alt="プロフィール画像"
+                id="player-img"
+              />
               <ul className="sns-share">
                 <li>
                   <a href={player.facebookUrl} id="facebook" target="_blank">
@@ -77,7 +81,7 @@ const PlayerPage = (props: RouteComponentProps<IProps>) => {
                 </span>
               </h3>
               <div className="birthday">
-                <span>2019/10/14</span>
+                <span>{`${player.year}/${player.month}/${player.day}`}</span>
               </div>
               <p id="profile">{player.profile}</p>
             </div>
@@ -86,9 +90,9 @@ const PlayerPage = (props: RouteComponentProps<IProps>) => {
             <div>
               <h4>実績</h4>
               <ul>
-                <li>全日本野球選手権大会 BEST 8</li>
-                <li>全日本野球選手権大会 BEST 8</li>
-                <li>全日本野球選手権大会 BEST 8</li>
+                {player.performances.map(performance => {
+                  return <li>{performance}</li>;
+                })}
               </ul>
             </div>
           </section>
