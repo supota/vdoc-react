@@ -48,7 +48,7 @@ const PlayerPage = (props: RouteComponentProps<IProps>) => {
           <section className="player-detail -purple">
             <div className="player-icon">
               <img
-                src={player.imageUrl}
+                src={player.profilePhotoUrl}
                 alt="プロフィール画像"
                 id="player-img"
               />

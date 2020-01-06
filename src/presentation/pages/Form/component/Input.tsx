@@ -5,7 +5,7 @@ interface IProps {
   name: string;
   type: string;
   placeholder: string;
-  handleChange: (name: string, value: string) => void;
+  handleChange: (name: string, value: string | Blob) => void;
   isRequired: boolean;
 }
 

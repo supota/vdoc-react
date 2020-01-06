@@ -1,10 +1,10 @@
 import { Entity } from "./Entity";
 
 class Player extends Entity {
-  japaneseFirstName: string = "";
-  japaneseLastName: string = "";
-  romanFirstName: string = "";
-  romanLastName: string = "";
+  japaneseFirstName: string;
+  japaneseLastName: string;
+  romanFirstName: string;
+  romanLastName: string;
   year: number;
   month: number;
   day: number;
@@ -12,7 +12,7 @@ class Player extends Entity {
   performances: string[];
   email: string;
   password: string;
-  imageUrl: string;
+  profilePhotoUrl: string;
   proofPhotoUrl?: string;
   twitterUrl?: string;
   facebookUrl?: string;
@@ -36,7 +36,7 @@ class Player extends Entity {
       performances: this.performances,
       email: this.email,
       password: this.password,
-      iamgeUrl: this.imageUrl,
+      iamgeUrl: this.profilePhotoUrl,
       proofPhotoUrl: this.proofPhotoUrl,
       twitterUrl: this.twitterUrl,
       facebookUrl: this.facebookUrl,

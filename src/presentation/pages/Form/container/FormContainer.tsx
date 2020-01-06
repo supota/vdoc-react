@@ -1,52 +1,35 @@
 import * as React from "react";
 import { useState } from "react";
 
+import { Player } from "vdoc/libs/domain/models/Player";
+import { RawPlayer } from "vdoc/libs/domain/models/RawPlayer";
+
 import { Input } from "../component/Input";
 import { TextArea } from "../component/Textarea";
 
 const FormContainer: React.FC = () => {
-  const [rawPlayer, setRawPlayer] = useState({
-    japaneseFirstName: null,
-    japaneseLastName: null,
-    romanFirstName: null,
-    romanLastName: null,
-    year: null,
-    month: null,
-    day: null,
-    profile: null,
-    performances: [""],
-    twitterUrl: null,
-    facebookUrl: null,
-    siteUrl: null,
-    email: null,
-    password: null,
-    imageFile: Blob,
-    proofImageFile: null
-  });
+  const [rawPlayer, setRawPlayer] = useState<RawPlayer>(new RawPlayer());
 
-  const handleInput = (name: string, value: string) => {
-    setRawPlayer({
-      ...rawPlayer,
-      [name]: value
-    });
+  const handleInput = (name: keyof RawPlayer, value: string) => {
+    // しっかり書き直す
+    if (
+      name !== "profilePhotoData" &&
+      name !== "proofPhotoData" &&
+      name !== "convertToPlayer"
+    ) {
+      rawPlayer[name] = value;
+      setRawPlayer(rawPlayer);
+    }
+    console.log(rawPlayer);
   };
 
-  const handlePerformances = (name: string, value: string) => {
-    const performances = value
-      .trim()
-      .split("\n")
-      .filter(v => v);
-    setRawPlayer({
-      ...rawPlayer,
-      performances: performances
-    });
-  };
-
-  const handleImage = (file: Blob) => {
-    setRawPlayer({
-      ...rawPlayer,
-      imageFile: file
-    });
+  const handleImage = (name: keyof RawPlayer, value: Blob) => {
+    // しっかり書き直す
+    if (name === "profilePhotoData" || name === "proofPhotoData") {
+      rawPlayer[name] = value;
+      setRawPlayer(rawPlayer);
+    }
+    console.log(rawPlayer);
   };
 
   return (
@@ -120,7 +103,7 @@ const FormContainer: React.FC = () => {
         name="performances"
         rows={10}
         placeholder="改行して入力してください"
-        handleChange={handlePerformances}
+        handleChange={handleInput}
         isRequired={false}
       />
       <textarea
@@ -170,9 +153,21 @@ const FormContainer: React.FC = () => {
         isRequired={true}
       />
       <p>プロフィール写真</p>
-      <input type="file" />
+      <Input
+        name="profilePhotoData"
+        type="file"
+        placeholder=""
+        handleChange={handleImage}
+        isRequired={true}
+      />
       <p>証明写真</p>
-      <input type="file" />
+      <Input
+        name="proofPhotoData"
+        type="file"
+        placeholder=""
+        handleChange={handleImage}
+        isRequired={true}
+      />
       <button type="submit">確認画面へ</button>
     </form>
   );
