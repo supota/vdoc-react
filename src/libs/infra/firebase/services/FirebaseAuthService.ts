@@ -1,6 +1,6 @@
-import { firebase } from "vdoc/application/firebase";
+import { firebase } from "vdoc/libs/infra/firebase/firebase";
 
-import { AuthService } from "vdoc/domain/services/AuthService";
+import { AuthService } from "vdoc/libs/domain/services/AuthService";
 
 class FirebaseAuthService extends AuthService {
   async login(email: string, password: string): Promise<boolean> {

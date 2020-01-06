@@ -1,7 +1,7 @@
-import { firebase } from "vdoc/application/firebase";
+import { firebase } from "vdoc/libs/infra/firebase/firebase";
 
-import { Player } from "vdoc/domain/models/Player";
-import { PlayerRepository } from "vdoc/domain/repositories/PlayerRepository";
+import { Player } from "vdoc/libs/domain/models/Player";
+import { PlayerRepository } from "vdoc/libs/domain/repositories/PlayerRepository";
 
 class FirestorePlayerRepository extends PlayerRepository {
   async getAllPlayers(): Promise<Player[]> {

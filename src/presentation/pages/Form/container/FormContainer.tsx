@@ -2,10 +2,10 @@ import * as React from "react";
 import { useState } from "react";
 
 import { Input } from "../component/Input";
-import { Select } from "../component/Select";
+import { TextArea } from "../component/Textarea";
 
 const FormContainer: React.FC = () => {
-  const [playerData, setPlayerData] = useState({
+  const [rawPlayer, setRawPlayer] = useState({
     japaneseFirstName: null,
     japaneseLastName: null,
     romanFirstName: null,
@@ -14,19 +14,41 @@ const FormContainer: React.FC = () => {
     month: null,
     day: null,
     profile: null,
-    performances: [],
+    performances: [""],
     twitterUrl: null,
     facebookUrl: null,
     siteUrl: null,
     email: null,
-    password: null
+    password: null,
+    imageFile: Blob,
+    proofImageFile: null
   });
+
   const handleInput = (name: string, value: string) => {
-    setPlayerData({
-      ...playerData,
+    setRawPlayer({
+      ...rawPlayer,
       [name]: value
     });
   };
+
+  const handlePerformances = (name: string, value: string) => {
+    const performances = value
+      .trim()
+      .split("\n")
+      .filter(v => v);
+    setRawPlayer({
+      ...rawPlayer,
+      performances: performances
+    });
+  };
+
+  const handleImage = (file: Blob) => {
+    setRawPlayer({
+      ...rawPlayer,
+      imageFile: file
+    });
+  };
+
   return (
     <form action="">
       <p>姓</p>
@@ -94,6 +116,13 @@ const FormContainer: React.FC = () => {
         isRequired={true}
       />
       <p>実績</p>
+      <TextArea
+        name="performances"
+        rows={10}
+        placeholder="改行して入力してください"
+        handleChange={handlePerformances}
+        isRequired={false}
+      />
       <textarea
         rows={10}
         placeholder="改行して入力してください"

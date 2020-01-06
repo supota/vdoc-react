@@ -1,10 +1,9 @@
-import Firebase from 'firebase';
+import Firebase from "firebase";
 
 let firebaseConfig: Object;
 
-switch(process.env.NODE_ENV) {
-
-  case 'development':
+switch (process.env.NODE_ENV) {
+  case "development":
     firebaseConfig = {
       apiKey: process.env.FB_DEV_API_KEY,
       authDomain: process.env.FB_DEV_AUTH_DOMAIN,
@@ -16,7 +15,7 @@ switch(process.env.NODE_ENV) {
     };
     break;
 
-  case 'production':
+  case "production":
     firebaseConfig = {
       apiKey: process.env.FB_PROD_API_KEY,
       authDomain: process.env.FB_PROD_AUTH_DOMAIN,
@@ -26,13 +25,12 @@ switch(process.env.NODE_ENV) {
       messagingSenderId: process.env.FB_PROD_MESSAGING_SENDER_ID,
       appId: process.env.FB_PROD_APP_ID,
       measurementId: process.env.FB_PROD_MEASUREMENT_ID
-    }
+    };
     break;
-  
+
   default:
     firebaseConfig = {};
     break;
-
 }
 
 const firebase = Firebase.initializeApp(firebaseConfig);

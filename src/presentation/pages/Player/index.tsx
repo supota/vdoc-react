@@ -4,11 +4,11 @@ import { RouteComponentProps } from "react-router";
 
 import { BaseContainer } from "vdoc/presentation/pages/component/BaseContainer";
 
-import { ImageProvider } from "vdoc/application/ImageProvider";
+import { ImageProvider } from "vdoc/libs/application/ImageProvider";
 
-import { Player } from "vdoc/domain/models/Player";
+import { Player } from "vdoc/libs/domain/models/Player";
 
-import { FirestorePlayerRepository } from "vdoc/infrastracture/repositories/FirestorePlayerRepository";
+import { FirestorePlayerRepository } from "vdoc/libs/infra/firebase/repositories/FirestorePlayerRepository";
 
 interface IProps {
   id: string;

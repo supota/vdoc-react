@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { BaseContainer } from "vdoc/presentation/pages/component/BaseContainer";
 
-import { ImageProvider } from "vdoc/application/ImageProvider";
+import { ImageProvider } from "vdoc/libs/application/ImageProvider";
 
 const TopPage = () => {
   return (
