@@ -1,12 +1,11 @@
 import * as React from "react";
 import { useState } from "react";
 
-import { BaseContainer } from "vdoc/presentation/pages/component/BaseContainer";
+import { BaseContainer } from "vdoc/presentation/organisms/BaseContainer";
 
 import { FormContainer } from "./container/FormContainer";
 
-const FormPage = (props: any) => {
-  const handleSubmit = async () => {};
+const FormPage = () => {
   return (
     <BaseContainer>
       <main className="form">

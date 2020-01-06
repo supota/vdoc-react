@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { BaseContainer } from "vdoc/presentation/pages/component/BaseContainer";
+import { BaseContainer } from "vdoc/presentation/organisms/BaseContainer";
 
 import { ImageProvider } from "vdoc/libs/application/ImageProvider";
 

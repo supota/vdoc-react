@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { RouteComponentProps } from "react-router";
 
-import { BaseContainer } from "vdoc/presentation/pages/component/BaseContainer";
+import { BaseContainer } from "vdoc/presentation/organisms/BaseContainer";
 
 import { ImageProvider } from "vdoc/libs/application/ImageProvider";
 
