@@ -12,7 +12,7 @@ import Facebook from "vdoc/public/img/sns/facebook.png";
 import Link from "vdoc/public/img/sns/link.png";
 import Twitter from "vdoc/public/img/sns/twitter.png";
 
-// Provider images
+// Provide images
 class ImageProvider {
   static Achievement = Achievement;
   static CatchCopy = CatchCopy;

@@ -4,7 +4,7 @@ import { firebase } from "vdoc/libs/infra/firebase/firebase";
 
 import { ImageService } from "vdoc/libs/domain/services/ImageService";
 
-class FirebaeImageService extends ImageService {
+class FirebaseImageService extends ImageService {
   async upload(data: Blob): Promise<string> {
     const storageRef = firebase.storage().ref();
     const filename = `${uuid()}.png`;
@@ -14,4 +14,4 @@ class FirebaeImageService extends ImageService {
   }
 }
 
-export { FirebaeImageService };
+export { FirebaseImageService };
