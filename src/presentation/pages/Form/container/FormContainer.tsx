@@ -1,41 +1,63 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
-import { Player } from "vdoc/libs/domain/models/Player";
 import { RawPlayer } from "vdoc/libs/domain/models/RawPlayer";
 
-import { Input } from "../component/Input";
+import { DomainProvider } from "vdoc/libs/application/DomainProvider";
+
+import { TextInput } from "../component/TextInput";
+import { ImageInput } from "../component/ImageInput";
 import { TextArea } from "../component/Textarea";
 
 const FormContainer: React.FC = () => {
-  const [rawPlayer, setRawPlayer] = useState<RawPlayer>(new RawPlayer());
+  const [rawPlayer, setRawPlayer] = useState<RawPlayer>(
+    new RawPlayer(new DomainProvider.ImageService())
+  );
 
-  const handleInput = (name: keyof RawPlayer, value: string) => {
-    // しっかり書き直す
-    if (
-      name !== "profilePhotoData" &&
-      name !== "proofPhotoData" &&
-      name !== "convertToPlayer"
-    ) {
-      rawPlayer[name] = value;
-      setRawPlayer(rawPlayer);
-    }
-    console.log(rawPlayer);
-  };
+  const handleInput = useCallback(
+    (
+      e:
+        | React.ChangeEvent<HTMLInputElement>
+        | React.ChangeEvent<HTMLTextAreaElement>
+    ) => {
+      const name = e.target.name as keyof RawPlayer;
+      const value = e.target.value;
+      // しっかり書き直す
+      if (
+        name !== "profilePhotoData" &&
+        name !== "proofPhotoData" &&
+        name !== "convertToPlayer"
+      ) {
+        rawPlayer[name] = value;
+        setRawPlayer(rawPlayer);
+      }
+    },
+    []
+  );
 
-  const handleImage = (name: keyof RawPlayer, value: Blob) => {
+  const handleImage = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const name = e.target.name as keyof RawPlayer;
+    if (!e.target.files) return;
+    const file = e.target.files[0];
     // しっかり書き直す
     if (name === "profilePhotoData" || name === "proofPhotoData") {
-      rawPlayer[name] = value;
+      rawPlayer[name] = file;
       setRawPlayer(rawPlayer);
     }
-    console.log(rawPlayer);
+  }, []);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    (async () => {
+      const player = await rawPlayer.convertToPlayer();
+      console.log(player);
+    })();
   };
 
   return (
     <form action="">
       <p>姓</p>
-      <Input
+      <TextInput
         name="japaneseFirstName"
         type="text"
         placeholder="日本語の姓"
@@ -43,7 +65,7 @@ const FormContainer: React.FC = () => {
         isRequired={true}
       />
       <p>名</p>
-      <Input
+      <TextInput
         name="japaneseLastName"
         type="text"
         placeholder="日本語の名"
@@ -51,7 +73,7 @@ const FormContainer: React.FC = () => {
         isRequired={true}
       />
       <p>Surname</p>
-      <Input
+      <TextInput
         name="romanFirstName"
         type="text"
         placeholder="英語の姓"
@@ -59,7 +81,7 @@ const FormContainer: React.FC = () => {
         isRequired={true}
       />
       <p>Name</p>
-      <Input
+      <TextInput
         name="romanLastName"
         type="text"
         placeholder="英語の名"
@@ -67,7 +89,7 @@ const FormContainer: React.FC = () => {
         isRequired={true}
       />
       <p>誕生日</p>
-      <Input
+      <TextInput
         name="year"
         type="number"
         placeholder="年"
@@ -75,7 +97,7 @@ const FormContainer: React.FC = () => {
         isRequired={true}
       />
       年
-      <Input
+      <TextInput
         name="month"
         type="number"
         placeholder="月"
@@ -83,7 +105,7 @@ const FormContainer: React.FC = () => {
         isRequired={true}
       />
       月
-      <Input
+      <TextInput
         name="day"
         type="number"
         placeholder="日"
@@ -91,7 +113,7 @@ const FormContainer: React.FC = () => {
         isRequired={true}
       />
       日<p>プロフィール</p>
-      <Input
+      <TextInput
         name="profile"
         type="text"
         placeholder="自己紹介など"
@@ -106,14 +128,8 @@ const FormContainer: React.FC = () => {
         handleChange={handleInput}
         isRequired={false}
       />
-      <textarea
-        rows={10}
-        placeholder="改行して入力してください"
-        name="performances"
-        required
-      />
       <p>Twittr URL</p>
-      <Input
+      <TextInput
         name="twitterUrl"
         type="text"
         placeholder="TwitterのURL(あれば)"
@@ -121,7 +137,7 @@ const FormContainer: React.FC = () => {
         isRequired={false}
       />
       <p>Facebook URL</p>
-      <Input
+      <TextInput
         name="facebookUrl"
         type="text"
         placeholder="FacebookのURL(あれば)"
@@ -129,7 +145,7 @@ const FormContainer: React.FC = () => {
         isRequired={false}
       />
       <p>Site URL</p>
-      <Input
+      <TextInput
         name="siteUrl"
         type="text"
         placeholder="サイトのURL(あれば)"
@@ -137,7 +153,7 @@ const FormContainer: React.FC = () => {
         isRequired={false}
       />
       <p>メールアドレス</p>
-      <Input
+      <TextInput
         name="email"
         type="email"
         placeholder=""
@@ -145,7 +161,7 @@ const FormContainer: React.FC = () => {
         isRequired={true}
       />
       <p>パスワード</p>
-      <Input
+      <TextInput
         name="password"
         type="password"
         placeholder=""
@@ -153,22 +169,22 @@ const FormContainer: React.FC = () => {
         isRequired={true}
       />
       <p>プロフィール写真</p>
-      <Input
+      <ImageInput
         name="profilePhotoData"
         type="file"
-        placeholder=""
         handleChange={handleImage}
         isRequired={true}
       />
       <p>証明写真</p>
-      <Input
+      <ImageInput
         name="proofPhotoData"
         type="file"
-        placeholder=""
         handleChange={handleImage}
         isRequired={true}
       />
-      <button type="submit">確認画面へ</button>
+      <button type="submit" onClick={handleSubmit}>
+        確認画面へ
+      </button>
     </form>
   );
 };

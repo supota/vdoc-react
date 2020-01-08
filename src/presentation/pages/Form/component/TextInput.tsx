@@ -1,19 +1,14 @@
 import * as React from "react";
-import { useCallback } from "react";
 
 interface IProps {
   name: string;
   type: string;
   placeholder: string;
-  handleChange: (name: string, value: string | Blob) => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isRequired: boolean;
 }
 
-const Input: React.FC<IProps> = props => {
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    props.handleChange(e.target.name, e.target.value);
-  }, []);
-
+const TextInput: React.FC<IProps> = props => {
   return (
     <div>
       {props.isRequired ? (
@@ -21,7 +16,7 @@ const Input: React.FC<IProps> = props => {
           type={props.type}
           placeholder={props.placeholder}
           name={props.name}
-          onChange={handleChange}
+          onChange={props.handleChange}
           required
         />
       ) : (
@@ -29,11 +24,11 @@ const Input: React.FC<IProps> = props => {
           type={props.type}
           placeholder={props.placeholder}
           name={props.name}
-          onChange={handleChange}
+          onChange={props.handleChange}
         />
       )}
     </div>
   );
 };
 
-export { Input };
+export { TextInput };
