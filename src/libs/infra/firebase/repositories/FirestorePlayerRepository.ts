@@ -17,7 +17,7 @@ class FirestorePlayerRepository extends PlayerRepository {
     // Translate to array of Player
     const players = playersSnapshot.docs.map(
       (playerSnapshot: firebase.firestore.DocumentSnapshot) => {
-        return new Player(playerSnapshot.data());
+        return Player.factoryFromSnapshot(playerSnapshot);
       }
     );
 
@@ -34,7 +34,7 @@ class FirestorePlayerRepository extends PlayerRepository {
       .doc(id)
       .get();
 
-    const player = new Player(playerSnapshot.data());
+    const player = Player.factoryFromSnapshot(playerSnapshot);
     return player;
   }
 
@@ -47,7 +47,7 @@ class FirestorePlayerRepository extends PlayerRepository {
       .get();
     const players = playerSnapshot.docs.map(
       (playerSnapshot: firebase.firestore.DocumentSnapshot) => {
-        return new Player(playerSnapshot.data());
+        return Player.factoryFromSnapshot(playerSnapshot);
       }
     );
     return players;
@@ -57,7 +57,7 @@ class FirestorePlayerRepository extends PlayerRepository {
     await firebase
       .firestore()
       .collection("players")
-      .add(player.toMap());
+      .add(player);
   }
 }
 

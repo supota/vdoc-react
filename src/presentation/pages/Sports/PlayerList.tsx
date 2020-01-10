@@ -13,7 +13,7 @@ interface IProps extends RouteComponentProps<{}> {
 
 const NonRoutePlayerList = (props: IProps) => {
   // setup state
-  let [players, setPlayers] = useState<Player[]>([new Player()]);
+  let [players, setPlayers] = useState<Player[]>([]);
   const playerRepository = new DomainProvider.PlayerRepository();
 
   useEffect(() => {
@@ -27,21 +27,28 @@ const NonRoutePlayerList = (props: IProps) => {
         props.history.push("/404");
       }
     })();
-  });
+  }, []);
+
+  if (!players.length) {
+    return <ul />;
+  }
 
   return (
     <ul className="player-list" id="player-list">
-      {players.map((player: any) => {
+      {players.map(player => {
+        console.log(player);
         return (
           <li
             key={player.id}
             className="player-box"
             onClick={() => {
-              props.history.push(`/player/${player.id}`);
+              props.history.push(`/players/${player.id}`);
             }}
           >
-            <img className="icon" src={player.imageUrl}></img>
-            <p className="name">{player.first_name + " " + player.last_name}</p>
+            <img className="icon" src={player.profilePhotoUrl}></img>
+            <p className="name">
+              {player.japaneseFirstName + " " + player.japaneseLastName}
+            </p>
           </li>
         );
       })}

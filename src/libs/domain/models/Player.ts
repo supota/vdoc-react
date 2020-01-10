@@ -1,6 +1,10 @@
 import { Entity } from "./Entity";
 
-class Player extends Entity {
+import { IFirestorePlayerData } from "./firestore/FirestorePlayerData";
+
+class Player extends Entity implements IFirestorePlayerData {
+  id?: string;
+
   japaneseFirstName: string;
   japaneseLastName: string;
   romanFirstName: string;
@@ -23,34 +27,14 @@ class Player extends Entity {
     Object.assign(this, init);
   }
 
-  toMap(): Object {
-    return {
-      japaneseFirstName: this.japaneseFirstName,
-      japaneseLastName: this.japaneseLastName,
-      romanFirstName: this.romanFirstName,
-      romanLastName: this.romanLastName,
-      year: this.year,
-      month: this.month,
-      day: this.day,
-      profile: this.profile,
-      performances: this.performances,
-      email: this.email,
-      password: this.password,
-      iamgeUrl: this.profilePhotoUrl,
-      proofPhotoUrl: this.proofPhotoUrl,
-      twitterUrl: this.twitterUrl,
-      facebookUrl: this.facebookUrl,
-      siteURL: this.siteUrl
-    };
-  }
+  static factoryFromSnapshot(snapshot: firebase.firestore.DocumentSnapshot) {
+    const data = <IFirestorePlayerData>snapshot.data();
+    const id = snapshot.id;
 
-  isExists(): boolean {
-    return (
-      this.japaneseFirstName !== "" &&
-      this.japaneseLastName !== "" &&
-      this.romanFirstName !== "" &&
-      this.romanLastName !== ""
-    );
+    return new Player({
+      id: id,
+      ...data
+    });
   }
 }
 
