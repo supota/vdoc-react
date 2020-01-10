@@ -1,8 +1,6 @@
 interface IFirestorePlayerData {
-  japaneseFirstName: string;
-  japaneseLastName: string;
-  romanFirstName: string;
-  romanLastName: string;
+  name: string;
+  phonetic: string;
   year: number;
   month: number;
   day: number;

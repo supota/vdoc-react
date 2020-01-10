@@ -71,13 +71,9 @@ const PlayerPage: React.FC<IProps> = props => {
           </div>
           <div className="profile-box">
             <h3>
-              <span id="japanese-name">
-                {player.japaneseFirstName + " " + player.japaneseLastName}
-              </span>
+              <span id="japanese-name">{player.name}</span>
               <br className="sp" />
-              <span id="english-name">
-                {player.romanFirstName + " " + player.romanLastName}
-              </span>
+              <span id="english-name">{player.phonetic}</span>
             </h3>
             <div className="birthday">
               <span>{`${player.year}/${player.month}/${player.day}`}</span>

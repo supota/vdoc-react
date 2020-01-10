@@ -4,10 +4,8 @@ import { Player } from "./Player";
 import { ImageService } from "vdoc/libs/domain/services/ImageService";
 
 class RawPlayer extends Entity {
-  japaneseFirstName: string;
-  japaneseLastName: string;
-  romanFirstName: string;
-  romanLastName: string;
+  name: string;
+  phonetic: string;
   year: string;
   month: string;
   day: string;
@@ -34,10 +32,8 @@ class RawPlayer extends Entity {
       this.imageService.upload(this.proofPhotoData)
     ]);
     return new Player({
-      japaneseFirstName: this.japaneseFirstName,
-      japaneseLastName: this.japaneseLastName,
-      romanFirstName: this.romanFirstName,
-      romanLastName: this.romanLastName,
+      name: this.name,
+      phonetic: this.phonetic,
       year: parseInt(this.year),
       month: parseInt(this.month),
       day: parseInt(this.day),

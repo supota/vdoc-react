@@ -3,7 +3,7 @@ import * as React from "react";
 import { Header } from "vdoc/presentation/organisms/Header";
 import { Footer } from "vdoc/presentation/organisms/Footer";
 
-// add Header and Footer to children component
+// Add Header and Footer to children component
 const BaseContainer = (props: any) => {
   return (
     <React.Fragment>

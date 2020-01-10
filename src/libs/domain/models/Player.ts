@@ -5,10 +5,8 @@ import { IFirestorePlayerData } from "./firestore/FirestorePlayerData";
 class Player extends Entity implements IFirestorePlayerData {
   id?: string;
 
-  japaneseFirstName: string;
-  japaneseLastName: string;
-  romanFirstName: string;
-  romanLastName: string;
+  name: string;
+  phonetic: string;
   year: number;
   month: number;
   day: number;

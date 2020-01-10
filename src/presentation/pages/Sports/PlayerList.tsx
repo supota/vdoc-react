@@ -47,7 +47,9 @@ const NonRoutePlayerList = (props: IProps) => {
           >
             <img className="icon" src={player.profilePhotoUrl}></img>
             <p className="name">
-              {player.japaneseFirstName + " " + player.japaneseLastName}
+              {player.name}
+              <br />
+              {player.phonetic}
             </p>
           </li>
         );

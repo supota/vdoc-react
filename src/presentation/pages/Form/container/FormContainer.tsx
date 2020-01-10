@@ -47,11 +47,12 @@ const FormContainer: React.FC = () => {
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    /*
     (async () => {
       const player = await rawPlayer.convertToPlayer();
       console.log(player);
     })();
+    */
   };
 
   return (
@@ -63,7 +64,7 @@ const FormContainer: React.FC = () => {
             <span>必須</span>
           </div>
           <TextInput
-            name="japaneseFirstName"
+            name="name"
             type="text"
             placeholder="名前を入力してください"
             handleChange={handleInput}
@@ -76,7 +77,7 @@ const FormContainer: React.FC = () => {
             <span>必須</span>
           </div>
           <TextInput
-            name="romanFirstName"
+            name="phonetic"
             type="text"
             placeholder="フリナガを入力してください"
             handleChange={handleInput}
