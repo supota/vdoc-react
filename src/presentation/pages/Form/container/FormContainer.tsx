@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useCallback } from "react";
+import { withRouter, RouteComponentProps } from "react-router";
 
 import { RawPlayer } from "vdoc/libs/domain/models/RawPlayer";
 
@@ -9,7 +10,9 @@ import { TextInput } from "../component/TextInput";
 import { ImageInput } from "../component/ImageInput";
 import { TextArea } from "../component/Textarea";
 
-const FormContainer: React.FC = () => {
+interface IProps extends RouteComponentProps {}
+
+const NonRouteFormContainer: React.FC<IProps> = props => {
   const [rawPlayer, setRawPlayer] = useState<RawPlayer>(
     new RawPlayer(new DomainProvider.ImageService())
   );
@@ -47,6 +50,12 @@ const FormContainer: React.FC = () => {
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
+    props.history.push({
+      pathname: "/confirm",
+      state: {
+        rawPlayer: rawPlayer
+      }
+    });
     /*
     (async () => {
       const player = await rawPlayer.convertToPlayer();
@@ -235,5 +244,7 @@ const FormContainer: React.FC = () => {
     </form>
   );
 };
+
+const FormContainer = withRouter(NonRouteFormContainer);
 
 export { FormContainer };
