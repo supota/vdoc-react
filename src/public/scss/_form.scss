@@ -10,9 +10,46 @@
 
   >form {
     p {
-      margin: 20px 0 7px 10px;
       font-size: 0.75rem;
       color: #5C5C5C;
+    }
+    .ttl {
+      display: flex;
+      align-items: center;
+      margin: 20px 0 7px 10px;
+      p {
+        margin-right: 10px;
+        font-weight: bold;
+        color: #333;
+      }
+      span {
+        border-radius: 3px;
+        font-size: 0.5rem;
+        padding: 3px 10px;
+        background-color: red;
+        color: white;
+      }
+    }
+
+    .flex {
+      display: flex;
+      align-items: center;
+      p {
+        margin: 0 5px 0 0;
+        padding: 0;
+      }
+      input {
+        margin-right: 5px;
+        width: 40px;
+        &:nth-child(1) {
+          width: 80px;
+        }
+      }
+    }
+
+    .img input {
+      border: none;
+      padding: 5px 0;
     }
 
     input,
