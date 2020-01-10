@@ -12,12 +12,13 @@ interface IProps {
 
 const TextArea: React.FC<IProps> = props => {
   return (
-    <div>
+    <React.Fragment>
       {props.isRequired ? (
         <textarea
           name={props.name}
           cols={props.cols}
           rows={props.rows}
+          placeholder={props.placeholder}
           onChange={props.handleChange}
           required
         />
@@ -26,10 +27,11 @@ const TextArea: React.FC<IProps> = props => {
           name={props.name}
           cols={props.cols}
           rows={props.rows}
+          placeholder={props.placeholder}
           onChange={props.handleChange}
         />
       )}
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -9,7 +9,7 @@ interface IProps {
 
 const ImageInput: React.FC<IProps> = props => {
   return (
-    <div>
+    <React.Fragment>
       {props.isRequired ? (
         <input
           type={props.type}
@@ -24,7 +24,7 @@ const ImageInput: React.FC<IProps> = props => {
           onChange={props.handleChange}
         />
       )}
-    </div>
+    </React.Fragment>
   );
 };
 
