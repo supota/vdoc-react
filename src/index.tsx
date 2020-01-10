@@ -17,7 +17,7 @@ ReactDOM.render(
     <Switch>
       <Route exact path="/" component={TopPage}></Route>
 
-      <Route path="/sports" component={SportsPage}></Route>
+      <Route path="/sports/:id([0-9a-zA-Z]+)" component={SportsPage}></Route>
 
       <Route path="/players/:id([0-9a-zA-Z]+)" component={PlayerPage}></Route>
 

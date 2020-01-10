@@ -1,21 +1,45 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
+import { RouteComponentProps } from "react-router";
+
+import { Sports } from "vdoc/libs/domain/models/Sports";
+
+import { DomainProvider } from "vdoc/libs/application/DomainProvider";
+import { ImageProvider } from "vdoc/libs/application/ImageProvider";
 
 import { BaseContainer } from "vdoc/presentation/organisms/BaseContainer";
 import { PlayerList } from "vdoc/presentation/pages/Sports/PlayerList";
 
-import { ImageProvider } from "vdoc/libs/application/ImageProvider";
+interface IProps extends RouteComponentProps<{ id: string }> {}
 
-const SportsPage = () => {
+const SportsPage: React.FC<IProps> = props => {
+  const [sports, setSports] = useState<Sports | null>(null);
+
+  // Get sports from id
+  const sportsRepository = new DomainProvider.SportsRepository();
+
+  useEffect(() => {
+    try {
+      (async () => {
+        const sports = await sportsRepository.getSports(props.match.params.id);
+        setSports(sports);
+      })();
+    } catch (e) {
+      console.log(e);
+      // props.history.push("/404");
+    }
+  }, []);
+
+  if (!sports) {
+    return <BaseContainer />;
+  }
+
   return (
     <BaseContainer>
       <main className="sports">
         <section className="key-visual">
-          <h3 className="name">コーフボール</h3>
-          <p className="desc">
-            ここに概要が入ります。ここに概要が入ります。
-            <br />
-            ここに概要が入ります。ここに概要が入ります。
-          </p>
+          <h3 className="name">{sports.name}</h3>
+          <p className="desc">{sports.description}</p>
           <ul className="bread-list">
             <li>
               <a href=""></a>
@@ -24,7 +48,7 @@ const SportsPage = () => {
         </section>
         <section className="newsbox">
           <h3>アスリート一覧</h3>
-          <PlayerList />
+          <PlayerList sports={sports} />
         </section>
       </main>
     </BaseContainer>

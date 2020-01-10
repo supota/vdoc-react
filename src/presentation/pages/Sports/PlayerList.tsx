@@ -1,10 +1,33 @@
 import * as React from "react";
-import { useState } from "react";
-import { withRouter } from "react-router";
+import { useState, useEffect } from "react";
+import { withRouter, RouteComponentProps } from "react-router";
 
-const PlayerList = withRouter((props: any) => {
+import { DomainProvider } from "vdoc/libs/application/DomainProvider";
+
+import { Player } from "vdoc/libs/domain/models/Player";
+import { Sports } from "vdoc/libs/domain/models/Sports";
+
+interface IProps extends RouteComponentProps<{}> {
+  sports: Sports;
+}
+
+const NonRoutePlayerList = (props: IProps) => {
   // setup state
-  let [players, setPlayers] = useState([]);
+  let [players, setPlayers] = useState<Player[]>([new Player()]);
+  const playerRepository = new DomainProvider.PlayerRepository();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const players = await playerRepository.getPlayerFromSports(
+          props.sports
+        );
+        setPlayers(players);
+      } catch {
+        props.history.push("/404");
+      }
+    })();
+  });
 
   return (
     <ul className="player-list" id="player-list">
@@ -24,6 +47,8 @@ const PlayerList = withRouter((props: any) => {
       })}
     </ul>
   );
-});
+};
+
+const PlayerList = withRouter(NonRoutePlayerList);
 
 export { PlayerList };

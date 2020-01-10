@@ -14,7 +14,7 @@ interface IProps {
   id: string;
 }
 
-const PlayerPage = (props: RouteComponentProps<IProps>) => {
+const PlayerPage: React.FC<RouteComponentProps<IProps>> = props => {
   const [player, setPlayer] = useState(new Player());
   const [loading, setLoading] = useState(true);
 
