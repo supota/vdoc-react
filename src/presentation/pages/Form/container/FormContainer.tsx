@@ -16,6 +16,8 @@ const NonRouteFormContainer: React.FC<IProps> = props => {
   const [rawPlayer, setRawPlayer] = useState<RawPlayer>(
     new RawPlayer(new DomainProvider.ImageService())
   );
+  const [profilePhotoData, setProfilePhotoData] = useState<string | null>(null);
+  const [proofPhotoData, setProofPhotoData] = useState<string | null>(null);
 
   const handleInput = useCallback(
     (
@@ -42,6 +44,15 @@ const NonRouteFormContainer: React.FC<IProps> = props => {
     const name = e.target.name as keyof RawPlayer;
     if (!e.target.files) return;
     const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = e => {
+      if (name === "profilePhotoData") {
+        setProfilePhotoData(e.target!.result as string);
+      } else if (name === "proofPhotoData") {
+        setProofPhotoData(e.target!.result as string);
+      }
+    };
+    reader.readAsDataURL(file);
     // しっかり書き直す
     if (name === "profilePhotoData" || name === "proofPhotoData") {
       rawPlayer[name] = file;
@@ -226,7 +237,7 @@ const NonRouteFormContainer: React.FC<IProps> = props => {
           />
           <img
             className="preview-img"
-            src="https://hashibaminone.com/wp-content/uploads/2018/08/LINE%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AE%E6%9C%80%E9%81%A9%E3%81%AA%E7%94%BB%E5%83%8F%E3%82%B5%E3%82%A4%E3%82%B9%E3%82%99.jpg"
+            src={profilePhotoData ? profilePhotoData : ""}
             alt=""
           />
         </li>
@@ -243,7 +254,7 @@ const NonRouteFormContainer: React.FC<IProps> = props => {
           />
           <img
             className="preview-img"
-            src="https://hashibaminone.com/wp-content/uploads/2018/08/LINE%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AE%E6%9C%80%E9%81%A9%E3%81%AA%E7%94%BB%E5%83%8F%E3%82%B5%E3%82%A4%E3%82%B9%E3%82%99.jpg"
+            src={proofPhotoData ? proofPhotoData : ""}
             alt=""
           />
         </li>
