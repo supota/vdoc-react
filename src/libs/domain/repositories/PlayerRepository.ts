@@ -9,16 +9,22 @@ abstract class PlayerRepository {
 
   /**
    * IDからプレイヤーを1つ取得する
+   *
+   * @param id プレイヤーのID
    */
   abstract async getPlayer(id: string): Promise<Player>;
 
   /**
    * スポーツからプレイヤーを全て取得する
+   *
+   * @param sports 取得したいSportsエンティティ、SportsIDにしたい
    */
   abstract async getPlayerFromSports(sports: Sports): Promise<Player[]>;
 
   /**
    * プレイヤーを作成する
+   *
+   * @param player 作成したいプレイヤーエンティティ
    */
   abstract async postPlayer(player: Player): Promise<void>;
 }

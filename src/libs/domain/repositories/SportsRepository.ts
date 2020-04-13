@@ -8,6 +8,8 @@ abstract class SportsRepository {
 
   /**
    * IDからスポーツを1つ取得
+   *
+   * @param id 取得したいSportsのID、SportsIDにしたい
    */
   abstract async getSports(id: string): Promise<Sports>;
 }
