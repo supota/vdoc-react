@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { BaseContainer } from "vdoc/presentation/organisms/BaseContainer";
+import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
-import { ImageProvider } from "vdoc/libs/application/ImageProvider";
+import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
 
 const TopPage = () => {
   return (

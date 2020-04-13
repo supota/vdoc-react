@@ -1,18 +1,18 @@
-"use strict";
+'use strict';
 
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { TopPage } from "./presentation/pages/Top";
-import { SportsPage } from "./presentation/pages/Sports";
-import { PlayerPage } from "./presentation/pages/Player";
-import { FormPage } from "./presentation/pages/Form";
-import { LoginPage } from "./presentation/pages/Login";
-import { ConfirmationPage } from "./presentation/pages/Confirmation";
-import { NotFoundPage } from "./presentation/pages/NotFound";
+import { TopPage } from './presentation/pages/Top';
+import { SportsPage } from './presentation/pages/Sports';
+import { PlayerPage } from './presentation/pages/Player';
+import { FormPage } from './presentation/pages/Form';
+import { LoginPage } from './presentation/pages/Login';
+import { ConfirmationPage } from './presentation/pages/Confirmation';
+import { NotFoundPage } from './presentation/pages/NotFound';
 
-import "./public/scss/style.scss";
+import './public/scss/style.scss';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -32,5 +32,5 @@ ReactDOM.render(
       <Route component={NotFoundPage}></Route>
     </Switch>
   </BrowserRouter>,
-  document.getElementById("wrapper")
+  document.getElementById('wrapper'),
 );

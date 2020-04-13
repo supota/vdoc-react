@@ -1,23 +1,23 @@
-import * as React from "react";
-import { useCallback } from "react";
-import { RouteComponentProps } from "react-router";
+import * as React from 'react';
+import { useCallback } from 'react';
+import { RouteComponentProps } from 'react-router';
 
-import { RawPlayer } from "vdoc/libs/domain/models/RawPlayer";
+import { RawPlayer } from 'vdoc/libs/domain/models/RawPlayer';
 
-import { BaseContainer } from "vdoc/presentation/organisms/BaseContainer";
-import { ImageInput } from "vdoc/presentation/pages/Form/component/ImageInput";
+import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
+import { ImageInput } from 'vdoc/presentation/pages/Form/component/ImageInput';
 
-interface IProps extends RouteComponentProps {}
+type IProps = RouteComponentProps;
 
 const ConfirmationPage: React.FC<IProps> = props => {
   if (!props.location.state) {
-    props.history.push("/");
+    props.history.push('/');
     return <div />;
   }
   const rawPlayer: RawPlayer = props.location.state.rawPlayer;
 
   const goToTop = useCallback(() => {
-    props.history.push("/");
+    props.history.push('/');
   }, []);
 
   return (
@@ -69,21 +69,21 @@ const ConfirmationPage: React.FC<IProps> = props => {
               <div className="ttl">
                 <p>Twittr URL</p>
               </div>
-              <p>{rawPlayer.twitterUrl ? rawPlayer.twitterUrl : "指定なし"}</p>
+              <p>{rawPlayer.twitterUrl ? rawPlayer.twitterUrl : '指定なし'}</p>
             </li>
             <li>
               <div className="ttl">
                 <p>Facebook URL</p>
               </div>
               <p>
-                {rawPlayer.facebookUrl ? rawPlayer.facebookUrl : "指定なし"}
+                {rawPlayer.facebookUrl ? rawPlayer.facebookUrl : '指定なし'}
               </p>
             </li>
             <li>
               <div className="ttl">
                 <p>Site URL</p>
               </div>
-              <p>{rawPlayer.siteUrl ? rawPlayer.siteUrl : "指定なし"}</p>
+              <p>{rawPlayer.siteUrl ? rawPlayer.siteUrl : '指定なし'}</p>
             </li>
             <li>
               <div className="ttl">

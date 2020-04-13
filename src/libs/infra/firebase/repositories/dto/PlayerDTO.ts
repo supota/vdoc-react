@@ -1,4 +1,4 @@
-import { firestore } from "firebase";
+import { firestore } from 'firebase';
 
 interface IFirestorePlayer {
   name: string;
@@ -33,7 +33,7 @@ class PlayerDTO implements IFirestorePlayer {
   }
 
   static fromDoc(doc: firestore.DocumentSnapshot): PlayerDTO {
-    const data = <IFirestorePlayer>doc.data();
+    const data = doc.data() as IFirestorePlayer;
     return new PlayerDTO({
       id: doc.id,
       name: data.name,
@@ -46,7 +46,7 @@ class PlayerDTO implements IFirestorePlayer {
       proofPhotoUrl: data.proofPhotoUrl,
       twitterUrl: data.twitterUrl,
       facebookUrl: data.facebookUrl,
-      siteUrl: data.siteUrl
+      siteUrl: data.siteUrl,
     });
   }
 
@@ -62,7 +62,7 @@ class PlayerDTO implements IFirestorePlayer {
       proofPhotoUrl: this.proofPhotoUrl,
       twitterUrl: this.twitterUrl,
       facebookUrl: this.facebookUrl,
-      siteUrl: this.siteUrl
+      siteUrl: this.siteUrl,
     };
   }
 }

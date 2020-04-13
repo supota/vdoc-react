@@ -1,11 +1,11 @@
-import * as React from "react";
-import { useState, useEffect } from "react";
-import { withRouter, RouteComponentProps } from "react-router";
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router';
 
-import { DomainProvider } from "vdoc/libs/application/DomainProvider";
+import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 
-import { Player } from "vdoc/libs/domain/models/Player";
-import { Sports } from "vdoc/libs/domain/models/Sports";
+import { Player } from 'vdoc/libs/domain/models/Player';
+import { Sports } from 'vdoc/libs/domain/models/Sports';
 
 interface IProps extends RouteComponentProps<{}> {
   sports: Sports;
@@ -13,18 +13,18 @@ interface IProps extends RouteComponentProps<{}> {
 
 const NonRoutePlayerList = (props: IProps) => {
   // setup state
-  let [players, setPlayers] = useState<Player[]>([]);
+  const [players, setPlayers] = useState<Player[]>([]);
   const playerRepository = new DomainProvider.PlayerRepository();
 
   useEffect(() => {
     (async () => {
       try {
         const players = await playerRepository.getPlayerFromSports(
-          props.sports
+          props.sports,
         );
         setPlayers(players);
       } catch {
-        props.history.push("/404");
+        props.history.push('/404');
       }
     })();
   }, []);

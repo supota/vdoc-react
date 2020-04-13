@@ -1,5 +1,5 @@
-import { Player } from "vdoc/libs/domain/models/Player";
-import { Sports } from "vdoc/libs/domain/models/Sports";
+import { Player } from 'vdoc/libs/domain/models/Player';
+import { Sports } from 'vdoc/libs/domain/models/Sports';
 
 abstract class PlayerRepository {
   /**

@@ -1,4 +1,4 @@
-import { firestore } from "firebase";
+import { firestore } from 'firebase';
 
 interface IFirestoreSports {
   name: string;
@@ -17,12 +17,12 @@ class SportsDTO implements IFirestoreSports {
   }
 
   static fromDoc(doc: firestore.DocumentSnapshot): SportsDTO {
-    const data = <IFirestoreSports>doc.data();
+    const data = doc.data() as IFirestoreSports;
     return new SportsDTO({
       id: doc.id,
       name: data.name,
       description: data.description,
-      imageUrl: data.imageUrl
+      imageUrl: data.imageUrl,
     });
   }
 
@@ -30,7 +30,7 @@ class SportsDTO implements IFirestoreSports {
     return {
       name: this.name,
       description: this.description,
-      imageUrl: this.imageUrl
+      imageUrl: this.imageUrl,
     };
   }
 }

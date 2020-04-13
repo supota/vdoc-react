@@ -1,16 +1,16 @@
-import * as React from "react";
-import { useState, useEffect } from "react";
-import { RouteComponentProps } from "react-router";
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import { RouteComponentProps } from 'react-router';
 
-import { Sports } from "vdoc/libs/domain/models/Sports";
+import { Sports } from 'vdoc/libs/domain/models/Sports';
 
-import { DomainProvider } from "vdoc/libs/application/DomainProvider";
-import { ImageProvider } from "vdoc/libs/application/ImageProvider";
+import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
+import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
 
-import { BaseContainer } from "vdoc/presentation/organisms/BaseContainer";
-import { PlayerList } from "vdoc/presentation/pages/Sports/PlayerList";
+import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
+import { PlayerList } from 'vdoc/presentation/pages/Sports/PlayerList';
 
-interface IProps extends RouteComponentProps<{ id: string }> {}
+type IProps = RouteComponentProps<{ id: string }>;
 
 const SportsPage: React.FC<IProps> = props => {
   const [sports, setSports] = useState<Sports | null>(null);

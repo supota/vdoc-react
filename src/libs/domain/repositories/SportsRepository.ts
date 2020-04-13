@@ -1,4 +1,4 @@
-import { Sports } from "vdoc/libs/domain/models/Sports";
+import { Sports } from 'vdoc/libs/domain/models/Sports';
 
 abstract class SportsRepository {
   /**

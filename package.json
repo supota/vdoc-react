@@ -7,7 +7,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --mode production",
     "dev": "NODE_ENV=development webpack-dev-server",
-    "lint": "eslint --fix src/libs --ext .ts --ext .tsx"
+    "lint": "eslint --fix src --ext .ts --ext .tsx"
   },
   "devDependencies": {
     "@types/firebase": "^3.2.1",
@@ -52,8 +52,8 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "node_modules/prettier/bin-prettier.js --write",
+    "*.ts": [
+      "eslint --fix",
       "git add"
     ]
   },

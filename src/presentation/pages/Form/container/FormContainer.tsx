@@ -1,20 +1,20 @@
-import * as React from "react";
-import { useState, useCallback } from "react";
-import { withRouter, RouteComponentProps } from "react-router";
+import * as React from 'react';
+import { useCallback, useState } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router';
 
-import { RawPlayer } from "vdoc/libs/domain/models/RawPlayer";
+import { RawPlayer } from 'vdoc/libs/domain/models/RawPlayer';
 
-import { DomainProvider } from "vdoc/libs/application/DomainProvider";
+import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 
-import { TextInput } from "../component/TextInput";
-import { ImageInput } from "../component/ImageInput";
-import { TextArea } from "../component/Textarea";
+import { TextInput } from '../component/TextInput';
+import { ImageInput } from '../component/ImageInput';
+import { TextArea } from '../component/Textarea';
 
-interface IProps extends RouteComponentProps {}
+type IProps = RouteComponentProps;
 
 const NonRouteFormContainer: React.FC<IProps> = props => {
   const [rawPlayer, setRawPlayer] = useState<RawPlayer>(
-    new RawPlayer(new DomainProvider.ImageService())
+    new RawPlayer(new DomainProvider.ImageService()),
   );
   const [profilePhotoData, setProfilePhotoData] = useState<string | null>(null);
   const [proofPhotoData, setProofPhotoData] = useState<string | null>(null);
@@ -23,21 +23,21 @@ const NonRouteFormContainer: React.FC<IProps> = props => {
     (
       e:
         | React.ChangeEvent<HTMLInputElement>
-        | React.ChangeEvent<HTMLTextAreaElement>
+        | React.ChangeEvent<HTMLTextAreaElement>,
     ) => {
       const name = e.target.name as keyof RawPlayer;
       const value = e.target.value;
       // しっかり書き直す
       if (
-        name !== "profilePhotoData" &&
-        name !== "proofPhotoData" &&
-        name !== "convertToPlayer"
+        name !== 'profilePhotoData' &&
+        name !== 'proofPhotoData' &&
+        name !== 'convertToPlayer'
       ) {
         rawPlayer[name] = value;
         setRawPlayer(rawPlayer);
       }
     },
-    []
+    [],
   );
 
   const handleImage = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,15 +46,15 @@ const NonRouteFormContainer: React.FC<IProps> = props => {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.onload = e => {
-      if (name === "profilePhotoData") {
+      if (name === 'profilePhotoData') {
         setProfilePhotoData(e.target!.result as string);
-      } else if (name === "proofPhotoData") {
+      } else if (name === 'proofPhotoData') {
         setProofPhotoData(e.target!.result as string);
       }
     };
     reader.readAsDataURL(file);
     // しっかり書き直す
-    if (name === "profilePhotoData" || name === "proofPhotoData") {
+    if (name === 'profilePhotoData' || name === 'proofPhotoData') {
       rawPlayer[name] = file;
       setRawPlayer(rawPlayer);
     }
@@ -62,10 +62,10 @@ const NonRouteFormContainer: React.FC<IProps> = props => {
 
   const handleSubmit = (e: React.FormEvent) => {
     props.history.push({
-      pathname: "/confirm",
+      pathname: '/confirm',
       state: {
-        rawPlayer: rawPlayer
-      }
+        rawPlayer: rawPlayer,
+      },
     });
     /*
     (async () => {
@@ -237,7 +237,7 @@ const NonRouteFormContainer: React.FC<IProps> = props => {
           />
           <img
             className="preview-img"
-            src={profilePhotoData ? profilePhotoData : ""}
+            src={profilePhotoData ? profilePhotoData : ''}
             alt=""
           />
         </li>
@@ -254,7 +254,7 @@ const NonRouteFormContainer: React.FC<IProps> = props => {
           />
           <img
             className="preview-img"
-            src={proofPhotoData ? proofPhotoData : ""}
+            src={proofPhotoData ? proofPhotoData : ''}
             alt=""
           />
         </li>

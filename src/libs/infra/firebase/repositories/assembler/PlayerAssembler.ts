@@ -1,5 +1,5 @@
-import { Player } from "vdoc/libs/domain/models/Player";
-import { PlayerDTO } from "vdoc/libs/infra/firebase/repositories/dto/PlayerDTO";
+import { Player } from 'vdoc/libs/domain/models/Player';
+import { PlayerDTO } from 'vdoc/libs/infra/firebase/repositories/dto/PlayerDTO';
 
 class PlayerAssembler {
   static encode(player: Player): PlayerDTO {
@@ -15,7 +15,7 @@ class PlayerAssembler {
       proofPhotoUrl: player.proofPhotoUrl,
       twitterUrl: player.twitterUrl,
       facebookUrl: player.facebookUrl,
-      siteUrl: player.siteUrl
+      siteUrl: player.siteUrl,
     });
   }
 
@@ -32,7 +32,7 @@ class PlayerAssembler {
       proofPhotoUrl: dto.proofPhotoUrl,
       twitterUrl: dto.twitterUrl,
       facebookUrl: dto.facebookUrl,
-      siteUrl: dto.siteUrl
+      siteUrl: dto.siteUrl,
     });
   }
 }

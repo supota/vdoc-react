@@ -1,5 +1,5 @@
-import { Sports } from "vdoc/libs/domain/models/Sports";
-import { SportsDTO } from "vdoc/libs/infra/firebase/repositories/dto/SportsDTO";
+import { Sports } from 'vdoc/libs/domain/models/Sports';
+import { SportsDTO } from 'vdoc/libs/infra/firebase/repositories/dto/SportsDTO';
 
 class SportsAssembler {
   static encode(sports: Sports): SportsDTO {
@@ -7,7 +7,7 @@ class SportsAssembler {
       id: sports.id,
       name: sports.name,
       description: sports.description,
-      imageUrl: sports.imageUrl
+      imageUrl: sports.imageUrl,
     });
   }
 
@@ -16,7 +16,7 @@ class SportsAssembler {
       id: dto.id,
       name: dto.name,
       description: dto.description,
-      imageUrl: dto.imageUrl
+      imageUrl: dto.imageUrl,
     });
   }
 }

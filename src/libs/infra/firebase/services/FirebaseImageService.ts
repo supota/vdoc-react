@@ -1,8 +1,8 @@
-import { uuid } from "uuidv4";
+import { uuid } from 'uuidv4';
 
-import { firebase } from "vdoc/libs/infra/firebase/firebase";
+import { firebase } from 'vdoc/libs/infra/firebase/firebase';
 
-import { ImageService } from "vdoc/libs/domain/services/ImageService";
+import { ImageService } from 'vdoc/libs/domain/services/ImageService';
 
 class FirebaseImageService extends ImageService {
   async upload(data: Blob): Promise<string> {

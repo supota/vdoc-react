@@ -1,9 +1,9 @@
-import * as React from "react";
-import { useState } from "react";
+import * as React from 'react';
+import { useState } from 'react';
 
-import { BaseContainer } from "vdoc/presentation/organisms/BaseContainer";
+import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
-import { FormContainer } from "./container/FormContainer";
+import { FormContainer } from './container/FormContainer';
 
 const FormPage = () => {
   return (

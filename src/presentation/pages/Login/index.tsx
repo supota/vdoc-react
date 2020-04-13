@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { BaseContainer } from "vdoc/presentation/organisms/BaseContainer";
+import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
 const LoginPage: React.FC = () => {
   return (

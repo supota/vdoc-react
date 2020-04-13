@@ -1,5 +1,5 @@
-import * as React from "react";
-import { withRouter } from "react-router";
+import * as React from 'react';
+import { withRouter } from 'react-router';
 
 const Header = withRouter(props => {
   return (
@@ -7,7 +7,7 @@ const Header = withRouter(props => {
       <p
         className="ttl"
         onClick={() => {
-          props.history.push("/");
+          props.history.push('/');
         }}
       >
         V Doc.

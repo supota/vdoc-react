@@ -1,16 +1,16 @@
-import { firebase } from "vdoc/libs/infra/firebase/firebase";
+import { firebase } from 'vdoc/libs/infra/firebase/firebase';
 
-import { Player } from "vdoc/libs/domain/models/Player";
-import { Sports } from "vdoc/libs/domain/models/Sports";
-import { PlayerRepository } from "vdoc/libs/domain/repositories/PlayerRepository";
-import { PlayerAssembler } from "vdoc/libs/infra/firebase/repositories/assembler/PlayerAssembler";
-import { PlayerDTO } from "vdoc/libs/infra/firebase/repositories/dto/PlayerDTO";
+import { Player } from 'vdoc/libs/domain/models/Player';
+import { Sports } from 'vdoc/libs/domain/models/Sports';
+import { PlayerRepository } from 'vdoc/libs/domain/repositories/PlayerRepository';
+import { PlayerAssembler } from 'vdoc/libs/infra/firebase/repositories/assembler/PlayerAssembler';
+import { PlayerDTO } from 'vdoc/libs/infra/firebase/repositories/dto/PlayerDTO';
 
 class FirestorePlayerRepository extends PlayerRepository {
   async getAllPlayers(): Promise<Player[]> {
     const snap = await firebase
       .firestore()
-      .collection("players")
+      .collection('players')
       .get();
 
     // Translate to array of Player
@@ -25,7 +25,7 @@ class FirestorePlayerRepository extends PlayerRepository {
   async getPlayer(id: string): Promise<Player> {
     const doc = await firebase
       .firestore()
-      .collection("players")
+      .collection('players')
       .doc(id)
       .get();
 
@@ -38,8 +38,8 @@ class FirestorePlayerRepository extends PlayerRepository {
     const sportsId = sports.id;
     const snap = await firebase
       .firestore()
-      .collection("players")
-      .where("sportsId", "==", sportsId)
+      .collection('players')
+      .where('sportsId', '==', sportsId)
       .get();
     const players = snap.docs.map(doc => {
       const dto = PlayerDTO.fromDoc(doc);
@@ -52,7 +52,7 @@ class FirestorePlayerRepository extends PlayerRepository {
     const dto = PlayerAssembler.encode(player);
     await firebase
       .firestore()
-      .collection("players")
+      .collection('players')
       .add(dto.toJson());
   }
 }

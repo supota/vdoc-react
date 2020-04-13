@@ -1,15 +1,15 @@
-import { firebase } from "vdoc/libs/infra/firebase/firebase";
+import { firebase } from 'vdoc/libs/infra/firebase/firebase';
 
-import { Sports } from "vdoc/libs/domain/models/Sports";
-import { SportsRepository } from "vdoc/libs/domain/repositories/SportsRepository";
-import { SportsDTO } from "vdoc/libs/infra/firebase/repositories/dto/SportsDTO";
-import { SportsAssembler } from "vdoc/libs/infra/firebase/repositories/assembler/SportsAssembler";
+import { Sports } from 'vdoc/libs/domain/models/Sports';
+import { SportsRepository } from 'vdoc/libs/domain/repositories/SportsRepository';
+import { SportsDTO } from 'vdoc/libs/infra/firebase/repositories/dto/SportsDTO';
+import { SportsAssembler } from 'vdoc/libs/infra/firebase/repositories/assembler/SportsAssembler';
 
 class FirestoreSportsRepository extends SportsRepository {
   async getAllSports(): Promise<Sports[]> {
     const snap = await firebase
       .firestore()
-      .collection("sports")
+      .collection('sports')
       .get();
     const sports = snap.docs.map(doc => {
       const dto = SportsDTO.fromDoc(doc);
@@ -21,7 +21,7 @@ class FirestoreSportsRepository extends SportsRepository {
   async getSports(id: string): Promise<Sports> {
     const doc = await firebase
       .firestore()
-      .collection("sports")
+      .collection('sports')
       .doc(id)
       .get();
 

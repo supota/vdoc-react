@@ -1,15 +1,15 @@
-import * as React from "react";
-import { useState, useEffect } from "react";
-import { RouteComponentProps } from "react-router";
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import { RouteComponentProps } from 'react-router';
 
-import { DomainProvider } from "vdoc/libs/application/DomainProvider";
-import { ImageProvider } from "vdoc/libs/application/ImageProvider";
+import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
+import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
 
-import { Player } from "vdoc/libs/domain/models/Player";
+import { Player } from 'vdoc/libs/domain/models/Player';
 
-import { BaseContainer } from "vdoc/presentation/organisms/BaseContainer";
+import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
-interface IProps extends RouteComponentProps<{ id: string }> {}
+type IProps = RouteComponentProps<{ id: string }>;
 
 const PlayerPage: React.FC<IProps> = props => {
   const [player, setPlayer] = useState<Player | null>(null);
@@ -20,7 +20,7 @@ const PlayerPage: React.FC<IProps> = props => {
     try {
       (async () => {
         const player: Player = await playerRepository.getPlayer(
-          props.match.params.id
+          props.match.params.id,
         );
         setPlayer(player);
       })();
