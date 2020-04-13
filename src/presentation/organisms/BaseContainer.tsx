@@ -4,7 +4,7 @@ import { Header } from 'vdoc/presentation/organisms/Header';
 import { Footer } from 'vdoc/presentation/organisms/Footer';
 
 // Add Header and Footer to children component
-const BaseContainer = (props: any) => {
+const BaseContainer = (props: React.Props<{}>) => {
   return (
     <React.Fragment>
       <Header />

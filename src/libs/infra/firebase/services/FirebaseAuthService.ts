@@ -10,7 +10,7 @@ class FirebaseAuthService extends AuthService {
       throw new Error('Could not verify user.');
     }
 
-    return firebase.auth().currentUser != null;
+    return firebase.auth().currentUser !== null;
   }
 }
 

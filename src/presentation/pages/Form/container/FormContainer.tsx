@@ -40,26 +40,6 @@ const NonRouteFormContainer: React.FC<IProps> = props => {
     [],
   );
 
-  const handleImage = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const name = e.target.name as keyof RawPlayer;
-    if (!e.target.files) return;
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = e => {
-      if (name === 'profilePhotoData') {
-        setProfilePhotoData(e.target!.result as string);
-      } else if (name === 'proofPhotoData') {
-        setProofPhotoData(e.target!.result as string);
-      }
-    };
-    reader.readAsDataURL(file);
-    // しっかり書き直す
-    if (name === 'profilePhotoData' || name === 'proofPhotoData') {
-      rawPlayer[name] = file;
-      setRawPlayer(rawPlayer);
-    }
-  }, []);
-
   const handleSubmit = (e: React.FormEvent) => {
     props.history.push({
       pathname: '/confirm',
