@@ -7,6 +7,8 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --mode production",
     "dev": "NODE_ENV=development webpack-dev-server",
+    "deploy:dev": "firebase use development && rm -rf ./dist && yarn build && firebase deploy",
+    "deploy:prod": "firebase use production && rm -rf ./dist && yarn build && firebase deploy",
     "lint": "eslint --fix src --ext .ts --ext .tsx"
   },
   "devDependencies": {
