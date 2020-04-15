@@ -2,6 +2,7 @@ import { firestore } from 'firebase';
 
 interface IFirestorePlayer {
   name: string;
+  phonetic: string;
   birthday: Date;
   profile: string;
   performances: string[];
@@ -9,14 +10,15 @@ interface IFirestorePlayer {
   password: string;
   profilePhotoUrl: string;
   proofPhotoUrl: string;
-  twitterUrl: string | null;
-  facebookUrl: string | null;
-  siteUrl: string | null;
+  twitterUrl: string;
+  facebookUrl: string;
+  siteUrl: string;
 }
 
 class PlayerDTO implements IFirestorePlayer {
   id: string;
   name: string;
+  phonetic: string;
   birthday: Date;
   profile: string;
   performances: string[];
@@ -24,9 +26,9 @@ class PlayerDTO implements IFirestorePlayer {
   password: string;
   profilePhotoUrl: string;
   proofPhotoUrl: string;
-  twitterUrl: string | null;
-  facebookUrl: string | null;
-  siteUrl: string | null;
+  twitterUrl: string;
+  facebookUrl: string;
+  siteUrl: string;
 
   constructor(init?: Partial<PlayerDTO>) {
     Object.assign(this, init);
@@ -53,6 +55,7 @@ class PlayerDTO implements IFirestorePlayer {
   toJson(): IFirestorePlayer {
     return {
       name: this.name,
+      phonetic: this.phonetic,
       birthday: this.birthday,
       profile: this.profile,
       performances: this.performances,

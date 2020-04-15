@@ -2,10 +2,9 @@ import * as React from 'react';
 import { useCallback } from 'react';
 import { RouteComponentProps } from 'react-router';
 
-import { RawPlayer } from 'vdoc/libs/domain/models/RawPlayer';
-
 import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
-import { ImageInput } from 'vdoc/presentation/pages/Form/component/ImageInput';
+
+import { Player } from 'vdoc/libs/domain/models/Player';
 
 type IProps = RouteComponentProps;
 
@@ -14,7 +13,7 @@ const ConfirmationPage: React.FC<IProps> = props => {
     props.history.push('/');
     return <div />;
   }
-  const rawPlayer: RawPlayer = props.location.state.rawPlayer;
+  const player: Player = props.location.state.player;
 
   const goToTop = useCallback(() => {
     props.history.push('/');
@@ -35,69 +34,69 @@ const ConfirmationPage: React.FC<IProps> = props => {
                 <p>お名前</p>
                 <span>必須</span>
               </div>
-              <p>{rawPlayer.name}</p>
+              <p>{player.name}</p>
             </li>
             <li>
               <div className="ttl">
                 <p>フリガナ</p>
                 <span>必須</span>
               </div>
-              <p>{rawPlayer.phonetic}</p>
+              <p>{player.phonetic}</p>
             </li>
             <li>
               <div className="ttl">
                 <p>誕生日</p>
                 <span>必須</span>
               </div>
-              <p>{`${rawPlayer.year}年${rawPlayer.month}月${rawPlayer.day}年`}</p>
+              <p>{`${player.birthday.getFullYear()}年${player.birthday.getMonth()}月${player.birthday.getDay()}年`}</p>
             </li>
             <li>
               <div className="ttl">
                 <p>プロフィール</p>
                 <span>必須</span>
               </div>
-              <p>{rawPlayer.profile}</p>
+              <p>{player.profile}</p>
             </li>
             <li>
               <div className="ttl">
                 <p>実績</p>
                 <span>必須</span>
               </div>
-              <p>{rawPlayer.profile}</p>
+              <p>{player.profile}</p>
             </li>
             <li>
               <div className="ttl">
                 <p>Twittr URL</p>
               </div>
-              <p>{rawPlayer.twitterUrl ? rawPlayer.twitterUrl : '指定なし'}</p>
+              <p>{player.twitterUrl ? player.twitterUrl : '指定なし'}</p>
             </li>
             <li>
               <div className="ttl">
                 <p>Facebook URL</p>
               </div>
               <p>
-                {rawPlayer.facebookUrl ? rawPlayer.facebookUrl : '指定なし'}
+                {player.facebookUrl ? player.facebookUrl : '指定なし'}
               </p>
             </li>
             <li>
               <div className="ttl">
                 <p>Site URL</p>
               </div>
-              <p>{rawPlayer.siteUrl ? rawPlayer.siteUrl : '指定なし'}</p>
+              <p>{player.siteUrl ? player.siteUrl : '指定なし'}</p>
             </li>
             <li>
               <div className="ttl">
                 <p>メールアドレス</p>
                 <span>必須</span>
               </div>
-              <p>{rawPlayer.email}</p>
+              <p>{player.email}</p>
             </li>
             <li>
               <div className="ttl">
                 <p>パスワード</p>
                 <span>必須</span>
               </div>
-              <p>{rawPlayer.password}</p>
+              <p>{player.password}</p>
             </li>
             <li className="img">
               <div className="ttl">

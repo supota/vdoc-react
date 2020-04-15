@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useCallback, useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 
-import { RawPlayer } from 'vdoc/libs/domain/models/RawPlayer';
+import { Player } from 'vdoc/libs/domain/models/Player';
 
 import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 
@@ -13,8 +13,8 @@ import { TextArea } from '../component/Textarea';
 type IProps = RouteComponentProps;
 
 const NonRouteFormContainer: React.FC<IProps> = props => {
-  const [rawPlayer, setRawPlayer] = useState<RawPlayer>(
-    new RawPlayer(new DomainProvider.ImageService()),
+  const [player, setplayer] = useState<Player>(
+    new Player(),
   );
   const [profilePhotoData, setProfilePhotoData] = useState<string | null>(null);
   const [proofPhotoData, setProofPhotoData] = useState<string | null>(null);
@@ -25,17 +25,8 @@ const NonRouteFormContainer: React.FC<IProps> = props => {
         | React.ChangeEvent<HTMLInputElement>
         | React.ChangeEvent<HTMLTextAreaElement>,
     ) => {
-      const name = e.target.name as keyof RawPlayer;
+      const name = e.target.name as keyof Player;
       const value = e.target.value;
-      // しっかり書き直す
-      if (
-        name !== 'profilePhotoData' &&
-        name !== 'proofPhotoData' &&
-        name !== 'convertToPlayer'
-      ) {
-        rawPlayer[name] = value;
-        setRawPlayer(rawPlayer);
-      }
     },
     [],
   );
@@ -44,16 +35,20 @@ const NonRouteFormContainer: React.FC<IProps> = props => {
     props.history.push({
       pathname: '/confirm',
       state: {
-        rawPlayer: rawPlayer,
+        player: player,
       },
     });
     /*
     (async () => {
-      const player = await rawPlayer.convertToPlayer();
+      const player = await player.convertToPlayer();
       console.log(player);
     })();
     */
   };
+
+  const handleImage = () => {
+    
+  }
 
   return (
     <form action="">

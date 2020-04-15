@@ -6,6 +6,7 @@ class PlayerAssembler {
     return new PlayerDTO({
       id: player.id,
       name: player.name,
+      phonetic: player.phonetic,
       birthday: player.birthday,
       profile: player.profile,
       performances: Array.from(player.performances),
@@ -23,6 +24,7 @@ class PlayerAssembler {
     return new Player({
       id: dto.id,
       name: dto.name,
+      phonetic: dto.phonetic,
       birthday: dto.birthday,
       profile: dto.profile,
       performances: dto.performances,

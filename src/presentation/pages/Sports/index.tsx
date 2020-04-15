@@ -16,7 +16,7 @@ const SportsPage: React.FC<IProps> = props => {
   const [sports, setSports] = useState<Sports | null>(null);
 
   // Get sports from id
-  const sportsRepository = new DomainProvider.SportsRepository();
+  const sportsRepository =　DomainProvider.sportsRepo;
 
   useEffect(() => {
     try {

@@ -15,7 +15,7 @@ const PlayerPage: React.FC<IProps> = props => {
   const [player, setPlayer] = useState<Player | null>(null);
 
   // Get data from firestore
-  const playerRepository = new DomainProvider.PlayerRepository();
+  const playerRepository = DomainProvider.playerRepo;
   useEffect(() => {
     try {
       (async () => {
@@ -76,7 +76,7 @@ const PlayerPage: React.FC<IProps> = props => {
               <span id="english-name">{player.phonetic}</span>
             </h3>
             <div className="birthday">
-              <span>{`${player.year}/${player.month}/${player.day}`}</span>
+              <span>{`${player.birthday.getFullYear()}/${player.birthday.getMonth}/${player.birthday.getDay}`}</span>
             </div>
             <p id="profile">{player.profile}</p>
           </div>

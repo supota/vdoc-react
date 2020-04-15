@@ -14,7 +14,7 @@ interface IProps extends RouteComponentProps<{}> {
 const NonRoutePlayerList = (props: IProps) => {
   // setup state
   const [players, setPlayers] = useState<Player[]>([]);
-  const playerRepository = new DomainProvider.PlayerRepository();
+  const playerRepository = DomainProvider.playerRepo;
 
   useEffect(() => {
     (async () => {

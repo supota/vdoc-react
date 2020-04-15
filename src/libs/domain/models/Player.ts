@@ -3,6 +3,7 @@ import { Entity } from './Entity';
 class Player extends Entity {
   id: string;
   name: string;
+  phonetic: string;
   birthday: Date;
   profile: string;
   performances: string[];
@@ -10,9 +11,9 @@ class Player extends Entity {
   password: string;
   profilePhotoUrl: string;
   proofPhotoUrl?: string;
-  twitterUrl: string | null;
-  facebookUrl: string | null;
-  siteUrl: string | null;
+  twitterUrl: string;
+  facebookUrl: string;
+  siteUrl: string;
 
   constructor(init?: Partial<Player>) {
     super();
