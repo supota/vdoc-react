@@ -27,6 +27,13 @@ abstract class PlayerRepository {
    * @param player 作成したいプレイヤーエンティティ
    */
   abstract async postPlayer(player: Player): Promise<void>;
+
+  /**
+   * プレイヤーを更新する
+   *
+   * @param player 更新したいプレイヤーエンティティ
+   */
+  abstract async updatePlayer(player: Player): Promise<void>;
 }
 
 export { PlayerRepository };

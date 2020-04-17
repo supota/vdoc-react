@@ -48,6 +48,14 @@ class FirestorePlayerRepository extends PlayerRepository {
     const dto = PlayerAssembler.encode(player);
     await this.firestore.collection('players').add(dto.toJson());
   }
+
+  async updatePlayer(player: Player): Promise<void> {
+    const dto = PlayerAssembler.encode(player);
+    await this.firestore
+      .collection('players')
+      .doc(dto.id)
+      .update(dto.toJson());
+  }
 }
 
 export { FirestorePlayerRepository };
