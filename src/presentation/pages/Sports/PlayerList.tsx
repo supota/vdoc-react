@@ -42,7 +42,7 @@ const NonRoutePlayerList = (props: IProps) => {
             key={player.id.value}
             className="player-box"
             onClick={() => {
-              props.history.push(`/players/${player.id}`);
+              props.history.push(`/players/${player.id.value}`);
             }}
           >
             <img className="icon" src={player.profilePhotoUrl}></img>
