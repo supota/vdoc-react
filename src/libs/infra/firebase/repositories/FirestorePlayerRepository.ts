@@ -7,11 +7,10 @@ import { PlayerAssembler } from 'vdoc/libs/infra/firebase/repositories/assembler
 import { PlayerDTO } from 'vdoc/libs/infra/firebase/repositories/dto/PlayerDTO';
 
 class FirestorePlayerRepository extends PlayerRepository {
+  readonly firestore = firebase.firestore();
+
   async getAllPlayers(): Promise<Player[]> {
-    const snap = await firebase
-      .firestore()
-      .collection('players')
-      .get();
+    const snap = await this.firestore.collection('players').get();
 
     // Translate to array of Player
     const players = snap.docs.map(doc => {
@@ -23,8 +22,7 @@ class FirestorePlayerRepository extends PlayerRepository {
   }
 
   async getPlayer(id: PlayerID): Promise<Player> {
-    const doc = await firebase
-      .firestore()
+    const doc = await this.firestore
       .collection('players')
       .doc(id.value)
       .get();
@@ -35,8 +33,7 @@ class FirestorePlayerRepository extends PlayerRepository {
   }
 
   async getPlayerFromSports(sportsId: SportsID): Promise<Player[]> {
-    const snap = await firebase
-      .firestore()
+    const snap = await this.firestore
       .collection('players')
       .where('sportsId', '==', sportsId.value)
       .get();
@@ -49,10 +46,7 @@ class FirestorePlayerRepository extends PlayerRepository {
 
   async postPlayer(player: Player): Promise<void> {
     const dto = PlayerAssembler.encode(player);
-    await firebase
-      .firestore()
-      .collection('players')
-      .add(dto.toJson());
+    await this.firestore.collection('players').add(dto.toJson());
   }
 }
 
