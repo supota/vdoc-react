@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router';
 
-import { Sports } from 'vdoc/libs/domain/models/Sports';
+import { Sports, SportsID } from 'vdoc/libs/domain/models/Sports';
 
 import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
@@ -21,7 +21,7 @@ const SportsPage: React.FC<IProps> = props => {
   useEffect(() => {
     try {
       (async () => {
-        const sports = await sportsRepository.getSports(props.match.params.id);
+        const sports = await sportsRepository.getSports(new SportsID(props.match.params.id));
         setSports(sports);
       })();
     } catch (e) {

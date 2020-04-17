@@ -1,4 +1,4 @@
-import { Sports } from 'vdoc/libs/domain/models/Sports';
+import { Sports, SportsID } from 'vdoc/libs/domain/models/Sports';
 
 abstract class SportsRepository {
   /**
@@ -9,9 +9,9 @@ abstract class SportsRepository {
   /**
    * IDからスポーツを1つ取得
    *
-   * @param id 取得したいSportsのID、SportsIDにしたい
+   * @param id 取得したいSportsのID
    */
-  abstract async getSports(id: string): Promise<Sports>;
+  abstract async getSports(id: SportsID): Promise<Sports>;
 }
 
 export { SportsRepository };

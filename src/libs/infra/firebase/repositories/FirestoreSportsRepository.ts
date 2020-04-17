@@ -1,6 +1,6 @@
 import { firebase } from 'vdoc/libs/infra/firebase/firebase';
 
-import { Sports } from 'vdoc/libs/domain/models/Sports';
+import { Sports, SportsID } from 'vdoc/libs/domain/models/Sports';
 import { SportsRepository } from 'vdoc/libs/domain/repositories/SportsRepository';
 import { SportsDTO } from 'vdoc/libs/infra/firebase/repositories/dto/SportsDTO';
 import { SportsAssembler } from 'vdoc/libs/infra/firebase/repositories/assembler/SportsAssembler';
@@ -18,11 +18,11 @@ class FirestoreSportsRepository extends SportsRepository {
     return sports;
   }
 
-  async getSports(id: string): Promise<Sports> {
+  async getSports(id: SportsID): Promise<Sports> {
     const doc = await firebase
       .firestore()
       .collection('sports')
-      .doc(id)
+      .doc(id.value)
       .get();
 
     const dto = SportsDTO.fromDoc(doc);
