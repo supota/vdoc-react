@@ -1,5 +1,6 @@
 import { Player, PlayerID } from 'vdoc/libs/domain/models/Player';
 import { PlayerDTO } from 'vdoc/libs/infra/firebase/repositories/dto/PlayerDTO';
+import { TimestampMapper } from 'vdoc/libs/infra/firebase/repositories/mapper/TimestampMapper';
 
 class PlayerAssembler {
   static encode(player: Player): PlayerDTO {
@@ -7,7 +8,7 @@ class PlayerAssembler {
       id: player.id.value,
       name: player.name,
       phonetic: player.phonetic,
-      birthday: player.birthday,
+      birthday: TimestampMapper.encode(player.birthday),
       profile: player.profile,
       performances: Array.from(player.performances),
       email: player.email,
@@ -25,7 +26,7 @@ class PlayerAssembler {
       id: new PlayerID(dto.id),
       name: dto.name,
       phonetic: dto.phonetic,
-      birthday: dto.birthday,
+      birthday: TimestampMapper.decode(dto.birthday),
       profile: dto.profile,
       performances: dto.performances,
       email: dto.email,

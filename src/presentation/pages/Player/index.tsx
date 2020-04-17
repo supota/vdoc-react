@@ -39,9 +39,7 @@ const PlayerPage: React.FC<IProps> = props => {
       <main className="player">
         <section className="key-visual">
           <ul className="bread-list">
-            <li>
-              <a href=""></a>
-            </li>
+            
           </ul>
         </section>
         <section className="player-detail -purple">
@@ -76,7 +74,7 @@ const PlayerPage: React.FC<IProps> = props => {
               <span id="english-name">{player.phonetic}</span>
             </h3>
             <div className="birthday">
-              <span>{`${player.birthday.getFullYear()}/${player.birthday.getMonth}/${player.birthday.getDay}`}</span>
+              <span>{player.birthday.getFullYear()}/{player.birthday.getMonth()}/{player.birthday.getDay()}</span>
             </div>
             <p id="profile">{player.profile}</p>
           </div>
@@ -86,7 +84,7 @@ const PlayerPage: React.FC<IProps> = props => {
             <h4>実績</h4>
             <ul>
               {player.performances.map(performance => {
-                return <li>{performance}</li>;
+                return <li key={ performance }>{performance}</li>;
               })}
             </ul>
           </div>

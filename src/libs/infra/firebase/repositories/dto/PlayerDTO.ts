@@ -3,7 +3,7 @@ import { firestore } from 'firebase';
 interface IFirestorePlayer {
   name: string;
   phonetic: string;
-  birthday: Date;
+  birthday: firestore.Timestamp;
   profile: string;
   performances: string[];
   email: string;
@@ -19,7 +19,7 @@ class PlayerDTO implements IFirestorePlayer {
   id: string;
   name: string;
   phonetic: string;
-  birthday: Date;
+  birthday: firestore.Timestamp;
   profile: string;
   performances: string[];
   email: string;
