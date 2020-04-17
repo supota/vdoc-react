@@ -33,5 +33,7 @@ export const reducer = (
         isLoading: false,
         isError: true,
       };
+    default:
+      return state;
   }
 };
