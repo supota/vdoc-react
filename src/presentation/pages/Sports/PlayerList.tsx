@@ -20,7 +20,7 @@ const NonRoutePlayerList = (props: IProps) => {
     (async () => {
       try {
         const players = await playerRepository.getPlayerFromSports(
-          props.sports,
+          props.sports.id,
         );
         setPlayers(players);
       } catch {

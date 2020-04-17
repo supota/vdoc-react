@@ -5,7 +5,7 @@ import { RouteComponentProps } from 'react-router';
 import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
 
-import { Player } from 'vdoc/libs/domain/models/Player';
+import { Player, PlayerID } from 'vdoc/libs/domain/models/Player';
 
 import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
@@ -20,7 +20,7 @@ const PlayerPage: React.FC<IProps> = props => {
     try {
       (async () => {
         const player: Player = await playerRepository.getPlayer(
-          props.match.params.id,
+          new PlayerID(props.match.params.id)
         );
         setPlayer(player);
       })();

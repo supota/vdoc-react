@@ -1,5 +1,5 @@
-import { Player } from 'vdoc/libs/domain/models/Player';
-import { Sports } from 'vdoc/libs/domain/models/Sports';
+import { Player, PlayerID } from 'vdoc/libs/domain/models/Player';
+import { SportsID } from 'vdoc/libs/domain/models/Sports';
 
 abstract class PlayerRepository {
   /**
@@ -12,14 +12,14 @@ abstract class PlayerRepository {
    *
    * @param id プレイヤーのID
    */
-  abstract async getPlayer(id: string): Promise<Player>;
+  abstract async getPlayer(id: PlayerID): Promise<Player>;
 
   /**
    * スポーツからプレイヤーを全て取得する
    *
    * @param sports 取得したいSportsエンティティ、SportsIDにしたい
    */
-  abstract async getPlayerFromSports(sports: Sports): Promise<Player[]>;
+  abstract async getPlayerFromSports(sportsID: SportsID): Promise<Player[]>;
 
   /**
    * プレイヤーを作成する

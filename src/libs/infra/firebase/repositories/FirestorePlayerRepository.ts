@@ -1,7 +1,7 @@
 import { firebase } from 'vdoc/libs/infra/firebase/firebase';
 
-import { Player } from 'vdoc/libs/domain/models/Player';
-import { Sports } from 'vdoc/libs/domain/models/Sports';
+import { Player, PlayerID } from 'vdoc/libs/domain/models/Player';
+import { SportsID } from 'vdoc/libs/domain/models/Sports';
 import { PlayerRepository } from 'vdoc/libs/domain/repositories/PlayerRepository';
 import { PlayerAssembler } from 'vdoc/libs/infra/firebase/repositories/assembler/PlayerAssembler';
 import { PlayerDTO } from 'vdoc/libs/infra/firebase/repositories/dto/PlayerDTO';
@@ -22,11 +22,11 @@ class FirestorePlayerRepository extends PlayerRepository {
     return players;
   }
 
-  async getPlayer(id: string): Promise<Player> {
+  async getPlayer(id: PlayerID): Promise<Player> {
     const doc = await firebase
       .firestore()
       .collection('players')
-      .doc(id)
+      .doc(id.value)
       .get();
 
     const dto = PlayerDTO.fromDoc(doc);
@@ -34,12 +34,11 @@ class FirestorePlayerRepository extends PlayerRepository {
     return player;
   }
 
-  async getPlayerFromSports(sports: Sports): Promise<Player[]> {
-    const sportsId = sports.id;
+  async getPlayerFromSports(sportsId: SportsID): Promise<Player[]> {
     const snap = await firebase
       .firestore()
       .collection('players')
-      .where('sportsId', '==', sportsId)
+      .where('sportsId', '==', sportsId.value)
       .get();
     const players = snap.docs.map(doc => {
       const dto = PlayerDTO.fromDoc(doc);
