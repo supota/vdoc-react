@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { store } from './presentation/modules/store';
+import { store } from './modules/store';
 
 import { TopPage } from './presentation/pages/Top';
 import { SportsPage } from './presentation/pages/Sports';
