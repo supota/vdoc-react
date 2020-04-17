@@ -5,7 +5,7 @@ import { reducer } from './reducers';
 import { rootSaga } from './sagas';
 import { ActionTypes } from './types';
 
-export interface IState {
+export interface IAuthState {
   isLoading: boolean;
   user: firebase.User | null;
   isLoggedIn: boolean;

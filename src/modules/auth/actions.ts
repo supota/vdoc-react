@@ -43,4 +43,4 @@ export const actions = {
   successLogin,
   failureLogin,
 };
-export type Actions = IRequestLogin | ISuccessLogin | IFailureLogin;
+export type AuthActions = IRequestLogin | ISuccessLogin | IFailureLogin;

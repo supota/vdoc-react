@@ -3,7 +3,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 import { createBrowserHistory } from 'history';
 
-import { IState as IAuthState, authRootSaga, authReducer } from './auth';
+import { IAuthState, authRootSaga, authReducer } from './auth';
 
 export interface IStore {
   auth: IAuthState;

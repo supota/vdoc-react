@@ -1,8 +1,8 @@
-import { IState } from './index';
-import { Actions } from './actions';
+import { IAuthState } from './index';
+import { AuthActions } from './actions';
 import { ActionTypes } from './types';
 
-const initialState: IState = {
+const initialState: IAuthState = {
   isLoading: false,
   user: null,
   isLoggedIn: false,
@@ -10,9 +10,9 @@ const initialState: IState = {
 };
 
 export const reducer = (
-  state: IState = initialState,
-  action: Actions,
-): IState => {
+  state: IAuthState = initialState,
+  action: AuthActions,
+): IAuthState => {
   switch (action.type) {
     case ActionTypes.REQUEST_LOGIN:
       return {
