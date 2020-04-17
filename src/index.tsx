@@ -3,9 +3,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
+import { Route, Switch } from 'react-router-dom';
 
-import { store } from './modules/store';
+import { store, history } from './modules/store';
 
 import { TopPage } from './presentation/pages/Top';
 import { SportsPage } from './presentation/pages/Sports';
@@ -19,7 +20,7 @@ import './public/scss/style.scss';
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <ConnectedRouter history={history}>
       <Switch>
         <Route exact path="/" component={TopPage}></Route>
 
@@ -35,7 +36,7 @@ ReactDOM.render(
 
         <Route component={NotFoundPage}></Route>
       </Switch>
-    </BrowserRouter>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('wrapper'),
 );
