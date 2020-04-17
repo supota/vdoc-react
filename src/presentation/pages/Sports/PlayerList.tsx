@@ -39,7 +39,7 @@ const NonRoutePlayerList = (props: IProps) => {
         console.log(player);
         return (
           <li
-            key={player.id}
+            key={player.id.value}
             className="player-box"
             onClick={() => {
               props.history.push(`/players/${player.id}`);

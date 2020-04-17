@@ -1,10 +1,10 @@
-import { Player } from 'vdoc/libs/domain/models/Player';
+import { Player, PlayerID } from 'vdoc/libs/domain/models/Player';
 import { PlayerDTO } from 'vdoc/libs/infra/firebase/repositories/dto/PlayerDTO';
 
 class PlayerAssembler {
   static encode(player: Player): PlayerDTO {
     return new PlayerDTO({
-      id: player.id,
+      id: player.id.value,
       name: player.name,
       phonetic: player.phonetic,
       birthday: player.birthday,
@@ -22,7 +22,7 @@ class PlayerAssembler {
 
   static decode(dto: PlayerDTO): Player {
     return new Player({
-      id: dto.id,
+      id: new PlayerID(dto.id),
       name: dto.name,
       phonetic: dto.phonetic,
       birthday: dto.birthday,

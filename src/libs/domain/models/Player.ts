@@ -1,7 +1,7 @@
 import { Entity } from './Entity';
 
 class Player extends Entity {
-  id: string;
+  id: PlayerID;
   name: string;
   phonetic: string;
   birthday: Date;
@@ -21,4 +21,15 @@ class Player extends Entity {
   }
 }
 
-export { Player };
+class PlayerID {
+  readonly value: string;
+  constructor(value: string) {
+    this.value = value;
+  }
+
+  isEqualTo(other: PlayerID): boolean {
+    return this.value === other.value;
+  }
+}
+
+export { Player, PlayerID };
