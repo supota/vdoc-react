@@ -1,12 +1,23 @@
 import { createStore, applyMiddleware, combineReducers, Store } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+
+import { IState as IAuthState, authRootSaga, authReducer } from './auth';
 
 export interface IStore {
-  example: string;
+  auth: IAuthState;
 }
 
 const configureStore = (initialStore?: IStore): Store => {
-  const reducer = combineReducers({});
-  const store = createStore(reducer, initialStore);
+  const sagaMiddleware = createSagaMiddleware();
+  const reducer = combineReducers({
+    auth: authReducer,
+  });
+  const store = createStore(
+    reducer,
+    initialStore,
+    applyMiddleware(sagaMiddleware),
+  );
+  sagaMiddleware.run(authRootSaga);
   return store;
 };
 
