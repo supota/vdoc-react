@@ -3,10 +3,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react'
 import { ConnectedRouter } from 'connected-react-router';
 import { Route, Switch } from 'react-router-dom';
 
-import { store, history } from './modules/store';
+import { store, history, persistor } from './modules/store';
 
 import { TopPage } from './presentation/pages/Top';
 import { SportsPage } from './presentation/pages/Sports';
@@ -21,21 +22,23 @@ import './public/scss/style.scss';
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Switch>
-        <Route exact path="/" component={TopPage}></Route>
+      <PersistGate loading={null} persistor={persistor}>
+        <Switch>
+          <Route exact path="/" component={TopPage}></Route>
 
-        <Route path="/sports/:id([0-9a-zA-Z]+)" component={SportsPage}></Route>
+          <Route path="/sports/:id([0-9a-zA-Z]+)" component={SportsPage}></Route>
 
-        <Route path="/players/:id([0-9a-zA-Z]+)" component={PlayerPage}></Route>
+          <Route path="/players/:id([0-9a-zA-Z]+)" component={PlayerPage}></Route>
 
-        <Route path="/form" component={FormPage}></Route>
+          <Route path="/form" component={FormPage}></Route>
 
-        <Route path="/login" component={LoginPage}></Route>
+          <Route path="/login" component={LoginPage}></Route>
 
-        <Route path="/confirm" component={ConfirmationPage}></Route>
+          <Route path="/confirm" component={ConfirmationPage}></Route>
 
-        <Route component={NotFoundPage}></Route>
-      </Switch>
+          <Route component={NotFoundPage}></Route>
+        </Switch>
+      </PersistGate>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('wrapper'),
