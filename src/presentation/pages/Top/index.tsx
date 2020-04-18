@@ -1,10 +1,31 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
+
+import { Sports } from 'vdoc/libs/domain/models/Sports';
+
+import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
+import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
 
 import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
-import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
-
 const TopPage = () => {
+  const [sportsList, setSportsList] = useState<Sports[] | null>(null);
+
+  useEffect(() => {
+    try {
+      (async () => {
+        const sportsList = await DomainProvider.sportsRepo.getAllSports();
+        setSportsList(sportsList);
+      })();
+    } catch (e) {
+      console.log(e);
+    }
+  });
+
+  if (!sportsList) {
+    return <div />;
+  }
+
   return (
     <BaseContainer>
       <main>
@@ -51,66 +72,15 @@ const TopPage = () => {
         <section className="-white">
           <h2>興味のあるスポーツから探す</h2>
           <ul className="tag-list">
-            <li className="tag">
-              <a href="">
-                <img src={ImageProvider.Tag} alt="" />
-              </a>
-            </li>
-            <li className="tag">
-              <a href="">
-                <img src={ImageProvider.Tag} alt="" />
-              </a>
-            </li>
-            <li className="tag">
-              <a href="">
-                <img src={ImageProvider.Tag} alt="" />
-              </a>
-            </li>
-            <li className="tag">
-              <a href="">
-                <img src={ImageProvider.Tag} alt="" />
-              </a>
-            </li>
-            <li className="tag">
-              <a href="">
-                <img src={ImageProvider.Tag} alt="" />
-              </a>
-            </li>
-            <li className="tag">
-              <a href="">
-                <img src={ImageProvider.Tag} alt="" />
-              </a>
-            </li>
-            <li className="tag">
-              <a href="">
-                <img src={ImageProvider.Tag} alt="" />
-              </a>
-            </li>
-            <li className="tag">
-              <a href="">
-                <img src={ImageProvider.Tag} alt="" />
-              </a>
-            </li>
-            <li className="tag">
-              <a href="">
-                <img src={ImageProvider.Tag} alt="" />
-              </a>
-            </li>
-            <li className="tag">
-              <a href="">
-                <img src={ImageProvider.Tag} alt="" />
-              </a>
-            </li>
-            <li className="tag">
-              <a href="">
-                <img src={ImageProvider.Tag} alt="" />
-              </a>
-            </li>
-            <li className="tag">
-              <a href="">
-                <img src={ImageProvider.Tag} alt="" />
-              </a>
-            </li>
+            {sportsList.map((sports) => {
+              return (
+                <li className="tag" key={sports.id.value}>
+                  <a href={'/sports/' + sports.id.value}>
+                    <img src={ImageProvider.Tag} alt="" />
+                  </a>
+                </li>
+              )
+            })}
           </ul>
         </section>
         <section className="-purple">
