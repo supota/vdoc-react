@@ -6,14 +6,16 @@ import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
 import { Player } from 'vdoc/libs/domain/models/Player';
 
-type IProps = RouteComponentProps;
+interface IProps extends RouteComponentProps<{}> {
+  player: Player
+};
 
 const ConfirmationPage: React.FC<IProps> = props => {
   if (!props.location.state) {
     props.history.push('/');
     return <div />;
   }
-  const player: Player = props.location.state.player;
+  const player: Player = props.player;
 
   const goToTop = useCallback(() => {
     props.history.push('/');
