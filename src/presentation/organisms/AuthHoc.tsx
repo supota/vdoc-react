@@ -9,7 +9,7 @@ const AuthHoc = (props: React.Props<{}>) => {
   const authState = useSelector(selectAuthState);
   return authState.isLoading ? (
     <div />
-  ) : authState.isLoggedIn ? (
+  ) : authState.isLoggedIn && authState.user ? (
     <React.Fragment>{ props.children }</React.Fragment>
   ) : (
     <LoginPage />
