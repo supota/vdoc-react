@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectAuthState } from 'vdoc/modules/auth/selectors';
+import { authSelectors } from 'vdoc/modules/auth';
 
 import { LoginPage } from '../pages/Login';
 
 const AuthHoc = (props: React.Props<{}>) => {
-  const authState = useSelector(selectAuthState);
+  const authState = useSelector(authSelectors.selectAuthState);
   return authState.isLoading ? (
     <div />
   ) : authState.isLoggedIn && authState.user ? (

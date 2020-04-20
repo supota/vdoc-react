@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { authActions } from 'vdoc/modules/auth';
+import { authActions, authSelectors } from 'vdoc/modules/auth';
 
 import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
@@ -19,6 +19,10 @@ const LoginPage: React.FC = () => {
   const handlePassword = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value)
   }, []);
+
+  const state = useSelector(authSelectors.selectAuthState);
+  console.log(state.isLoggedIn);
+  console.log(state.user);
 
   return (
     <BaseContainer>
