@@ -14,6 +14,7 @@ import { PlayerPage } from './presentation/pages/Player';
 import { FormPage } from './presentation/pages/Form';
 import { LoginPage } from './presentation/pages/Login';
 import { ConfirmationPage } from './presentation/pages/Confirmation';
+import { MyPage } from './presentation/pages/Mypage';
 import { NotFoundPage } from './presentation/pages/NotFound';
 
 import './public/scss/style.scss';
@@ -22,19 +23,21 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={TopPage}></Route>
+        <Route exact path="/" component={TopPage} />
 
-        <Route path="/sports/:id([0-9a-zA-Z]+)" component={SportsPage}></Route>
+        <Route path="/sports/:id([0-9a-zA-Z]+)" component={SportsPage} />
 
-        <Route path="/players/:id([0-9a-zA-Z]+)" component={PlayerPage}></Route>
+        <Route path="/players/:id([0-9a-zA-Z]+)" component={PlayerPage} />
 
-        <Route path="/form" component={FormPage}></Route>
+        <Route path="/form" component={FormPage} />
 
-        <Route path="/login" component={LoginPage}></Route>
+        <Route path="/login" component={LoginPage} />
 
-        <Route path="/confirm" component={ConfirmationPage}></Route>
+        <Route path="/confirm" component={ConfirmationPage} />
 
-        <Route component={NotFoundPage}></Route>
+        <Route path="/mypage" component={MyPage} />
+
+        <Route component={NotFoundPage} />
       </Switch>
     </ConnectedRouter>
   </Provider>,

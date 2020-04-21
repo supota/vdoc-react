@@ -158,10 +158,6 @@ section {
   max-width: 660px;
   width: 100%;
 
-  >.tag {
-    margin: 10px;
-  }
-
   >.tag img {
     width: 200px;
   }
@@ -173,6 +169,50 @@ section {
 
     >.tag img {
       width: 150px;
+    }
+  }
+}
+.tag {
+  margin: 10px;
+
+  a {
+    position: relative;
+    display: block;
+    padding: 0 25px 0 20px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #4863d5;
+    color: white !important;
+    text-decoration: none;
+    vertical-align: middle;
+
+    span {
+      position: absolute;
+      top: calc(50% - 4px);
+      left: 2px;
+      background-color: white;
+      border-radius: 8px;
+      width: 8px;
+      height: 8px;
+    }
+
+    &:before, &:after {
+      position: absolute;
+      left: -15px;
+      top: 0;
+      display: block;
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 20px 15px 20px 0;
+      border-color: transparent #4863d5 transparent transparent;
+    }
+
+    &:after {
+      left: initial;
+      right: 0;
+      border-color: transparent #fff transparent transparent;
     }
   }
 }

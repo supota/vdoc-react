@@ -39,7 +39,7 @@ const PlayerPage: React.FC<IProps> = props => {
       <main className="player">
         <section className="key-visual">
           <ul className="bread-list">
-            
+
           </ul>
         </section>
         <section className="player-detail -purple">
@@ -68,9 +68,22 @@ const PlayerPage: React.FC<IProps> = props => {
             </ul>
           </div>
           <div className="profile-box">
+            <ul className="profile-tag">
+              <li className="tag">
+                <a href={'/sports/'}>
+                  <span></span>
+                  クィディッチ
+                </a>
+              </li>
+              <li className="tag">
+                <a href={'/sports/'}>
+                  <span></span>
+                  サッカー
+                </a>
+              </li>
+            </ul>
             <h3>
               <span id="japanese-name">{player.name}</span>
-              <br className="sp" />
               <span id="english-name">{player.phonetic}</span>
             </h3>
             <div className="birthday">

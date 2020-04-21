@@ -1,0 +1,15 @@
+.pre-btn {
+  transform: scale(1);
+  transition: .3s;
+  display: inline-block;
+  margin: 20px 0;
+  padding: 12px 20px;
+  border-radius: 3px;
+  text-decoration: none;
+  background-color: #4863d5;
+  color: white;
+}
+.pre-btn:hover {
+  transform: scale(1.025);
+  box-shadow: 0 0 20px rgba(72, 99, 213, 0.6);
+}

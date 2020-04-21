@@ -42,6 +42,9 @@ const TopPage = () => {
             <br />
             あなたの応援が、誰かを励まし、誰かの人生を変えるきっかけになる。
           </p>
+          <a data-scroll className="pre-btn" href="/form">
+            選手登録はこちら
+          </a>
         </div>
         <section className="-purple">
           <h2>今注目のアスリート</h2>
@@ -76,10 +79,11 @@ const TopPage = () => {
               return (
                 <li className="tag" key={sports.id.value}>
                   <a href={'/sports/' + sports.id.value}>
-                    <img src={ImageProvider.Tag} alt="" />
+                    <span></span>
+                    クィディッチ
                   </a>
                 </li>
-              )
+              );
             })}
           </ul>
         </section>
