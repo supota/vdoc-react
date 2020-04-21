@@ -14,7 +14,7 @@ const Header = withRouter(props => {
       </p>
       <div className="link">
         <a href="/login">ログイン</a>
-        <span>/</span>
+        <span></span>
         <a href="/form">選手登録</a>
       </div>
     </header>
