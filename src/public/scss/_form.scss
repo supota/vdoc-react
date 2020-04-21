@@ -73,8 +73,12 @@
       width: 94%;
       border-radius: 6px;
       border: 1px solid #ccc;
+      transition: .3s;
       outline: none;
       resize: none;
+      &:focus {
+        border: 1px solid #4863d5;
+      }
     }
 
     button {
