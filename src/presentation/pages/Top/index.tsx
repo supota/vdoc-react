@@ -43,7 +43,7 @@ const TopPage = () => {
             あなたの応援が、誰かを励まし、誰かの人生を変えるきっかけになる。
           </p>
           <a data-scroll className="pre-btn" href="/form">
-            登録はこちら
+            選手登録はこちら
           </a>
         </div>
         <section className="-purple">
