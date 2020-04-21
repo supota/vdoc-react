@@ -4,6 +4,9 @@ header {
   z-index: 124;
   background-color: #000;
   box-shadow: 0 2px 8px rgba(30, 30, 80, .3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -17,6 +20,13 @@ header {
     letter-spacing: 0.04em;
     color: #fff;
     cursor: pointer;
+    @media screen and (max-width: 896px) {
+      font-size: 24px;
+    }
+  }
+  .link,.link a {
+    color: white;
+    text-decoration: none;
   }
 }
 

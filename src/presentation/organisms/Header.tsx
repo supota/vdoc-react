@@ -12,6 +12,9 @@ const Header = withRouter(props => {
       >
         V Doc.
       </p>
+      <div className="link">
+        <a href="/login">ログイン</a> / <a href="/form">新規登録</a>
+      </div>
     </header>
   );
 });
