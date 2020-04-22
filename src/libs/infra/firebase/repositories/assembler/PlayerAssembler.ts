@@ -1,4 +1,5 @@
 import { Player, PlayerID } from 'vdoc/libs/domain/models/Player';
+import { SportsID } from 'vdoc/libs/domain/models/Sports';
 import { PlayerDTO } from 'vdoc/libs/infra/firebase/repositories/dto/PlayerDTO';
 import { TimestampMapper } from 'vdoc/libs/infra/firebase/repositories/mapper/TimestampMapper';
 
@@ -18,6 +19,7 @@ class PlayerAssembler {
       twitterUrl: player.twitterUrl,
       facebookUrl: player.facebookUrl,
       siteUrl: player.siteUrl,
+      sportsID: player.sportsID.value,
     });
   }
 
@@ -36,6 +38,7 @@ class PlayerAssembler {
       twitterUrl: dto.twitterUrl,
       facebookUrl: dto.facebookUrl,
       siteUrl: dto.siteUrl,
+      sportsID: new SportsID(dto.sportsID),
     });
   }
 }

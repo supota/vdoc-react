@@ -13,6 +13,7 @@ interface IFirestorePlayer {
   twitterUrl: string;
   facebookUrl: string;
   siteUrl: string;
+  sportsID: string;
 }
 
 class PlayerDTO implements IFirestorePlayer {
@@ -29,6 +30,7 @@ class PlayerDTO implements IFirestorePlayer {
   twitterUrl: string;
   facebookUrl: string;
   siteUrl: string;
+  sportsID: string;
 
   constructor(init?: Partial<PlayerDTO>) {
     Object.assign(this, init);
@@ -49,6 +51,7 @@ class PlayerDTO implements IFirestorePlayer {
       twitterUrl: data.twitterUrl,
       facebookUrl: data.facebookUrl,
       siteUrl: data.siteUrl,
+      sportsID: data.sportsID,
     });
   }
 
@@ -66,6 +69,7 @@ class PlayerDTO implements IFirestorePlayer {
       twitterUrl: this.twitterUrl,
       facebookUrl: this.facebookUrl,
       siteUrl: this.siteUrl,
+      sportsID: this.sportsID,
     };
   }
 }

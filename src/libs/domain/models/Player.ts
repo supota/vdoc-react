@@ -1,4 +1,5 @@
 import { Entity } from './Entity';
+import { SportsID } from './Sports';
 
 class Player extends Entity {
   id: PlayerID;
@@ -14,6 +15,7 @@ class Player extends Entity {
   twitterUrl: string;
   facebookUrl: string;
   siteUrl: string;
+  sportsID: SportsID;
 
   constructor(init?: Partial<Player>) {
     super();
