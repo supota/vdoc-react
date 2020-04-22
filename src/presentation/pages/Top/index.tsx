@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Sports } from 'vdoc/libs/domain/models/Sports';
 
@@ -42,9 +43,9 @@ const TopPage = () => {
             <br />
             あなたの応援が、誰かを励まし、誰かの人生を変えるきっかけになる。
           </p>
-          <a data-scroll className="pre-btn" href="/form">
+          <Link data-scroll className="pre-btn" to="/form">
             選手登録はこちら
-          </a>
+          </Link>
         </div>
         <section className="-purple">
           <h2>今注目のアスリート</h2>
@@ -78,10 +79,10 @@ const TopPage = () => {
             {sportsList.map((sports) => {
               return (
                 <li className="tag" key={sports.id.value}>
-                  <a href={'/sports/' + sports.id.value}>
+                  <Link to={'/sports/' + sports.id.value}>
                     <span></span>
                     クィディッチ
-                  </a>
+                  </Link>
                 </li>
               );
             })}

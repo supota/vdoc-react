@@ -42,7 +42,7 @@ const SportsPage: React.FC<IProps> = props => {
           <p className="desc">{sports.description}</p>
           <ul className="bread-list">
             <li>
-              <a href=""></a>
+              
             </li>
           </ul>
         </section>

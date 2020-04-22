@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
@@ -70,16 +71,10 @@ const PlayerPage: React.FC<IProps> = props => {
           <div className="profile-box">
             <ul className="profile-tag">
               <li className="tag">
-                <a href={'/sports/'}>
+                <Link to={'/sports'}>
                   <span></span>
                   クィディッチ
-                </a>
-              </li>
-              <li className="tag">
-                <a href={'/sports/'}>
-                  <span></span>
-                  サッカー
-                </a>
+                </Link>
               </li>
             </ul>
             <h3>
