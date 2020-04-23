@@ -4,9 +4,15 @@ import createSagaMiddleware from 'redux-saga';
 import { createBrowserHistory } from 'history';
 
 import { IAuthState, authRootSaga, authReducer } from './auth';
+import {
+  ISportsListState,
+  sportsListRootSaga,
+  sportsListReducer,
+} from './sportsList';
 
 export interface IStore {
   auth: IAuthState;
+  sportsList: ISportsListState;
 }
 
 const history = createBrowserHistory();
@@ -19,6 +25,7 @@ const configureStore = (initialStore?: IStore): Store => {
   const reducer = combineReducers({
     router: connectRouter(history),
     auth: authReducer,
+    sportsList: sportsListReducer,
   });
 
   // Storeの作成
@@ -30,6 +37,7 @@ const configureStore = (initialStore?: IStore): Store => {
 
   // SagaをRun
   sagaMiddleware.run(authRootSaga);
+  sagaMiddleware.run(sportsListRootSaga);
 
   return store;
 };

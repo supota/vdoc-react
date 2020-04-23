@@ -8,10 +8,11 @@ import { PlayerAssembler } from 'vdoc/libs/infra/firebase/repositories/assembler
 import { PlayerDTO } from 'vdoc/libs/infra/firebase/repositories/dto/PlayerDTO';
 
 class FirestorePlayerRepository extends PlayerRepository {
-  readonly firestore = firebase.firestore();
-
   async getAllPlayers(): Promise<Player[]> {
-    const snap = await this.firestore.collection(CollectionNames.players).get();
+    const snap = await firebase
+      .firestore()
+      .collection(CollectionNames.players)
+      .get();
 
     // Translate to array of Player
     const players = snap.docs.map(doc => {
@@ -23,7 +24,8 @@ class FirestorePlayerRepository extends PlayerRepository {
   }
 
   async getPlayer(id: PlayerID): Promise<Player> {
-    const doc = await this.firestore
+    const doc = await firebase
+      .firestore()
       .collection(CollectionNames.players)
       .doc(id.value)
       .get();
@@ -34,9 +36,10 @@ class FirestorePlayerRepository extends PlayerRepository {
   }
 
   async getPlayerFromSports(sportsId: SportsID): Promise<Player[]> {
-    const snap = await this.firestore
+    const snap = await firebase
+      .firestore()
       .collection(CollectionNames.players)
-      .where('sportsId', '==', sportsId.value)
+      .where('sportsID', '==', sportsId.value)
       .get();
     const players = snap.docs.map(doc => {
       const dto = PlayerDTO.fromDoc(doc);
@@ -47,12 +50,16 @@ class FirestorePlayerRepository extends PlayerRepository {
 
   async postPlayer(player: Player): Promise<void> {
     const dto = PlayerAssembler.encode(player);
-    await this.firestore.collection(CollectionNames.players).add(dto.toJson());
+    await firebase
+      .firestore()
+      .collection(CollectionNames.players)
+      .add(dto.toJson());
   }
 
   async updatePlayer(player: Player): Promise<void> {
     const dto = PlayerAssembler.encode(player);
-    await this.firestore
+    await firebase
+      .firestore()
       .collection(CollectionNames.players)
       .doc(dto.id)
       .update(dto.toJson());

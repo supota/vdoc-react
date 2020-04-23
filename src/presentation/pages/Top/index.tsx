@@ -1,29 +1,14 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import { Sports } from 'vdoc/libs/domain/models/Sports';
-
-import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
+import { sportsListSelectors } from 'vdoc/modules/sportsList';
 import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
-
 import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
 const TopPage = () => {
-  const [sportsList, setSportsList] = useState<Sports[] | null>(null);
-
-  useEffect(() => {
-    try {
-      (async () => {
-        const sportsList = await DomainProvider.sportsRepo.getAllSports();
-        setSportsList(sportsList);
-      })();
-    } catch (e) {
-      console.log(e);
-    }
-  });
-
-  if (!sportsList) {
+  const sportsListState = useSelector(sportsListSelectors.selectAll);
+  if (sportsListState.isLoading) {
+    // Todo Loading画面に
     return <div />;
   }
 
@@ -76,12 +61,12 @@ const TopPage = () => {
         <section className="-white">
           <h2>興味のあるスポーツから探す</h2>
           <ul className="tag-list">
-            {sportsList.map((sports) => {
+            {sportsListState.sports.map((sports) => {
               return (
                 <li className="tag" key={sports.id.value}>
                   <Link to={'/sports/' + sports.id.value}>
                     <span></span>
-                    クィディッチ
+                    { sports.name }
                   </Link>
                 </li>
               );
