@@ -1,37 +1,22 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
-
-import { Sports, SportsID } from 'vdoc/libs/domain/models/Sports';
-
-import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
-import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
-
+import { SportsID } from 'vdoc/libs/domain/models/Sports';
+import { sportsListSelectors } from 'vdoc/modules/sportsList';
 import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 import { PlayerList } from 'vdoc/presentation/pages/Sports/PlayerList';
 
 type IProps = RouteComponentProps<{ id: string }>;
 
 const SportsPage: React.FC<IProps> = props => {
-  const [sports, setSports] = useState<Sports | null>(null);
-
-  // Get sports from id
-  const sportsRepository =　DomainProvider.sportsRepo;
-
-  useEffect(() => {
-    try {
-      (async () => {
-        const sports = await sportsRepository.getSports(new SportsID(props.match.params.id));
-        setSports(sports);
-      })();
-    } catch (e) {
-      console.log(e);
-      // props.history.push("/404");
-    }
-  }, []);
+  
+  const sportsId = new SportsID(props.match.params.id);
+  const sports = useSelector(sportsListSelectors.select(sportsId));
 
   if (!sports) {
-    return <BaseContainer />;
+    return (
+      <BaseContainer />
+    )
   }
 
   return (
@@ -42,7 +27,7 @@ const SportsPage: React.FC<IProps> = props => {
           <p className="desc">{sports.description}</p>
           <ul className="bread-list">
             <li>
-              <a href=""></a>
+              
             </li>
           </ul>
         </section>

@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router';
-
 import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
-
 import { Player, PlayerID } from 'vdoc/libs/domain/models/Player';
-
 import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
+import { SportsTag } from './SportsTag';
 
 type IProps = RouteComponentProps<{ id: string }>;
 
@@ -29,17 +27,15 @@ const PlayerPage: React.FC<IProps> = props => {
       // props.history.push('/404');
     }
   }, []);
-
   if (!player) {
     return <BaseContainer />;
   }
-
   return (
     <BaseContainer>
       <main className="player">
         <section className="key-visual">
           <ul className="bread-list">
-            
+
           </ul>
         </section>
         <section className="player-detail -purple">
@@ -68,9 +64,9 @@ const PlayerPage: React.FC<IProps> = props => {
             </ul>
           </div>
           <div className="profile-box">
+            <SportsTag sportsID={player.sportsID} />
             <h3>
               <span id="japanese-name">{player.name}</span>
-              <br className="sp" />
               <span id="english-name">{player.phonetic}</span>
             </h3>
             <div className="birthday">

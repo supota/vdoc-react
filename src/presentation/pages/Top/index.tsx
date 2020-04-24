@@ -1,28 +1,14 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-
-import { Sports } from 'vdoc/libs/domain/models/Sports';
-
-import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { sportsListSelectors } from 'vdoc/modules/sportsList';
 import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
-
 import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
 const TopPage = () => {
-  const [sportsList, setSportsList] = useState<Sports[] | null>(null);
-
-  useEffect(() => {
-    try {
-      (async () => {
-        const sportsList = await DomainProvider.sportsRepo.getAllSports();
-        setSportsList(sportsList);
-      })();
-    } catch (e) {
-      console.log(e);
-    }
-  });
-
-  if (!sportsList) {
+  const sportsListState = useSelector(sportsListSelectors.selectAll);
+  if (sportsListState.isLoading) {
+    // Todo Loading画面に
     return <div />;
   }
 
@@ -42,6 +28,9 @@ const TopPage = () => {
             <br />
             あなたの応援が、誰かを励まし、誰かの人生を変えるきっかけになる。
           </p>
+          <Link data-scroll className="pre-btn" to="/form">
+            選手登録はこちら
+          </Link>
         </div>
         <section className="-purple">
           <h2>今注目のアスリート</h2>
@@ -72,14 +61,15 @@ const TopPage = () => {
         <section className="-white">
           <h2>興味のあるスポーツから探す</h2>
           <ul className="tag-list">
-            {sportsList.map((sports) => {
+            {sportsListState.sports.map((sports) => {
               return (
                 <li className="tag" key={sports.id.value}>
-                  <a href={'/sports/' + sports.id.value}>
-                    <img src={ImageProvider.Tag} alt="" />
-                  </a>
+                  <Link to={'/sports/' + sports.id.value}>
+                    <span></span>
+                    { sports.name }
+                  </Link>
                 </li>
-              )
+              );
             })}
           </ul>
         </section>

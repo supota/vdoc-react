@@ -7,10 +7,11 @@ import { SportsDTO } from 'vdoc/libs/infra/firebase/repositories/dto/SportsDTO';
 import { SportsAssembler } from 'vdoc/libs/infra/firebase/repositories/assembler/SportsAssembler';
 
 class FirestoreSportsRepository extends SportsRepository {
-  readonly firestore = firebase.firestore();
-
   async getAllSports(): Promise<Sports[]> {
-    const snap = await this.firestore.collection(CollectionNames.sports).get();
+    const snap = await firebase
+      .firestore()
+      .collection(CollectionNames.sports)
+      .get();
     const sports = snap.docs.map(doc => {
       const dto = SportsDTO.fromDoc(doc);
       return SportsAssembler.decode(dto);
@@ -19,7 +20,8 @@ class FirestoreSportsRepository extends SportsRepository {
   }
 
   async getSports(id: SportsID): Promise<Sports> {
-    const doc = await this.firestore
+    const doc = await firebase
+      .firestore()
       .collection(CollectionNames.sports)
       .doc(id.value)
       .get();

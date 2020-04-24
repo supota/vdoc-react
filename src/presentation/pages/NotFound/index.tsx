@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 const NotFoundPage = () => {
   return (
@@ -11,7 +12,7 @@ const NotFoundPage = () => {
           <br />
           URLに誤りがないか確認してください。
         </p>
-        <a href="https://v-doc.supota.com"> TOPに戻る</a>
+        <Link to="/"> TOPに戻る</Link>
       </div>
     </div>
   );

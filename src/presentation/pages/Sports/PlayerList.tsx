@@ -36,7 +36,6 @@ const NonRoutePlayerList = (props: IProps) => {
   return (
     <ul className="player-list" id="player-list">
       {players.map(player => {
-        console.log(player);
         return (
           <li
             key={player.id.value}
