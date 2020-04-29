@@ -1,7 +1,7 @@
-import { firebase } from '../../libs/infra/firebase/firebase';
-
 import { Action } from 'redux';
 import { ActionTypes } from './types';
+
+import { Player } from 'vdoc/libs/domain/models/Player';
 
 type IAuthAction = Action<ActionTypes>;
 
@@ -15,7 +15,7 @@ export interface IRequestLogin extends IAuthAction {
 export interface ISuccessLogin extends IAuthAction {
   type: ActionTypes.SUCCESS_LOGIN;
   payload: {
-    user: firebase.User;
+    user: Player;
   };
 }
 export interface IFailureLogin extends IAuthAction {

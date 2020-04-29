@@ -56,7 +56,8 @@ const LoginPage: React.FC = () => {
             </li>
           </ul>
           <button
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               dispatch(authActions.requestLogin({
                 email: email,
                 password: password
