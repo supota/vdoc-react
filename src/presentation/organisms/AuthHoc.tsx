@@ -6,7 +6,7 @@ import { authSelectors } from 'vdoc/modules/auth';
 import { LoginPage } from '../pages/Login';
 
 const AuthHoc = (props: React.Props<{}>) => {
-  const authState = useSelector(authSelectors.selectAuthState);
+  const authState = useSelector(authSelectors.selectAll);
   return authState.isLoading ? (
     <div />
   ) : authState.isLoggedIn && authState.user ? (

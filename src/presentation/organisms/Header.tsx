@@ -7,7 +7,7 @@ import { authSelectors } from 'vdoc/modules/auth';
 
 const Header = withRouter(props => {
 
-  const authState = useSelector(authSelectors.selectAuthState);
+  const authState = useSelector(authSelectors.selectAll);
 
   return (
     <header>

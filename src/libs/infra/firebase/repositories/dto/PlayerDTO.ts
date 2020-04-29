@@ -9,7 +9,6 @@ interface IFirestorePlayer {
   email: string;
   password: string;
   profilePhotoUrl: string;
-  proofPhotoUrl: string;
   twitterUrl: string;
   facebookUrl: string;
   siteUrl: string;
@@ -26,7 +25,6 @@ class PlayerDTO implements IFirestorePlayer {
   email: string;
   password: string;
   profilePhotoUrl: string;
-  proofPhotoUrl: string;
   twitterUrl: string;
   facebookUrl: string;
   siteUrl: string;
@@ -41,13 +39,13 @@ class PlayerDTO implements IFirestorePlayer {
     return new PlayerDTO({
       id: doc.id,
       name: data.name,
+      phonetic: data.phonetic,
       birthday: data.birthday,
       profile: data.profile,
       performances: Array.from(data.performances),
       email: data.email,
       password: data.password,
       profilePhotoUrl: data.profilePhotoUrl,
-      proofPhotoUrl: data.proofPhotoUrl,
       twitterUrl: data.twitterUrl,
       facebookUrl: data.facebookUrl,
       siteUrl: data.siteUrl,
@@ -65,7 +63,6 @@ class PlayerDTO implements IFirestorePlayer {
       email: this.email,
       password: this.password,
       profilePhotoUrl: this.profilePhotoUrl,
-      proofPhotoUrl: this.proofPhotoUrl,
       twitterUrl: this.twitterUrl,
       facebookUrl: this.facebookUrl,
       siteUrl: this.siteUrl,

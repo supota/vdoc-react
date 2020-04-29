@@ -6,6 +6,8 @@ import {
   withFormik,
 } from 'formik'
 
+import { Player } from 'vdoc/libs/domain/models/Player';
+
 import { validation } from './validation';
 import { InputField } from './component/InputField';
 
@@ -20,13 +22,14 @@ export interface IFormValues {
   siteURL: string;
   profileImg: string | null;
 }
+type FormProps = IFormValues & {
+  profilePhotoUrl: string;
+}
 
-const InnerForm = (props: FormikProps<IFormValues>) => {
+const InnerForm = (props: FormikProps<FormProps>) => {
   const {
     values,
     errors,
-    touched,
-    handleBlur,
     handleSubmit,
     isSubmitting,
   } = props;
@@ -42,6 +45,7 @@ const InnerForm = (props: FormikProps<IFormValues>) => {
     }
     reader.readAsDataURL(files[0]);
   }
+  console.log(props.initialValues.profileImg);
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -149,7 +153,7 @@ const InnerForm = (props: FormikProps<IFormValues>) => {
           />
           <img
             className='preview-img'
-            src={profileImgData ?? ''}
+            src={profileImgData ? profileImgData :  props.initialValues.profilePhotoUrl ? props.initialValues.profilePhotoUrl : ''}
             alt=''
           />
         </li>
@@ -161,18 +165,22 @@ const InnerForm = (props: FormikProps<IFormValues>) => {
   )
 }
 
-const Edit = withFormik<{}, IFormValues>({
-  mapPropsToValues: (props) => ({
-    name: '',
-    phonetic: '',
-    birthday: new Date(),
-    profile: '',
-    performances: '',
-    twitterURL: '',
-    facebookURL: '',
-    siteURL: '',
-    profileImg: '',
-  }),
+const Edit = withFormik<{ player: Player }, FormProps>({
+  mapPropsToValues: (props) => {
+    const player = props.player;
+    return {
+      name: player.name,
+      phonetic: player.phonetic,
+      birthday: player.birthday,
+      profile: player.profile,
+      performances: player.performances.join('\n'),
+      twitterURL: player.twitterUrl,
+      facebookURL: player.facebookUrl,
+      siteURL: player.siteUrl,
+      profileImg: '',
+      profilePhotoUrl: player.profilePhotoUrl
+    }
+  },
   validationSchema: validation(),
   handleSubmit: (values: IFormValues) => {
     console.log(values);

@@ -20,7 +20,7 @@ const LoginPage: React.FC = () => {
     setPassword(e.target.value)
   }, []);
 
-  const state = useSelector(authSelectors.selectAuthState);
+  const state = useSelector(authSelectors.selectAll);
   console.log(state.isLoggedIn);
   console.log(state.user);
 

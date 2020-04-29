@@ -1,8 +1,8 @@
 import { IStore } from '../store';
 import { IAuthState } from './';
 
-const selectAuthState = (store: IStore): IAuthState => store.auth;
+const selectAll = (store: IStore): IAuthState => store.auth;
 
 export const selectors = {
-  selectAuthState,
+  selectAll,
 };
