@@ -23,10 +23,10 @@ const Header = withRouter(props => {
         {
           authState.isLoggedIn
             ? <div
-                onClick={() => {
-                  document.getElementById("icon").classList.add("clicked");
-                }}
                 id="icon"
+                onClick={() => {
+                  document.getElementById('icon')?.classList.add('clicked');
+                }}
               >
               <img src={ImageProvider.Icon} alt="" />
               <div className="icon-menu">
