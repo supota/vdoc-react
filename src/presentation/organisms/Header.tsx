@@ -4,11 +4,11 @@ import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import { authSelectors } from 'vdoc/modules/auth';
+import {ImageProvider} from "vdoc/libs/application/ImageProvider";
 
 const Header = withRouter(props => {
 
   const authState = useSelector(authSelectors.selectAuthState);
-
   return (
     <header>
       <p
@@ -22,7 +22,18 @@ const Header = withRouter(props => {
       <div className="link">
         {
           authState.isLoggedIn
-            ? <Link to="/mypage">マイページ</Link>
+            ? <div
+                onClick={() => {
+                  document.getElementById("icon").classList.add("clicked");
+                }}
+                id="icon"
+              >
+              <img src={ImageProvider.Icon} alt="" />
+              <div className="icon-menu">
+                <a href="">プロフィール編集</a>
+                <a href="">ログアウト</a>
+              </div>
+            </div>
             : <React.Fragment>
                 <Link to="/login">ログイン</Link>
                 <span></span>
