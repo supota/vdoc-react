@@ -4,6 +4,7 @@ import { call, put, take, all } from 'redux-saga/effects';
 import { IRequestLogin, actions } from './actions';
 import { ActionTypes } from './types';
 
+import { PlayerID } from 'vdoc/libs/domain/models/Player';
 import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 import { firebase } from 'vdoc/libs/infra/firebase/firebase';
 
@@ -34,7 +35,15 @@ function* observeAuthState() {
   while (true) {
     const result: ChannelReceiver = yield take(channel);
     if ('user' in result) {
-      yield put(actions.successLogin({ user: result.user! }));
+      try {
+        const player = yield call(
+          DomainProvider.playerRepo.getPlayer,
+          new PlayerID(result.user!.uid),
+        );
+        yield put(actions.successLogin({ user: player }));
+      } catch {
+        yield put(actions.failureLogin());
+      }
     }
     if ('error' in result) {
       yield put(actions.failureLogin());
@@ -45,6 +54,7 @@ function* observeAuthState() {
 function* handleLogin() {
   while (true) {
     const action: IRequestLogin = yield take(ActionTypes.REQUEST_LOGIN);
+    console.log('aaaaaaa');
     try {
       const payload = action.payload;
       const user = yield call(
@@ -52,8 +62,14 @@ function* handleLogin() {
         payload.email,
         payload.password,
       );
-      yield put(actions.successLogin({ user: user }));
-    } catch {
+      console.log(user);
+      const player = yield call(
+        DomainProvider.playerRepo.getPlayer,
+        new PlayerID(user.uid),
+      );
+      yield put(actions.successLogin({ user: player }));
+    } catch (e) {
+      console.log(e);
       yield put(actions.failureLogin());
     }
   }

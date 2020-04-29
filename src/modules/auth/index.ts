@@ -1,14 +1,14 @@
-import { firebase } from 'vdoc/libs/infra/firebase/firebase';
-
 import { actions } from './actions';
 import { reducer } from './reducers';
 import { selectors } from './selectors';
 import { rootSaga } from './sagas';
 import { ActionTypes } from './types';
 
+import { Player } from 'vdoc/libs/domain/models/Player';
+
 export interface IAuthState {
   isLoading: boolean;
-  user: firebase.User | null;
+  user: Player | null;
   isLoggedIn: boolean;
   isError: boolean;
 }
