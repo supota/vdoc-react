@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   Form,
   FormikProps,
@@ -7,7 +7,7 @@ import {
 } from 'formik'
 
 import { validation } from './validation';
-import { InputField } from './InputField';
+import { InputField } from './component/InputField';
 
 export interface IFormValues {
   name: string;
@@ -161,7 +161,7 @@ const InnerForm = (props: FormikProps<IFormValues>) => {
   )
 }
 
-const FormTest = withFormik<{}, IFormValues>({
+const Edit = withFormik<{}, IFormValues>({
   mapPropsToValues: (props) => ({
     name: '',
     phonetic: '',
@@ -179,4 +179,4 @@ const FormTest = withFormik<{}, IFormValues>({
   },
 })(InnerForm);
 
-export { FormTest }
+export { Edit }

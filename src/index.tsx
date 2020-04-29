@@ -11,7 +11,7 @@ import { store, history } from './modules/store';
 import { TopPage } from './presentation/pages/Top';
 import { SportsPage } from './presentation/pages/Sports';
 import { PlayerPage } from './presentation/pages/Player';
-import { FormPage } from './presentation/pages/Form';
+import { EditPage } from './presentation/pages/Edit';
 import { LoginPage } from './presentation/pages/Login';
 import { ConfirmationPage } from './presentation/pages/Confirmation';
 import { MyPage } from './presentation/pages/Mypage';
@@ -29,7 +29,7 @@ ReactDOM.render(
 
         <Route path="/players/:id([0-9a-zA-Z]+)" component={PlayerPage} />
 
-        <Route path="/form" component={FormPage} />
+        <Route path="/edit" component={EditPage} />
 
         <Route path="/login" component={LoginPage} />
 
