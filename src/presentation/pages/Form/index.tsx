@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
-import { FormTest } from './form';
 import { FormContainer } from './container/FormContainer';
 
 const FormPage = () => {
@@ -15,7 +14,7 @@ const FormPage = () => {
           <br />
           自分のページを作成できます。
         </h3>
-        <FormTest />
+        <FormContainer />
       </main>
     </BaseContainer>
   );
