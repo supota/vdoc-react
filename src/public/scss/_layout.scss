@@ -24,6 +24,59 @@ header {
       font-size: 24px;
     }
   }
+  .link #icon {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 100px;
+    width: 40px;
+    height: 40px;
+    img {
+      width: 100%;
+      min-width: 100%;
+      min-height: 100%;
+    }
+    &.clicked .icon-menu {
+      max-height: 300px;
+    }
+    .icon-menu {
+      transition: .3s;
+      overflow: hidden;
+      position: fixed;
+      top: 68px;
+      right: 20px;
+      max-height: 0;
+      a {
+        background-color: black;
+        cursor: pointer;
+        display: block;
+        padding: 20px;
+        border-top: 1px solid #7c7c7c;
+        &:hover {
+          background-color: #333;
+        }
+        &:first-child {
+          border-top: none;
+          border-radius: 10px 10px 0 0;
+        }
+        &:last-child {
+          border-radius: 0 0 10px 10px;
+        }
+      }
+      &:before {
+        display: block;
+        content: "";
+        margin-left: calc(100% - 44px);
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 12px 12px 12px;
+        border-color: transparent transparent black transparent;
+      }
+    }
+  }
   .link span {
     margin: 0 15px;
   }
