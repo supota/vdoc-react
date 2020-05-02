@@ -35,7 +35,7 @@
   // ドロップダウンを消す処理
   const root = document.getElementById('root');
   root.onclick = () => {
-    document.getElementById('icon').classList.remove('clicked');
+    document.getElementById('icon').classList?.remove('clicked');
   }
   // スワイパーの処理
   const mySwiper = new Swiper('.swiper-container', {
