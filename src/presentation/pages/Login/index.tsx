@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { useState, useCallback } from 'react';
+import { withRouter } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { authActions, authSelectors } from 'vdoc/modules/auth';
-
 import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
-const LoginPage: React.FC = () => {
+const LoginPage = withRouter(props => {
 
   const dispatch = useDispatch();
 
@@ -21,8 +20,10 @@ const LoginPage: React.FC = () => {
   }, []);
 
   const state = useSelector(authSelectors.selectAuthState);
-  console.log(state.isLoggedIn);
-  console.log(state.user);
+
+  if (state.isLoggedIn && state.user) {
+    props.history.push('/');
+  }
 
   return (
     <BaseContainer>
@@ -68,6 +69,6 @@ const LoginPage: React.FC = () => {
       </main>
     </BaseContainer>
   );
-};
+});
 
 export { LoginPage };
