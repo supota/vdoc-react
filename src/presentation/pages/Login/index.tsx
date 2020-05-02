@@ -49,7 +49,7 @@ const LoginPage: React.FC = () => {
                 <p>パスワード</p>
               </div>
               <input
-                type="text"
+                type="password"
                 placeholder="パスワードを入力してください"
                 onChange={handlePassword}
               />
