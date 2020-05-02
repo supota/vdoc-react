@@ -21,6 +21,15 @@ export interface ISuccessLogin extends IAuthAction {
 export interface IFailureLogin extends IAuthAction {
   type: ActionTypes.FAILURE_LOGIN;
 }
+export interface IRequestLogout extends IAuthAction {
+  type: ActionTypes.REQUEST_LOGOUT;
+}
+export interface ISuccessLogout extends IAuthAction {
+  type: ActionTypes.SUCCESS_LOGOUT;
+}
+export interface IFailureLogout extends IAuthAction {
+  type: ActionTypes.FAILURE_LOGOUT;
+}
 
 export const requestLogin = (
   payload: IRequestLogin['payload'],
@@ -37,10 +46,28 @@ export const successLogin = (
 export const failureLogin = (): IFailureLogin => ({
   type: ActionTypes.FAILURE_LOGIN,
 });
+export const requestLogout = (): IRequestLogout => ({
+  type: ActionTypes.REQUEST_LOGOUT,
+});
+export const successLogout = (): ISuccessLogout => ({
+  type: ActionTypes.SUCCESS_LOGOUT,
+});
+export const failureLogout = (): IFailureLogout => ({
+  type: ActionTypes.FAILURE_LOGOUT,
+});
 
 export const actions = {
   requestLogin,
   successLogin,
   failureLogin,
+  requestLogout,
+  successLogout,
+  failureLogout,
 };
-export type AuthActions = IRequestLogin | ISuccessLogin | IFailureLogin;
+export type AuthActions =
+  | IRequestLogin
+  | ISuccessLogin
+  | IFailureLogin
+  | IRequestLogout
+  | ISuccessLogout
+  | IFailureLogout;

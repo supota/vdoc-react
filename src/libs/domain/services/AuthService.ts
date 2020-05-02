@@ -12,6 +12,10 @@ abstract class AuthService {
    * ログインしているかどうか
    */
   abstract isLoggedIn(): boolean;
+  /**
+   * ログアウトする
+   */
+  abstract async logout(): Promise<void>;
 }
 
 export { AuthService };

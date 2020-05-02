@@ -54,7 +54,6 @@ function* observeAuthState() {
 function* handleLogin() {
   while (true) {
     const action: IRequestLogin = yield take(ActionTypes.REQUEST_LOGIN);
-    console.log('aaaaaaa');
     try {
       const payload = action.payload;
       const user = yield call(
@@ -62,7 +61,6 @@ function* handleLogin() {
         payload.email,
         payload.password,
       );
-      console.log(user);
       const player = yield call(
         DomainProvider.playerRepo.getPlayer,
         new PlayerID(user.uid),
@@ -74,7 +72,20 @@ function* handleLogin() {
     }
   }
 }
+function* handleLogout() {
+  while (true) {
+    yield take(ActionTypes.REQUEST_LOGOUT);
+    try {
+      // ログアウトする
+      yield call(DomainProvider.authService.logout);
+      yield put(actions.successLogout());
+    } catch (e) {
+      console.log(e);
+      yield put(actions.failureLogout());
+    }
+  }
+}
 
 export function* rootSaga() {
-  yield all([handleLogin(), observeAuthState()]);
+  yield all([observeAuthState(), handleLogin(), handleLogout()]);
 }

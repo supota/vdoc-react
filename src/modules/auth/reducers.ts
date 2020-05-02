@@ -33,6 +33,24 @@ export const reducer = (
         isLoading: false,
         isError: true,
       };
+    case ActionTypes.REQUEST_LOGOUT:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case ActionTypes.SUCCESS_LOGOUT:
+      return {
+        ...state,
+        isLoading: false,
+        isLoggedIn: false,
+        user: null,
+        isError: false,
+      };
+    case ActionTypes.FAILURE_LOGOUT:
+      return {
+        ...state,
+        isError: true,
+      };
     default:
       return state;
   }
