@@ -7,11 +7,13 @@ import {
 } from 'formik'
 
 import { Player } from 'vdoc/libs/domain/models/Player';
+import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 
 import { validation } from './validation';
 import { InputField } from './component/InputField';
+import { Thumb } from './component/Thumb';
 
-export interface IFormValues {
+interface IFormValues {
   name: string;
   phonetic: string;
   birthday: Date;
@@ -20,7 +22,7 @@ export interface IFormValues {
   twitterURL: string;
   facebookURL: string;
   siteURL: string;
-  profileImg: string | null;
+  profileImg: File | '';
 }
 type FormProps = IFormValues & {
   profilePhotoUrl: string;
@@ -32,20 +34,10 @@ const InnerForm = (props: FormikProps<FormProps>) => {
     errors,
     handleSubmit,
     isSubmitting,
+    setFieldValue
   } = props;
 
-  const [profileImgData, setProfileImgData] = useState<string | undefined>('');
-
-  const handleProfileImg = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files!;
-    if (files.length === 0) return;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      setProfileImgData(e.target!.result as string)
-    }
-    reader.readAsDataURL(files[0]);
-  }
-  console.log(props.initialValues.profileImg);
+  const [profileImgData, setProfileImgData] = useState<File | null>(null);
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -149,12 +141,6 @@ const InnerForm = (props: FormikProps<FormProps>) => {
             type='file'
             as='input'
             error={errors.profileImg}
-            onChange={handleProfileImg}
-          />
-          <img
-            className='preview-img'
-            src={profileImgData ? profileImgData :  props.initialValues.profilePhotoUrl ? props.initialValues.profilePhotoUrl : ''}
-            alt=''
           />
         </li>
       </ul>
@@ -182,8 +168,15 @@ const Edit = withFormik<{ player: Player }, FormProps>({
     }
   },
   validationSchema: validation(),
-  handleSubmit: (values: IFormValues) => {
-    console.log(values);
+  handleSubmit: async (values: IFormValues) => {
+    let newUrl;
+    if (values.profileImg) {
+      console.log(values.profileImg);
+      newUrl = await DomainProvider.imageService.upload(values.profileImg);
+    }
+    const newPlayer = new Player({
+      
+    })
   },
 })(InnerForm);
 

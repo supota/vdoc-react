@@ -9,7 +9,7 @@ type Props = {
   title: string;
   isRequired: boolean;
   placeholder: string;
-  error: string | FormikErrors<Date> | undefined;
+  error: string | FormikErrors<Date> | FormikErrors<File> | undefined;
   rows?: number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 } & FieldConfig;
@@ -30,7 +30,6 @@ const InputField = (props: Props) => {
             name={props.name}
             type={props.type}
             as={props.as}
-            rows={props.rows}
             placeholder={props.placeholder}
             onChange={props.onChange}
           />

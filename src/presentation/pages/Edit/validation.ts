@@ -22,6 +22,6 @@ export const validation = () => {
     twitterURL: Yup.string(),
     facebookURL: Yup.string(),
     siteURL: Yup.string(),
-    profileImg: Yup.mixed().required('プロフィール写真を選択してください'),
+    profileImg: Yup.mixed(),
   });
 };
