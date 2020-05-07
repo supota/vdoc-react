@@ -5,6 +5,13 @@ import { Player } from 'vdoc/libs/domain/models/Player';
 
 type IAuthAction = Action<ActionTypes>;
 
+export interface IInitializeLogin extends IAuthAction {
+  type: ActionTypes.INITIALIZE_LOGIN;
+  payload: {
+    isLoggedIn: boolean;
+    user: Player | null;
+  };
+}
 export interface IRequestLogin extends IAuthAction {
   type: ActionTypes.REQUEST_LOGIN;
   payload: {
@@ -31,6 +38,12 @@ export interface IFailureLogout extends IAuthAction {
   type: ActionTypes.FAILURE_LOGOUT;
 }
 
+export const initializeLogin = (
+  payload: IInitializeLogin['payload'],
+): IInitializeLogin => ({
+  type: ActionTypes.INITIALIZE_LOGIN,
+  payload: payload,
+});
 export const requestLogin = (
   payload: IRequestLogin['payload'],
 ): IRequestLogin => ({
@@ -57,6 +70,7 @@ export const failureLogout = (): IFailureLogout => ({
 });
 
 export const actions = {
+  initializeLogin,
   requestLogin,
   successLogin,
   failureLogin,
@@ -65,6 +79,7 @@ export const actions = {
   failureLogout,
 };
 export type AuthActions =
+  | IInitializeLogin
   | IRequestLogin
   | ISuccessLogin
   | IFailureLogin

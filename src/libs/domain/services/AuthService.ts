@@ -11,7 +11,7 @@ abstract class AuthService {
   /**
    * ログインしているかどうか
    */
-  abstract isLoggedIn(): boolean;
+  abstract getLoginState(): Promise<firebase.User | null>;
   /**
    * ログアウトする
    */

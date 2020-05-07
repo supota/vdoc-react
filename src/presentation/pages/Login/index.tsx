@@ -21,6 +21,10 @@ const LoginPage = withRouter(props => {
 
   const state = useSelector(authSelectors.selectAuthState);
 
+  if (state.isLoading) {
+    return <h1>Loading...</h1>
+  }
+
   if (state.isLoggedIn && state.user) {
     props.history.push('/');
   }
