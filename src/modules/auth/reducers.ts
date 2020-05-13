@@ -1,9 +1,9 @@
 import { IAuthState } from './index';
-import { AuthActions } from './actions';
+import { AuthActions, actions } from './actions';
 import { ActionTypes } from './types';
 
 const initialState: IAuthState = {
-  isLoading: false,
+  isLoading: true,
   user: null,
   isLoggedIn: false,
   isError: false,
@@ -14,6 +14,13 @@ export const reducer = (
   action: AuthActions,
 ): IAuthState => {
   switch (action.type) {
+    case ActionTypes.INITIALIZE_LOGIN:
+      return {
+        ...state,
+        isLoading: false,
+        user: action.payload.user,
+        isLoggedIn: action.payload.isLoggedIn,
+      };
     case ActionTypes.REQUEST_LOGIN:
       return {
         ...state,
@@ -31,6 +38,24 @@ export const reducer = (
       return {
         ...state,
         isLoading: false,
+        isError: true,
+      };
+    case ActionTypes.REQUEST_LOGOUT:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case ActionTypes.SUCCESS_LOGOUT:
+      return {
+        ...state,
+        isLoading: false,
+        isLoggedIn: false,
+        user: null,
+        isError: false,
+      };
+    case ActionTypes.FAILURE_LOGOUT:
+      return {
+        ...state,
         isError: true,
       };
     default:

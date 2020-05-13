@@ -14,8 +14,17 @@ class FirebaseAuthService extends AuthService {
     return firebase.auth().currentUser!;
   }
 
-  isLoggedIn(): boolean {
-    return firebase.auth().currentUser !== null;
+  getLoginState(): Promise<firebase.User | null> {
+    return new Promise((resolve, reject) => {
+      firebase.auth().onAuthStateChanged(
+        user => resolve(user),
+        err => reject(),
+      );
+    });
+  }
+
+  async logout(): Promise<void> {
+    await firebase.auth().signOut();
   }
 }
 

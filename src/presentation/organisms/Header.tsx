@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
-import { authSelectors } from 'vdoc/modules/auth';
+import { authSelectors, authActions } from 'vdoc/modules/auth';
+import {ImageProvider} from "vdoc/libs/application/ImageProvider";
 
 const Header = withRouter(props => {
 
+  const dispatch = useDispatch();
   const authState = useSelector(authSelectors.selectAll);
 
   return (
@@ -22,7 +24,22 @@ const Header = withRouter(props => {
       <div className="link">
         {
           authState.isLoggedIn
-            ? <Link to="/mypage">マイページ</Link>
+            ? <div
+                id="icon"
+                onClick={() => {
+                  document.getElementById('icon')?.classList.add('clicked');
+                }}
+              >
+              <img src={ImageProvider.Icon} alt="" />
+              <div className="icon-menu">
+                <a href="">プロフィール編集</a>
+                <a
+                  onClick={() => {
+                    dispatch(authActions.requestLogout());
+                  }}
+                >ログアウト</a>
+              </div>
+            </div>
             : <React.Fragment>
                 <Link to="/login">ログイン</Link>
                 <span></span>

@@ -32,7 +32,13 @@
   <div id="root"></div>
 </body>
 <script>
-  var mySwiper = new Swiper('.swiper-container', {
+  // ドロップダウンを消す処理
+  const root = document.getElementById('root');
+  root.onclick = () => {
+    document.getElementById('icon').classList?.remove('clicked');
+  }
+  // スワイパーの処理
+  const mySwiper = new Swiper('.swiper-container', {
     // オプションパラメータ(一部のみ抜粋)
     loop: true,
     // 最後のスライドまで到達した場合、最初に戻らずに続けてスライド可能にするか。

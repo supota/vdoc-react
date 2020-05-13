@@ -5,6 +5,13 @@ import { Player } from 'vdoc/libs/domain/models/Player';
 
 type IAuthAction = Action<ActionTypes>;
 
+export interface IInitializeLogin extends IAuthAction {
+  type: ActionTypes.INITIALIZE_LOGIN;
+  payload: {
+    isLoggedIn: boolean;
+    user: Player | null;
+  };
+}
 export interface IRequestLogin extends IAuthAction {
   type: ActionTypes.REQUEST_LOGIN;
   payload: {
@@ -21,7 +28,22 @@ export interface ISuccessLogin extends IAuthAction {
 export interface IFailureLogin extends IAuthAction {
   type: ActionTypes.FAILURE_LOGIN;
 }
+export interface IRequestLogout extends IAuthAction {
+  type: ActionTypes.REQUEST_LOGOUT;
+}
+export interface ISuccessLogout extends IAuthAction {
+  type: ActionTypes.SUCCESS_LOGOUT;
+}
+export interface IFailureLogout extends IAuthAction {
+  type: ActionTypes.FAILURE_LOGOUT;
+}
 
+export const initializeLogin = (
+  payload: IInitializeLogin['payload'],
+): IInitializeLogin => ({
+  type: ActionTypes.INITIALIZE_LOGIN,
+  payload: payload,
+});
 export const requestLogin = (
   payload: IRequestLogin['payload'],
 ): IRequestLogin => ({
@@ -37,10 +59,30 @@ export const successLogin = (
 export const failureLogin = (): IFailureLogin => ({
   type: ActionTypes.FAILURE_LOGIN,
 });
+export const requestLogout = (): IRequestLogout => ({
+  type: ActionTypes.REQUEST_LOGOUT,
+});
+export const successLogout = (): ISuccessLogout => ({
+  type: ActionTypes.SUCCESS_LOGOUT,
+});
+export const failureLogout = (): IFailureLogout => ({
+  type: ActionTypes.FAILURE_LOGOUT,
+});
 
 export const actions = {
+  initializeLogin,
   requestLogin,
   successLogin,
   failureLogin,
+  requestLogout,
+  successLogout,
+  failureLogout,
 };
-export type AuthActions = IRequestLogin | ISuccessLogin | IFailureLogin;
+export type AuthActions =
+  | IInitializeLogin
+  | IRequestLogin
+  | ISuccessLogin
+  | IFailureLogin
+  | IRequestLogout
+  | ISuccessLogout
+  | IFailureLogout;

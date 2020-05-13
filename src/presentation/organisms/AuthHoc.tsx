@@ -8,7 +8,7 @@ import { LoginPage } from '../pages/Login';
 const AuthHoc = (props: React.Props<{}>) => {
   const authState = useSelector(authSelectors.selectAll);
   return authState.isLoading ? (
-    <div />
+    <h1>Loading...</h1>
   ) : authState.isLoggedIn && authState.user ? (
     <React.Fragment>{ props.children }</React.Fragment>
   ) : (
