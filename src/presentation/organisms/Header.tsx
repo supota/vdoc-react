@@ -32,7 +32,7 @@ const Header = withRouter(props => {
               >
               <img src={ImageProvider.Icon} alt="" />
               <div className="icon-menu">
-                <a href="">プロフィール編集</a>
+                <a href="/edit">プロフィール編集</a>
                 <a
                   onClick={() => {
                     dispatch(authActions.requestLogout());
