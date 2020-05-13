@@ -19,9 +19,9 @@ export const validation = () => {
       1000,
       '実績は1000文字以内で入力してください',
     ),
-    twitterURL: Yup.string(),
-    facebookURL: Yup.string(),
-    siteURL: Yup.string(),
+    twitterUrl: Yup.string(),
+    facebookUrl: Yup.string(),
+    siteUrl: Yup.string(),
     profileImg: Yup.mixed(),
   });
 };

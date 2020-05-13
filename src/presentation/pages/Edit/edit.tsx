@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { useState } from 'react';
 import {
   Form,
   FormikProps,
   withFormik,
-} from 'formik'
+} from 'formik';
+import moment from 'moment';
 
 import { Player } from 'vdoc/libs/domain/models/Player';
 import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
@@ -13,15 +13,15 @@ import { validation } from './validation';
 import { InputField } from './component/InputField';
 import { Thumb } from './component/Thumb';
 
-interface IFormValues {
+export interface IFormValues {
   name: string;
   phonetic: string;
-  birthday: Date;
+  birthday: string;
   profile: string;
   performances: string;
-  twitterURL: string;
-  facebookURL: string;
-  siteURL: string;
+  twitterUrl: string;
+  facebookUrl: string;
+  siteUrl: string;
   profileImg: File | '';
 }
 type FormProps = IFormValues & {
@@ -36,8 +36,6 @@ const InnerForm = (props: FormikProps<FormProps>) => {
     isSubmitting,
     setFieldValue
   } = props;
-
-  const [profileImgData, setProfileImgData] = useState<File | null>(null);
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -104,10 +102,10 @@ const InnerForm = (props: FormikProps<FormProps>) => {
             title='Twitter URL'
             placeholder='TwitterのURL(あれば)'
             isRequired={false}
-            name='twitterURL'
+            name='twitterUrl'
             type='text'
             as='input'
-            error={errors.twitterURL}
+            error={errors.twitterUrl}
           />
         </li>
         <li>
@@ -115,10 +113,10 @@ const InnerForm = (props: FormikProps<FormProps>) => {
             title='Facebook URL'
             placeholder='FacebookのURL(あれば)'
             isRequired={false}
-            name='facebookURL'
+            name='facebookUrl'
             type='text'
             as='input'
-            error={errors.facebookURL}
+            error={errors.facebookUrl}
           />
         </li>
         <li>
@@ -126,12 +124,13 @@ const InnerForm = (props: FormikProps<FormProps>) => {
             title='Site URL'
             placeholder='サイトのURL(あれば)'
             isRequired={false}
-            name='facebookURL'
+            name='siteUrl'
             type='text'
             as='input'
-            error={errors.siteURL}
+            error={errors.siteUrl}
           />
         </li>
+        {/*
         <li>
           <InputField
             title='プロフィール写真'
@@ -141,8 +140,16 @@ const InnerForm = (props: FormikProps<FormProps>) => {
             type='file'
             as='input'
             error={errors.profileImg}
+            onChange={(e) => {
+              const reader = new FileReader();
+              reader.onload = () => {
+                setFieldValue('profileImg', reader.result);
+              }
+              reader.readAsDataURL(e.target.files![0]);
+            }}
           />
         </li>
+        */}
       </ul>
       <button type="submit">
         確認画面へ
@@ -151,32 +158,32 @@ const InnerForm = (props: FormikProps<FormProps>) => {
   )
 }
 
-const Edit = withFormik<{ player: Player }, FormProps>({
+const Edit = withFormik<
+  {
+    player: Player,
+    handleSubmit: (values: IFormValues) => void
+  },
+  FormProps
+  >
+({
   mapPropsToValues: (props) => {
     const player = props.player;
     return {
       name: player.name,
       phonetic: player.phonetic,
-      birthday: player.birthday,
+      birthday: moment(player.birthday).format('YYYY-MM-DD'),
       profile: player.profile,
       performances: player.performances.join('\n'),
-      twitterURL: player.twitterUrl,
-      facebookURL: player.facebookUrl,
-      siteURL: player.siteUrl,
+      twitterUrl: player.twitterUrl,
+      facebookUrl: player.facebookUrl,
+      siteUrl: player.siteUrl,
       profileImg: '',
       profilePhotoUrl: player.profilePhotoUrl
     }
   },
   validationSchema: validation(),
-  handleSubmit: async (values: IFormValues) => {
-    let newUrl;
-    if (values.profileImg) {
-      console.log(values.profileImg);
-      newUrl = await DomainProvider.imageService.upload(values.profileImg);
-    }
-    const newPlayer = new Player({
-      
-    })
+  handleSubmit: (values: IFormValues, formikBug) => {
+    formikBug.props.handleSubmit(values);
   },
 })(InnerForm);
 
