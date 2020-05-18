@@ -42,7 +42,7 @@ const Header = withRouter(props => {
             </div>
             : <React.Fragment>
                 <Link to="/login">ログイン</Link>
-                <span></span>
+                <span>/</span>
                 <Link to="/form">選手登録</Link>
               </React.Fragment>
         }
