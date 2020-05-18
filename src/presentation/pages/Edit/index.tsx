@@ -45,7 +45,6 @@ const EditPage = withRouter((props) => {
         </h3>
         <Edit
           player={authState.user!}
-          handleSubmit={handleSubmit}
         />
       </main>
     </BaseContainer>

@@ -1,17 +1,14 @@
 import * as React from 'react';
-import {
-  Form,
-  FormikProps,
-  withFormik,
-} from 'formik';
+import { useState } from 'react';
+import { useFormik } from 'formik';
 import moment from 'moment';
 
 import { Player } from 'vdoc/libs/domain/models/Player';
 import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 
 import { validation } from './validation';
-import { InputField } from './component/InputField';
-import { Thumb } from './component/Thumb';
+import { InputItem } from './component/InputItem';
+import { TextareaItem } from './component/TextAreaItem';
 
 export interface IFormValues {
   name: string;
@@ -22,153 +19,23 @@ export interface IFormValues {
   twitterUrl: string;
   facebookUrl: string;
   siteUrl: string;
-  profileImg: File | '';
 }
-type FormProps = IFormValues & {
-  profilePhotoUrl: string;
+interface IInputFile {
+  file: File;
+  data: string;
 }
-
-const InnerForm = (props: FormikProps<FormProps>) => {
-  const {
-    values,
-    errors,
-    handleSubmit,
-    isSubmitting,
-    setFieldValue
-  } = props;
-
-  return (
-    <Form onSubmit={handleSubmit}>
-      <ul>
-        <li>
-          <InputField
-            title='お名前'
-            placeholder='お名前を入力してください'
-            isRequired={true}
-            name='name'
-            type='text'
-            as='input'
-            error={errors.name}
-          />
-        </li>
-        <li>
-          <InputField
-            title='フリガナ'
-            placeholder='フリガナを入力してください'
-            isRequired={true}
-            name='phonetic'
-            type='text'
-            as='input'
-            error={errors.phonetic}
-          />
-        </li>
-        <li>
-          <InputField
-            title='誕生日'
-            placeholder='誕生日を入力してください'
-            isRequired={true}
-            name='birthday'
-            type='date'
-            as='input'
-            error={errors.birthday}
-          />
-        </li>
-        <li>
-          <InputField
-            title='プロフィール'
-            placeholder='自己紹介など、50文字以上1000文字以内で入力してください'
-            isRequired={true}
-            name='profile'
-            type='text'
-            as='textarea'
-            rows={10}
-            error={errors.profile}
-          />
-        </li>
-        <li>
-          <InputField
-            title='実績'
-            placeholder='改行して入力してください。&#13;&#10;例：&#13;&#10;2018年1月1日 マイナースポーツ大阪連盟加入&#13;&#10;2019年1月1日 マイナースポーツ大阪大会準優勝&#13;&#10;2020年1月1日 マイナースポーツ大阪大会東京大会優勝'
-            isRequired={false}
-            name='performances'
-            type='text'
-            as='textarea'
-            rows={10}
-            error={errors.performances}
-          />
-        </li>
-        <li>
-          <InputField
-            title='Twitter URL'
-            placeholder='TwitterのURL(あれば)'
-            isRequired={false}
-            name='twitterUrl'
-            type='text'
-            as='input'
-            error={errors.twitterUrl}
-          />
-        </li>
-        <li>
-          <InputField
-            title='Facebook URL'
-            placeholder='FacebookのURL(あれば)'
-            isRequired={false}
-            name='facebookUrl'
-            type='text'
-            as='input'
-            error={errors.facebookUrl}
-          />
-        </li>
-        <li>
-          <InputField
-            title='Site URL'
-            placeholder='サイトのURL(あれば)'
-            isRequired={false}
-            name='siteUrl'
-            type='text'
-            as='input'
-            error={errors.siteUrl}
-          />
-        </li>
-        {/*
-        <li>
-          <InputField
-            title='プロフィール写真'
-            placeholder=''
-            isRequired={true}
-            name='profileImg'
-            type='file'
-            as='input'
-            error={errors.profileImg}
-            onChange={(e) => {
-              const reader = new FileReader();
-              reader.onload = () => {
-                setFieldValue('profileImg', reader.result);
-              }
-              reader.readAsDataURL(e.target.files![0]);
-            }}
-          />
-        </li>
-        */}
-      </ul>
-      <button type="submit">
-        確認画面へ
-      </button>
-    </Form>
-  )
+type Props = {
+  player: Player;
 }
 
-const Edit = withFormik<
-  {
-    player: Player,
-    handleSubmit: (values: IFormValues) => void
-  },
-  FormProps
-  >
-({
-  mapPropsToValues: (props) => {
-    const player = props.player;
-    return {
+const Edit = (props: Props) => {
+
+  const player = props.player;
+  const [profilePhoto, setprofilePhoto] = useState<IInputFile>();
+
+  const formik = useFormik<IFormValues>({
+    validationSchema: validation,
+    initialValues: {
       name: player.name,
       phonetic: player.phonetic,
       birthday: moment(player.birthday).format('YYYY-MM-DD'),
@@ -177,14 +44,126 @@ const Edit = withFormik<
       twitterUrl: player.twitterUrl,
       facebookUrl: player.facebookUrl,
       siteUrl: player.siteUrl,
-      profileImg: '',
-      profilePhotoUrl: player.profilePhotoUrl
+    },
+    onSubmit: async (values) => {
+      let newProfilePhotoUrl;
+      if (profilePhoto?.file) {
+        newProfilePhotoUrl = await DomainProvider.imageService.upload(profilePhoto.file);
+        console.log(newProfilePhotoUrl);
+      }
+      await DomainProvider.playerRepo.updatePlayer({
+        name: values.name,
+        phonetic: values.phonetic,
+        birthday: moment(values.birthday).toDate(),
+        profile: values.profile,
+        performances: values.performances.trim().split('\n').map(v => v).map(v => v.trim()),
+        twitterUrl: values.twitterUrl,
+        facebookUrl: values.facebookUrl,
+        siteUrl: values.siteUrl,
+        profilePhotoUrl: newProfilePhotoUrl ?? player.profilePhotoUrl
+      });
     }
-  },
-  validationSchema: validation(),
-  handleSubmit: (values: IFormValues, formikBug) => {
-    formikBug.props.handleSubmit(values);
-  },
-})(InnerForm);
+  });
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      <ul>
+        <InputItem
+          name="name"
+          type="text"
+          required
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          label="名前"
+          error={formik.errors.name}
+        />
+        <InputItem
+          name="phonetic"
+          type="text"
+          required
+          value={formik.values.phonetic}
+          onChange={formik.handleChange}
+          label="フリガナ"
+          error={formik.errors.phonetic}
+        />
+        <InputItem
+          name="birthday"
+          type="date"
+          required
+          value={formik.values.birthday.toString()}
+          onChange={formik.handleChange}
+          label="誕生日"
+          error={formik.errors.birthday}
+        />
+        <TextareaItem
+          name="profile"
+          required
+          value={formik.values.profile}
+          onChange={formik.handleChange}
+          label="プロフィール"
+          error={formik.errors.profile}
+          rows={10}
+        />
+        <TextareaItem
+          name="performances"
+          value={formik.values.performances}
+          onChange={formik.handleChange}
+          label="実績"
+          error={formik.errors.performances}
+          rows={10}
+        />
+        <InputItem
+          name="twitterUrl"
+          type="text"
+          value={formik.values.twitterUrl}
+          onChange={formik.handleChange}
+          label="Twitter URL"
+          error={formik.errors.twitterUrl}
+        />
+        <InputItem
+          name="facebookUrl"
+          type="text"
+          value={formik.values.facebookUrl}
+          onChange={formik.handleChange}
+          label="Facebook URL"
+          error={formik.errors.facebookUrl}
+        />
+        <InputItem
+          name="siteUrl"
+          type="text"
+          value={formik.values.siteUrl}
+          onChange={formik.handleChange}
+          label="Site URL"
+          error={formik.errors.siteUrl}
+        />
+        <li>
+          <div className="ttl">
+            <p>プロフィール写真</p>
+            <span>必須</span>
+          </div>
+          <input
+            type="file"
+            onChange={(e) => {
+              const reader = new FileReader();
+              const file = e.target.files![0];
+              reader.onload = () => {
+                setprofilePhoto({
+                  file: file,
+                  data: reader.result as string
+                });
+              }
+              reader.readAsDataURL(file);
+            }}
+          />
+          <img
+            className="preview-img"
+            src={ profilePhoto ? profilePhoto.data : player.profilePhotoUrl }
+            alt=""
+          />
+        </li>
+      </ul>
+      <button type="submit">編集</button>
+    </form>
+  )
+}
 
 export { Edit }
