@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { withRouter, RouteComponentProps } from 'react-router';
 import { useFormik } from 'formik';
 import moment from 'moment';
 
@@ -28,7 +29,7 @@ type Props = {
   player: Player;
 }
 
-const Edit = (props: Props) => {
+const Edit = withRouter((props: Props & RouteComponentProps) => {
 
   const player = props.player;
   const [profilePhoto, setprofilePhoto] = useState<IInputFile>();
@@ -62,6 +63,7 @@ const Edit = (props: Props) => {
         siteUrl: values.siteUrl,
         profilePhotoUrl: newProfilePhotoUrl ?? player.profilePhotoUrl
       });
+      props.history.push('/');
     }
   });
   return (
@@ -164,6 +166,6 @@ const Edit = (props: Props) => {
       <button type="submit">編集</button>
     </form>
   )
-}
+})
 
 export { Edit }
