@@ -9,10 +9,12 @@ import {
   sportsListRootSaga,
   sportsListReducer,
 } from './sportsList';
+import { IUIState, uiReducer } from './ui';
 
 export interface IStore {
   auth: IAuthState;
   sportsList: ISportsListState;
+  ui: IUIState;
 }
 
 const history = createBrowserHistory();
@@ -26,6 +28,7 @@ const configureStore = (initialStore?: IStore): Store => {
     router: connectRouter(history),
     auth: authReducer,
     sportsList: sportsListReducer,
+    ui: uiReducer,
   });
 
   // Storeの作成
