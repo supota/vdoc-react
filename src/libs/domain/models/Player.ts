@@ -13,6 +13,7 @@ class Player extends Entity {
   profilePhotoUrl: string;
   twitterUrl: string;
   facebookUrl: string;
+  instagramUrl: string;
   siteUrl: string;
   sportsID: SportsID;
 
@@ -31,6 +32,7 @@ class Player extends Entity {
     this.profilePhotoUrl = val.profilePhotoUrl ?? this.profilePhotoUrl;
     this.twitterUrl = val.twitterUrl ?? this.twitterUrl;
     this.facebookUrl = val.facebookUrl ?? this.facebookUrl;
+    this.instagramUrl = val.instagramUrl ?? this.instagramUrl;
     this.siteUrl = val.siteUrl ?? this.siteUrl;
   }
 }

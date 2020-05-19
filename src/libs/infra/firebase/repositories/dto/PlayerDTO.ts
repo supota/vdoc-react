@@ -11,6 +11,7 @@ interface IFirestorePlayer {
   profilePhotoUrl: string;
   twitterUrl: string;
   facebookUrl: string;
+  instagramUrl: string;
   siteUrl: string;
   sportsID: string;
 }
@@ -27,6 +28,7 @@ class PlayerDTO implements IFirestorePlayer {
   profilePhotoUrl: string;
   twitterUrl: string;
   facebookUrl: string;
+  instagramUrl: string;
   siteUrl: string;
   sportsID: string;
 
@@ -48,6 +50,7 @@ class PlayerDTO implements IFirestorePlayer {
       profilePhotoUrl: data.profilePhotoUrl,
       twitterUrl: data.twitterUrl,
       facebookUrl: data.facebookUrl,
+      instagramUrl: data.instagramUrl,
       siteUrl: data.siteUrl,
       sportsID: data.sportsID,
     });
@@ -65,6 +68,7 @@ class PlayerDTO implements IFirestorePlayer {
       profilePhotoUrl: this.profilePhotoUrl,
       twitterUrl: this.twitterUrl,
       facebookUrl: this.facebookUrl,
+      instagramUrl: this.instagramUrl,
       siteUrl: this.siteUrl,
       sportsID: this.sportsID,
     };

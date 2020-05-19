@@ -21,6 +21,7 @@ export interface IFormValues {
   performances: string;
   twitterUrl: string;
   facebookUrl: string;
+  instagramUrl: string;
   siteUrl: string;
 }
 interface IInputFile {
@@ -46,14 +47,13 @@ const Edit = withRouter((props: Props & RouteComponentProps) => {
       performances: player.performances.join('\n'),
       twitterUrl: player.twitterUrl,
       facebookUrl: player.facebookUrl,
+      instagramUrl: player.instagramUrl,
       siteUrl: player.siteUrl,
     },
     onSubmit: async (values) => {
       let newProfilePhotoUrl;
       if (profilePhoto?.file) {
-        console.log('aaa');
         newProfilePhotoUrl = await DomainProvider.imageService.upload(profilePhoto.file);
-        console.log(newProfilePhotoUrl);
       }
       player.partialUpdate({
         name: values.name,
@@ -63,15 +63,15 @@ const Edit = withRouter((props: Props & RouteComponentProps) => {
         performances: values.performances.trim().split('\n').map(v => v).map(v => v.trim()),
         twitterUrl: values.twitterUrl,
         facebookUrl: values.facebookUrl,
+        instagramUrl: values.instagramUrl,
         siteUrl: values.siteUrl,
         profilePhotoUrl: newProfilePhotoUrl
       });
-      console.log(player);
       const newPlayer = await DomainProvider.playerRepo.updatePlayer(player);
       authActions.updateUser({
         newUser: newPlayer
       });
-      props.history.push('/');
+      // props.history.push('/');
     }
   });
   return (
@@ -136,6 +136,14 @@ const Edit = withRouter((props: Props & RouteComponentProps) => {
           onChange={formik.handleChange}
           label="Facebook URL"
           error={formik.errors.facebookUrl}
+        />
+        <InputItem
+          name="instagramUrl"
+          type="text"
+          value={formik.values.instagramUrl}
+          onChange={formik.handleChange}
+          label="Instagram URL"
+          error={formik.errors.instagramUrl}
         />
         <InputItem
           name="siteUrl"

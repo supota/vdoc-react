@@ -17,6 +17,7 @@ class PlayerAssembler {
       profilePhotoUrl: player.profilePhotoUrl,
       twitterUrl: player.twitterUrl,
       facebookUrl: player.facebookUrl,
+      instagramUrl: player.instagramUrl,
       siteUrl: player.siteUrl,
       sportsID: player.sportsID.value,
     });
@@ -35,6 +36,7 @@ class PlayerAssembler {
       profilePhotoUrl: dto.profilePhotoUrl,
       twitterUrl: dto.twitterUrl,
       facebookUrl: dto.facebookUrl,
+      instagramUrl: dto.instagramUrl,
       siteUrl: dto.siteUrl,
       sportsID: new SportsID(dto.sportsID),
     });
