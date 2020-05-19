@@ -1,6 +1,5 @@
 /* player */
 .player section {
-
   &:before,
   &:after {
     display: none;
@@ -136,6 +135,9 @@
       margin-left: 5px;
       line-height: 1;
     }
+  }
+  #profile {
+    word-wrap: break-word;
   }
   @media screen and (max-width: 896px) {
     margin-left: 30px;
