@@ -17,10 +17,13 @@ import { ConfirmationPage } from './presentation/pages/Confirmation';
 import { MyPage } from './presentation/pages/Mypage';
 import { NotFoundPage } from './presentation/pages/NotFound';
 
+import { Loading } from './presentation/organisms/Loading';
+
 import './public/scss/style.scss';
 
 ReactDOM.render(
   <Provider store={store}>
+    <Loading />
     <ConnectedRouter history={history}>
       <Switch>
         <Route exact path="/" component={TopPage} />

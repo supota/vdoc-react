@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { withRouter, RouteComponentProps } from 'react-router';
 import { useFormik } from 'formik';
 import moment from 'moment';
@@ -8,6 +9,7 @@ import { Player } from 'vdoc/libs/domain/models/Player';
 import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 
 import { authActions } from 'vdoc/modules/auth';
+import { uiActions } from 'vdoc/modules/ui';
 
 import { validation } from './validation';
 import { InputItem } from './component/InputItem';
@@ -35,6 +37,7 @@ type Props = {
 const Edit = withRouter((props: Props & RouteComponentProps) => {
 
   const player = props.player;
+  const dispatch = useDispatch();
   const [profilePhoto, setprofilePhoto] = useState<IInputFile>();
 
   const formik = useFormik<IFormValues>({
@@ -51,10 +54,14 @@ const Edit = withRouter((props: Props & RouteComponentProps) => {
       siteUrl: player.siteUrl,
     },
     onSubmit: async (values) => {
+      // Enable Loading
+      dispatch(uiActions.toggleLoading());
+      // Upload image if exists
       let newProfilePhotoUrl;
       if (profilePhoto?.file) {
         newProfilePhotoUrl = await DomainProvider.imageService.upload(profilePhoto.file);
       }
+      // Update user partially
       player.partialUpdate({
         name: values.name,
         phonetic: values.phonetic,
@@ -67,11 +74,16 @@ const Edit = withRouter((props: Props & RouteComponentProps) => {
         siteUrl: values.siteUrl,
         profilePhotoUrl: newProfilePhotoUrl
       });
+      // Update firestore user
       const newPlayer = await DomainProvider.playerRepo.updatePlayer(player);
+      // Update local user immediately
       authActions.updateUser({
         newUser: newPlayer
       });
-      // props.history.push('/');
+      // Disable Loading
+      dispatch(uiActions.toggleLoading());
+      // Route to Top
+      props.history.push('/');
     }
   });
   return (
