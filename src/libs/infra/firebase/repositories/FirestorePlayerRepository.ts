@@ -7,8 +7,6 @@ import { PlayerRepository } from 'vdoc/libs/domain/repositories/PlayerRepository
 import { PlayerAssembler } from 'vdoc/libs/infra/firebase/repositories/assembler/PlayerAssembler';
 import { PlayerDTO } from 'vdoc/libs/infra/firebase/repositories/dto/PlayerDTO';
 
-type IPlayer = Player;
-
 class FirestorePlayerRepository extends PlayerRepository {
   async getAllPlayers(): Promise<Player[]> {
     const snap = await firebase
@@ -58,13 +56,16 @@ class FirestorePlayerRepository extends PlayerRepository {
       .add(dto.toJson());
   }
 
-  async updatePlayer(values: Partial<IPlayer>): Promise<void> {
+  async updatePlayer(player: Player): Promise<Player> {
     const uid = firebase.auth().currentUser?.uid;
+    const dto = PlayerAssembler.encode(player);
     await firebase
       .firestore()
       .collection(CollectionNames.players)
       .doc(uid)
-      .update(values);
+      .update(dto.toJson());
+    const newPlayer = await this.getPlayer(new PlayerID(uid!));
+    return newPlayer;
   }
 }
 

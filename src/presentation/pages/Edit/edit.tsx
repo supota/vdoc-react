@@ -7,6 +7,8 @@ import moment from 'moment';
 import { Player } from 'vdoc/libs/domain/models/Player';
 import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 
+import { authActions } from 'vdoc/modules/auth';
+
 import { validation } from './validation';
 import { InputItem } from './component/InputItem';
 import { TextareaItem } from './component/TextAreaItem';
@@ -49,10 +51,11 @@ const Edit = withRouter((props: Props & RouteComponentProps) => {
     onSubmit: async (values) => {
       let newProfilePhotoUrl;
       if (profilePhoto?.file) {
+        console.log('aaa');
         newProfilePhotoUrl = await DomainProvider.imageService.upload(profilePhoto.file);
         console.log(newProfilePhotoUrl);
       }
-      await DomainProvider.playerRepo.updatePlayer({
+      player.partialUpdate({
         name: values.name,
         phonetic: values.phonetic,
         birthday: moment(values.birthday).toDate(),
@@ -61,7 +64,12 @@ const Edit = withRouter((props: Props & RouteComponentProps) => {
         twitterUrl: values.twitterUrl,
         facebookUrl: values.facebookUrl,
         siteUrl: values.siteUrl,
-        profilePhotoUrl: newProfilePhotoUrl ?? player.profilePhotoUrl
+        profilePhotoUrl: newProfilePhotoUrl
+      });
+      console.log(player);
+      const newPlayer = await DomainProvider.playerRepo.updatePlayer(player);
+      authActions.updateUser({
+        newUser: newPlayer
       });
       props.history.push('/');
     }

@@ -30,7 +30,7 @@ const Header = withRouter(props => {
                   document.getElementById('icon')?.classList.add('clicked');
                 }}
               >
-              <img src={ImageProvider.Icon} alt="" />
+              <img src={authState.user?.profilePhotoUrl} alt="" />
               <div className="icon-menu">
                 <a href="/edit">プロフィール編集</a>
                 <a

@@ -58,6 +58,11 @@ export const reducer = (
         ...state,
         isError: true,
       };
+    case ActionTypes.UPDATE_USER:
+      return {
+        ...state,
+        user: action.payload.newUser,
+      };
     default:
       return state;
   }

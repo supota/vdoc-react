@@ -37,6 +37,12 @@ export interface ISuccessLogout extends IAuthAction {
 export interface IFailureLogout extends IAuthAction {
   type: ActionTypes.FAILURE_LOGOUT;
 }
+export interface IUpdateUser extends IAuthAction {
+  type: ActionTypes.UPDATE_USER;
+  payload: {
+    newUser: Player;
+  };
+}
 
 export const initializeLogin = (
   payload: IInitializeLogin['payload'],
@@ -68,6 +74,10 @@ export const successLogout = (): ISuccessLogout => ({
 export const failureLogout = (): IFailureLogout => ({
   type: ActionTypes.FAILURE_LOGOUT,
 });
+export const updateUser = (payload: IUpdateUser['payload']): IUpdateUser => ({
+  type: ActionTypes.UPDATE_USER,
+  payload: payload,
+});
 
 export const actions = {
   initializeLogin,
@@ -77,6 +87,7 @@ export const actions = {
   requestLogout,
   successLogout,
   failureLogout,
+  updateUser,
 };
 export type AuthActions =
   | IInitializeLogin
@@ -85,4 +96,5 @@ export type AuthActions =
   | IFailureLogin
   | IRequestLogout
   | ISuccessLogout
-  | IFailureLogout;
+  | IFailureLogout
+  | IUpdateUser;

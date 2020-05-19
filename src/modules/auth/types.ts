@@ -6,4 +6,5 @@ export enum ActionTypes {
   REQUEST_LOGOUT = 'auth/REQUEST_LOGOUT',
   SUCCESS_LOGOUT = 'auth/SUCCESS_LOGOUT',
   FAILURE_LOGOUT = 'auth/FAILURE_LOGOUT',
+  UPDATE_USER = 'auth/UPDATE_USER',
 }

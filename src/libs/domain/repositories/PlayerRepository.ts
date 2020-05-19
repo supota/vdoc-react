@@ -1,8 +1,6 @@
 import { Player, PlayerID } from 'vdoc/libs/domain/models/Player';
 import { SportsID } from 'vdoc/libs/domain/models/Sports';
 
-type IPlayer = Player;
-
 abstract class PlayerRepository {
   /**
    * 全てのプレイヤーを取得する
@@ -35,7 +33,7 @@ abstract class PlayerRepository {
    *
    * @param player 更新したいプレイヤーエンティティ
    */
-  abstract async updatePlayer(values: Partial<IPlayer>): Promise<void>;
+  abstract async updatePlayer(values: Player): Promise<Player>;
 }
 
 export { PlayerRepository };

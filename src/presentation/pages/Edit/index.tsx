@@ -9,29 +9,6 @@ import { Edit, IFormValues } from './edit';
 import { PlayerRepository } from 'vdoc/libs/domain/repositories/PlayerRepository';
 
 const EditPage = withRouter((props) => {
-
-  const handleSubmit = (values: IFormValues): void => {
-    /*
-    let newUrl;
-    if (values.profileImg) {
-      console.log(typeof values.profileImg);
-      console.log(values.profileImg);
-      newUrl = await DomainProvider.imageService.upload(values.profileImg);
-    }
-    */
-    DomainProvider.playerRepo.updatePlayer({
-      name: values.name,
-      phonetic: values.phonetic,
-      birthday: moment(values.birthday).toDate(),
-      profile: values.profile,
-      performances: values.performances.trim().split('\n').map(v => v.trim()).map(v => v),
-      twitterUrl: values.twitterUrl,
-      facebookUrl: values.facebookUrl,
-      siteUrl: values.siteUrl,
-    });
-    props.history.push('/');
-  }
-
   const authState = useSelector(authSelectors.selectAll);
   if (!authState.user) {
     return <div />;
