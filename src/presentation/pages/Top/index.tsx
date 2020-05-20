@@ -24,7 +24,6 @@ const TopPage = () => {
     // Todo Loading画面に
     return <div />;
   }
-  console.log(players);
 
   return (
     <BaseContainer>
