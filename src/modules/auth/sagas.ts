@@ -6,6 +6,8 @@ import { ActionTypes } from './types';
 import { Player, PlayerID } from 'vdoc/libs/domain/models/Player';
 import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 
+import { uiActions } from '../ui';
+
 function* initializeAuthState() {
   try {
     const loginUser: firebase.User | null = yield call(
@@ -33,6 +35,7 @@ function* initializeAuthState() {
 function* handleLogin() {
   while (true) {
     const action: IRequestLogin = yield take(ActionTypes.REQUEST_LOGIN);
+    yield put(uiActions.toggleLoading());
     try {
       const payload = action.payload;
       const user = yield call(
@@ -49,6 +52,7 @@ function* handleLogin() {
       console.log(e);
       yield put(actions.failureLogin());
     }
+    yield put(uiActions.toggleLoading());
   }
 }
 function* handleLogout() {

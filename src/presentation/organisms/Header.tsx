@@ -27,7 +27,9 @@ const Header = withRouter(props => {
             ? <div
                 id="icon"
                 onClick={() => {
-                  document.getElementById('icon')?.classList.add('clicked');
+                  if (document.getElementById('icon')) {
+                    document.getElementById('icon')!.classList.add('clicked');
+                  }
                 }}
               >
               <img src={authState.user?.profilePhotoUrl} alt="" />

@@ -77,9 +77,9 @@ const Edit = withRouter((props: Props & RouteComponentProps) => {
       // Update firestore user
       const newPlayer = await DomainProvider.playerRepo.updatePlayer(player);
       // Update local user immediately
-      authActions.updateUser({
+      dispatch(authActions.updateUser({
         newUser: newPlayer
-      });
+      }));
       // Disable Loading
       dispatch(uiActions.toggleLoading());
       // Route to Top
