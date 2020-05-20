@@ -38,6 +38,7 @@ const Header = withRouter(props => {
                 <a
                   onClick={() => {
                     dispatch(authActions.requestLogout());
+                    props.history.push('/');
                   }}
                 >ログアウト</a>
               </div>
