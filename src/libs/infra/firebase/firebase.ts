@@ -2,7 +2,7 @@ import Firebase from 'firebase';
 
 let firebaseConfig: Record<string, string> = {};
 
-switch (process.env.NODE_ENV) {
+switch (process.env.FB_ENV) {
   case 'development':
     firebaseConfig = {
       apiKey: process.env.FB_DEV_API_KEY as string,

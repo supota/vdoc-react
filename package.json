@@ -5,10 +5,11 @@
   "author": "supota",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "NODE_ENV=production webpack --mode production",
-    "dev": "NODE_ENV=development webpack-dev-server",
-    "deploy:dev": "firebase use development && rm -rf ./dist && yarn build && firebase deploy",
-    "deploy:prod": "firebase use production && rm -rf ./dist && yarn build && firebase deploy",
+    "build:dev": "FB_ENV=development NODE_ENV=production webpack",
+    "build:prod": "FB_ENV=production NODE_ENV=production webpack",
+    "dev": "FB_ENV=development NODE_ENV=development webpack-dev-server",
+    "deploy:dev": "firebase use development && rm -rf ./dist && yarn build:dev && firebase deploy",
+    "deploy:prod": "firebase use production && rm -rf ./dist && yarn build:prod && firebase deploy",
     "lint": "eslint --fix src --ext .ts --ext .tsx"
   },
   "devDependencies": {

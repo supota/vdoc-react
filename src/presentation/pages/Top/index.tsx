@@ -41,21 +41,21 @@ const TopPage = () => {
             <br />
             あなたの応援が、誰かを励まし、誰かの人生を変えるきっかけになる。
           </p>
-          <Link data-scroll className="pre-btn" to="/form">
+          <a target="_blank" className="pre-btn" href="https://forms.gle/VahQaqNzps5XtBVx9">
             選手登録はこちら
-          </Link>
+          </a>
         </div>
         <section className="-purple">
           <h2>今注目のアスリート</h2>
           <ul className="player-list">
             {
               players.map(player => (
-                <Link to={'/players/' + player.id.value}>
-                  <li className="player-box" key={player.id.value}>
+                <li className="player-box" key={player.id.value}>
+                  <Link to={'/players/' + player.id.value}>
                     <img src={player.profilePhotoUrl} alt="" className="icon" />
                     <p className="name">{player.name}</p>
-                  </li>
-                </Link>
+                  </Link>
+                </li>
               ))
             }
           </ul>
@@ -78,7 +78,7 @@ const TopPage = () => {
         <section className="-purple">
           <h2>いつも使っているSNSのように</h2>
           <div className="comment-box">
-            <li className="player-box">
+            <li className="player-box" key="example">
               <img className="icon" src={ImageProvider.Icon} alt="" />
               <p className="name">田中太郎</p>
             </li>
@@ -93,7 +93,7 @@ const TopPage = () => {
             </p>
           </div>
           <div className="comment-box -reverse">
-            <li className="player-box">
+            <li className="player-box" key="example-2">
               <img className="icon" src={ImageProvider.Icon} alt="" />
               <p className="name">田中太郎</p>
             </li>

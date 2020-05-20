@@ -45,7 +45,7 @@ const Header = withRouter(props => {
             : <React.Fragment>
                 <Link to="/login">ログイン</Link>
                 <span>/</span>
-                <Link to="/form">選手登録</Link>
+                <a target="_blank" href="https://forms.gle/VahQaqNzps5XtBVx9">選手登録</a>
               </React.Fragment>
         }
       </div>
