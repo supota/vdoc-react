@@ -4,6 +4,7 @@ import { CollectionNames } from 'vdoc/libs/infra/firebase/CollectionNames';
 import { Player, PlayerID } from 'vdoc/libs/domain/models/Player';
 import { SportsID } from 'vdoc/libs/domain/models/Sports';
 import { PlayerRepository } from 'vdoc/libs/domain/repositories/PlayerRepository';
+import { UtilsProvider } from 'vdoc/libs/application/UtilsProvider';
 import { PlayerAssembler } from 'vdoc/libs/infra/firebase/repositories/assembler/PlayerAssembler';
 import { PlayerDTO } from 'vdoc/libs/infra/firebase/repositories/dto/PlayerDTO';
 
@@ -46,6 +47,18 @@ class FirestorePlayerRepository extends PlayerRepository {
       return PlayerAssembler.decode(dto);
     });
     return players;
+  }
+
+  async getPlayersRandamBasedNum(num: number): Promise<Player[]> {
+    const snap = await firebase
+      .firestore()
+      .collection(CollectionNames.players)
+      .get();
+    const players = snap.docs.map(doc => {
+      const dto = PlayerDTO.fromDoc(doc);
+      return PlayerAssembler.decode(dto);
+    });
+    return UtilsProvider.getRandamNumArray(players, num);
   }
 
   async postPlayer(player: Player): Promise<void> {

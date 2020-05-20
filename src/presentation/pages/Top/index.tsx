@@ -1,16 +1,30 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { sportsListSelectors } from 'vdoc/modules/sportsList';
+import { Player } from 'vdoc/libs/domain/models/Player';
 import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
+import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
 const TopPage = () => {
+
+  const [players, setPlayers] = useState<Player[] | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      const players = await DomainProvider.playerRepo.getPlayersRandamBasedNum(5);
+      setPlayers(players);
+    })();
+  }, []);
+
   const sportsListState = useSelector(sportsListSelectors.selectAll);
-  if (sportsListState.isLoading) {
+  if (sportsListState.isLoading || players === null) {
     // Todo Loading画面に
     return <div />;
   }
+  console.log(players);
 
   return (
     <BaseContainer>
@@ -35,27 +49,16 @@ const TopPage = () => {
         <section className="-purple">
           <h2>今注目のアスリート</h2>
           <ul className="player-list">
-            <li className="player-box">
-              <img className="icon" src={ImageProvider.Icon} alt="" />
-              <p className="name">田中太郎</p>
-            </li>
-            <li className="player-box">
-              <img className="icon" src={ImageProvider.Icon} alt="" />
-              <p className="name">田中太郎</p>
-            </li>
-            <li className="player-box">
-              <img className="icon" src={ImageProvider.Icon} alt="" />
-              <p className="name">田中太郎</p>
-            </li>
-            <li className="player-box">
-              <img className="icon" src={ImageProvider.Icon} alt="" />
-              <p className="name">田中太郎</p>
-            </li>
-            <li className="player-box">
-              <img className="icon" src={ImageProvider.Arrow} alt="" />
-              <p className="name">もっと見る</p>
-            </li>
-            <li className="player-box"></li>
+            {
+              players.map(player => (
+                <Link to={'/players/' + player.id.value}>
+                  <li className="player-box" key={player.id.value}>
+                    <img src={player.profilePhotoUrl} alt="" className="icon" />
+                    <p className="name">{player.name}</p>
+                  </li>
+                </Link>
+              ))
+            }
           </ul>
         </section>
         <section className="-white">

@@ -22,6 +22,13 @@ abstract class PlayerRepository {
   abstract async getPlayerFromSports(sportsID: SportsID): Promise<Player[]>;
 
   /**
+   * プレイヤーを指定した数ランダムに取得する
+   *
+   * @param num 取得するプレイヤーの数
+   */
+  abstract async getPlayersRandamBasedNum(num: number): Promise<Player[]>;
+
+  /**
    * プレイヤーを作成する
    *
    * @param player 作成したいプレイヤーエンティティ
