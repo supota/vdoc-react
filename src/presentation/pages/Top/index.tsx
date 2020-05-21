@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+import { withRouter } from 'react-router';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { sportsListSelectors } from 'vdoc/modules/sportsList';
@@ -8,7 +9,7 @@ import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
 import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
-const TopPage = () => {
+const TopPage = withRouter((props) => {
 
   const [players, setPlayers] = useState<Player[] | null>(null);
 
@@ -50,11 +51,15 @@ const TopPage = () => {
           <ul className="player-list">
             {
               players.map(player => (
-                <li className="player-box" key={player.id.value}>
-                  <Link to={'/players/' + player.id.value}>
-                    <img src={player.profilePhotoUrl} alt="" className="icon" />
-                    <p className="name">{player.name}</p>
-                  </Link>
+                <li
+                  className="player-box"
+                  key={player.id.value}
+                  onClick={() => {
+                    props.history.push(`/players/${player.id.value}`)
+                  }}
+                >
+                  <img src={player.profilePhotoUrl} alt="" className="icon" />
+                  <p className="name">{player.name}</p>
                 </li>
               ))
             }
@@ -68,7 +73,7 @@ const TopPage = () => {
                 <li className="tag" key={sports.id.value}>
                   <Link to={'/sports/' + sports.id.value}>
                     <span></span>
-                    { sports.name }
+                    {sports.name}
                   </Link>
                 </li>
               );
@@ -117,6 +122,6 @@ const TopPage = () => {
       </main>
     </BaseContainer>
   );
-};
+});
 
 export { TopPage };
