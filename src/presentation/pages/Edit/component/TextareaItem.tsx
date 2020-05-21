@@ -23,7 +23,7 @@ const TextareaItem = (props: Props) => {
         onChange={props.onChange}
         rows={props.rows}
       />
-      {props.error}
+      <p className="error-m">{props.error}</p>
     </li>
   )
 }

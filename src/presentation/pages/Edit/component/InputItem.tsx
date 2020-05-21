@@ -24,7 +24,7 @@ const InputItem = (props: Props) => {
         defaultValue={props.value}
         onChange={props.onChange}
       />
-      {props.error}
+      <p className="error-m">{props.error}</p>
     </li>
   )
 }
