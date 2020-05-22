@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+import { withRouter } from 'react-router';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { sportsListSelectors } from 'vdoc/modules/sportsList';
@@ -8,7 +9,7 @@ import { ImageProvider } from 'vdoc/libs/application/ImageProvider';
 import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 import { BaseContainer } from 'vdoc/presentation/organisms/BaseContainer';
 
-const TopPage = () => {
+const TopPage = withRouter((props) => {
 
   const [players, setPlayers] = useState<Player[] | null>(null);
 
@@ -69,7 +70,7 @@ const TopPage = () => {
                 <li className="tag" key={sports.id.value}>
                   <Link to={'/sports/' + sports.id.value}>
                     <span></span>
-                    { sports.name }
+                    {sports.name}
                   </Link>
                 </li>
               );
@@ -106,6 +107,6 @@ const TopPage = () => {
       </main>
     </BaseContainer>
   );
-};
+});
 
 export { TopPage };
