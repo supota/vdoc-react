@@ -36,6 +36,7 @@ const NonRoutePlayerList = (props: IProps) => {
 
   return (
     <ul className="player-list" id="player-list">
+
       {players.map(player => {
         return (
           <li
@@ -52,6 +53,9 @@ const NonRoutePlayerList = (props: IProps) => {
           </li>
         );
       })}
+      <li className="player-box"></li>
+      <li className="player-box"></li>
+      <li className="player-box"></li>
     </ul>
   );
 };

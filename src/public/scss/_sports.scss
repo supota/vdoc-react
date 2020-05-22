@@ -10,13 +10,13 @@
 
 .key-visual {
   color: white;
-  padding: 50px 3% 50px 3%;
+  padding: 50px calc(50vw - 448px);
   margin-top: 62px;
   background-image: url(../img/corfball/key.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-  width: 94%;
+  width: 896px;
 
   >.name {
     line-height: 2;
@@ -32,52 +32,33 @@
   &:after {
     display: none;
   }
+  @media screen and (max-width: 896px) {
+    width: 480px;
+    padding: 50px calc(50vw - 240px);
+  }
+  @media screen and (max-width: 480px) {
+    width: 280px;
+    padding: 50px calc(50vw - 140px);
+  }
 }
 
 .newsbox {
-
   margin: auto;
-  width: 94%;
+  width: 896px;
+  h3 {
+    margin-left: 20px;
+  }
+  @media screen and (max-width: 896px) {
+    width: 480px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 280px;
+  }
 }
 
 .sports .player-list {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   margin: 0 auto;
   padding: 0 0 30px 0;
-  width: 100%;
-
-  >.player-box {
-    width: calc((100% / 5) - 40px);
-    margin: 20px 20px;
-
-    img {
-      width: 125px;
-    }
-  }
-
-  @media screen and (max-width: 896px) {
-    >.player-box {
-      width: calc((100% / 4) - 40px);
-      margin: 10px 20px;
-    }
-  }
-
-  @media screen and (max-width: 700px) {
-    >.player-box {
-      width: calc((100% / 3) - 40px);
-      margin: 10px 20px;
-
-      img {
-        width: 100px;
-      }
-    }
-  }
-
-  @media screen and (max-width: 480px) {
-    >.player-box {
-      width: calc((100% / 2) - 40px);
-    }
-  }
 }
