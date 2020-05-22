@@ -51,18 +51,15 @@ const TopPage = withRouter((props) => {
           <ul className="player-list">
             {
               players.map(player => (
-                <li
-                  className="player-box"
-                  key={player.id.value}
-                  onClick={() => {
-                    props.history.push(`/players/${player.id.value}`)
-                  }}
-                >
-                  <img src={player.profilePhotoUrl} alt="" className="icon" />
-                  <p className="name">{player.name}</p>
+                <li className="player-box" key={player.id.value}>
+                  <Link to={'/players/' + player.id.value} className="icon">
+                    <img src={player.profilePhotoUrl} alt="" />
+                  </Link>
+                  <Link to={'/players/' + player.id.value} className="name">{player.name}</Link>
                 </li>
               ))
             }
+            <li className="player-box"></li>
           </ul>
         </section>
         <section className="-white">
@@ -81,35 +78,23 @@ const TopPage = withRouter((props) => {
           </ul>
         </section>
         <section className="-purple">
-          <h2>いつも使っているSNSのように</h2>
+          <h2>ユーザーの声</h2>
           <div className="comment-box">
             <li className="player-box" key="example">
               <img className="icon" src={ImageProvider.Icon} alt="" />
-              <p className="name">田中太郎</p>
+              <p className="name"></p>
             </li>
             <p className="comment">
-              ここにサンプルテキスト
-              <br />
-              ここにサンプルテキスト
-              <br />
-              ここにサンプルテキスト
-              <br />
-              ここにサンプルテキスト
+              一目で今までの活動が分かるページが作れたのでとても良かったです！
             </p>
           </div>
           <div className="comment-box -reverse">
             <li className="player-box" key="example-2">
               <img className="icon" src={ImageProvider.Icon} alt="" />
-              <p className="name">田中太郎</p>
+              <p className="name"></p>
             </li>
             <p className="comment">
-              ここにサンプルテキスト
-              <br />
-              ここにサンプルテキスト
-              <br />
-              ここにサンプルテキスト
-              <br />
-              ここにサンプルテキスト
+              興味のあったマイナースポーツに取り組むアスリートを、簡単に見つけることができました。
             </p>
           </div>
         </section>
