@@ -139,13 +139,13 @@ section {
     position: relative;
     cursor: pointer;
     display: block;
-    object-fit: cover;
     overflow: hidden;
     border-radius: 200px;
     @media screen and (max-width: 896px) {
       height: 100px;
     }
     img {
+      object-fit: cover;
       width: 100%;
       min-width: 100%;
       min-height: 100%;

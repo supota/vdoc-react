@@ -28,12 +28,12 @@ header {
     position: relative;
     cursor: pointer;
     display: block;
-    object-fit: cover;
     overflow: hidden;
     border-radius: 100px;
     width: 40px;
     height: 40px;
     img {
+      object-fit: cover;
       width: 100%;
       min-width: 100%;
       min-height: 100%;
