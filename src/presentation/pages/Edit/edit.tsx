@@ -67,7 +67,7 @@ const Edit = withRouter((props: Props & RouteComponentProps) => {
         phonetic: values.phonetic,
         birthday: moment(values.birthday).toDate(),
         profile: values.profile,
-        performances: values.performances.trim().split('\n').map(v => v).map(v => v.trim()),
+        performances: values.performances.trim().split('\n').filter(v => v).map(v => v.trim()),
         twitterUrl: values.twitterUrl,
         facebookUrl: values.facebookUrl,
         instagramUrl: values.instagramUrl,

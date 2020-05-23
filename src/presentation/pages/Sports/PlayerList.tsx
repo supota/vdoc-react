@@ -6,6 +6,7 @@ import { DomainProvider } from 'vdoc/libs/application/DomainProvider';
 
 import { Player } from 'vdoc/libs/domain/models/Player';
 import { Sports } from 'vdoc/libs/domain/models/Sports';
+import {Link} from "react-router-dom";
 
 interface IProps extends RouteComponentProps<{}> {
   sports: Sports;
@@ -35,6 +36,7 @@ const NonRoutePlayerList = (props: IProps) => {
 
   return (
     <ul className="player-list" id="player-list">
+
       {players.map(player => {
         return (
           <li
@@ -44,15 +46,16 @@ const NonRoutePlayerList = (props: IProps) => {
               props.history.push(`/players/${player.id.value}`);
             }}
           >
-            <img className="icon" src={player.profilePhotoUrl}></img>
-            <p className="name">
-              {player.name}
-              <br />
-              {player.phonetic}
-            </p>
+            <Link to={'/players/' + player.id.value} className="icon">
+              <img src={player.profilePhotoUrl} alt="" />
+            </Link>
+            <Link to={'/players/' + player.id.value} className="name">{player.name}</Link>
           </li>
         );
       })}
+      <li className="player-box"></li>
+      <li className="player-box"></li>
+      <li className="player-box"></li>
     </ul>
   );
 };

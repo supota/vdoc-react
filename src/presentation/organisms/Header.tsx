@@ -34,13 +34,14 @@ const Header = withRouter(props => {
               >
               <img src={authState.user?.profilePhotoUrl} alt="" />
               <div className="icon-menu">
-                <a href="/edit">プロフィール編集</a>
-                <a
+                <Link to={`/players/${authState.user?.id.value}`}>マイページ</Link>
+                <Link to="/edit">プロフィール編集</Link>
+                <Link
+                  to="/"
                   onClick={() => {
                     dispatch(authActions.requestLogout());
-                    props.history.push('/');
                   }}
-                >ログアウト</a>
+                >ログアウト</Link>
               </div>
             </div>
             : <React.Fragment>
