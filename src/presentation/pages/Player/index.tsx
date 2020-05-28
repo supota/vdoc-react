@@ -46,21 +46,34 @@ const PlayerPage: React.FC<IProps> = props => {
               id="player-img"
             />
             <ul className="sns-share">
-              <li key="facebook">
-                <a href={player.facebookUrl} id="facebook" target="_blank">
-                  <img src={ImageProvider.Facebook} alt="" />
-                </a>
-              </li>
-              <li key="twitter">
-                <a href={player.twitterUrl} id="twitter" target="_blank">
-                  <img src={ImageProvider.Twitter} alt="" />
-                </a>
-              </li>
-              <li key="site">
-                <a href={player.siteUrl} id="site" target="_blank">
-                  <img src={ImageProvider.Link} alt="" />
-                </a>
-              </li>
+              {player.facebookUrl ?
+                <li key="facebook">
+                  <a href={player.facebookUrl} id="facebook" target="_blank">
+                    <img src={ImageProvider.Facebook} alt="" />
+                  </a>
+                </li>
+                : null}
+              {player.twitterUrl ?
+                <li key="twitter">
+                  <a href={player.twitterUrl} id="twitter" target="_blank">
+                    <img src={ImageProvider.Twitter} alt="" />
+                  </a>
+                </li>
+                : null}
+              {player.InstagramUrl ?
+                <li key="Instagram">
+                  <a href={player.InstagramUrl} id="twitter" target="_blank">
+                    <img src={ImageProvider.Instagram} alt="" />
+                  </a>
+                </li>
+                : null}
+              {player.siteUrl ?
+                <li key="site">
+                  <a href={player.siteUrl} id="site" target="_blank">
+                    <img src={ImageProvider.Link} alt="" />
+                  </a>
+                </li>
+                : null}
             </ul>
           </div>
           <div className="profile-box">

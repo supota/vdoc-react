@@ -11,6 +11,9 @@ import Birthday from 'vdoc/public/img/birthday.png';
 import Facebook from 'vdoc/public/img/sns/facebook.png';
 import Link from 'vdoc/public/img/sns/link.png';
 import Twitter from 'vdoc/public/img/sns/twitter.png';
+import Instagram from 'vdoc/public/img/sns/Instagram.png';
+
+import Card from 'vdoc/public/img/card.png';
 
 // Provide images
 class ImageProvider {
@@ -27,6 +30,8 @@ class ImageProvider {
   static Facebook = Facebook;
   static Link = Link;
   static Twitter = Twitter;
+  static Instagram = Instagram;
+  static Card = Card;
 }
 
 export { ImageProvider };
