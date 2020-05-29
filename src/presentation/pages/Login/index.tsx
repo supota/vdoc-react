@@ -54,6 +54,7 @@ const LoginPage = withRouter(props => {
                 placeholder="パスワードを入力してください"
                 onChange={handlePassword}
               />
+              {state.isError ? <p className="error-m">ログインに失敗しました</p> : null}
             </li>
           </ul>
           <button
