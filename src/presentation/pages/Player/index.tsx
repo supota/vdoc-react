@@ -60,9 +60,9 @@ const PlayerPage: React.FC<IProps> = props => {
                   </a>
                 </li>
                 : null}
-              {player.InstagramUrl ?
+              {player.instagramUrl ?
                 <li key="Instagram">
-                  <a href={player.InstagramUrl} id="twitter" target="_blank">
+                  <a href={player.instagramUrl} id="twitter" target="_blank">
                     <img src={ImageProvider.Instagram} alt="" />
                   </a>
                 </li>
