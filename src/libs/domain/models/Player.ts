@@ -8,8 +8,6 @@ class Player extends Entity {
   birthday: Date;
   profile: string;
   performances: string[];
-  email: string;
-  password: string;
   profilePhotoUrl: string;
   twitterUrl: string;
   facebookUrl: string;

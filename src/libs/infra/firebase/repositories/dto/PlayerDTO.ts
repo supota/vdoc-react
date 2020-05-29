@@ -6,8 +6,6 @@ interface IFirestorePlayer {
   birthday: firestore.Timestamp;
   profile: string;
   performances: string[];
-  email: string;
-  password: string;
   profilePhotoUrl: string;
   twitterUrl: string;
   facebookUrl: string;
@@ -23,8 +21,6 @@ class PlayerDTO implements IFirestorePlayer {
   birthday: firestore.Timestamp;
   profile: string;
   performances: string[];
-  email: string;
-  password: string;
   profilePhotoUrl: string;
   twitterUrl: string;
   facebookUrl: string;
@@ -45,8 +41,6 @@ class PlayerDTO implements IFirestorePlayer {
       birthday: data.birthday,
       profile: data.profile,
       performances: Array.from(data.performances),
-      email: data.email,
-      password: data.password,
       profilePhotoUrl: data.profilePhotoUrl,
       twitterUrl: data.twitterUrl,
       facebookUrl: data.facebookUrl,
@@ -63,8 +57,6 @@ class PlayerDTO implements IFirestorePlayer {
       birthday: this.birthday,
       profile: this.profile,
       performances: this.performances,
-      email: this.email,
-      password: this.password,
       profilePhotoUrl: this.profilePhotoUrl,
       twitterUrl: this.twitterUrl,
       facebookUrl: this.facebookUrl,
