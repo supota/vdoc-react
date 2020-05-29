@@ -35,7 +35,7 @@ const LoginPage = withRouter(props => {
         </h3>
         <form>
           <ul>
-            <li>
+            <li key="mail">
               <div className="ttl">
                 <p>メールアドレス</p>
               </div>
@@ -45,7 +45,7 @@ const LoginPage = withRouter(props => {
                 onChange={handleEmail}
               />
             </li>
-            <li>
+            <li key="password">
               <div className="ttl">
                 <p>パスワード</p>
               </div>
