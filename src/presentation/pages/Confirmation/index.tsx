@@ -86,20 +86,6 @@ const ConfirmationPage: React.FC<IProps> = props => {
               </div>
               <p>{player.siteUrl ? player.siteUrl : '指定なし'}</p>
             </li>
-            <li>
-              <div className="ttl">
-                <p>メールアドレス</p>
-                <span>必須</span>
-              </div>
-              <p>{player.email}</p>
-            </li>
-            <li>
-              <div className="ttl">
-                <p>パスワード</p>
-                <span>必須</span>
-              </div>
-              <p>{player.password}</p>
-            </li>
             <li className="img">
               <div className="ttl">
                 <p>プロフィール写真</p>
