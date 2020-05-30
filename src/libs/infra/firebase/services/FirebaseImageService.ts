@@ -8,7 +8,7 @@ class FirebaseImageService extends ImageService {
   async upload(data: Blob | File): Promise<string> {
     const storageRef = firebase.storage().ref();
     const filename = `${uuid()}.png`;
-    const imageRef = storageRef.child(`images/${filename}`);
+    const imageRef = storageRef.child(`icons/${filename}`);
     const result = await imageRef.put(data);
     return result.ref.getDownloadURL();
   }
