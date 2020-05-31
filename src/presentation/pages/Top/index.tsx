@@ -100,7 +100,6 @@ const TopPage = withRouter((props) => {
         </section>
         <section className="-white">
           <div className="promotion-box">
-            <img src={ImageProvider.Mock} alt="" />
             <img src={ImageProvider.CatchCopy} alt="" />
           </div>
         </section>
