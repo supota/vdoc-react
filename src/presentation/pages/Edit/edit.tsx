@@ -187,7 +187,7 @@ const Edit = withRouter((props: Props & RouteComponentProps) => {
           <img
             className="preview-img"
             src={ profilePhoto ? profilePhoto.data : player.profilePhotoUrl }
-            alt=""
+            alt="プロフィール写真のプレビュー"
           />
         </li>
       </ul>

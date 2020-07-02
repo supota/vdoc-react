@@ -32,7 +32,7 @@ const Header = withRouter(props => {
                   }
                 }}
               >
-              <img src={authState.user?.profilePhotoUrl} alt="" />
+              <img src={authState.user?.profilePhotoUrl} alt="ユーザのプロフィール写真" />
               <div className="icon-menu">
                 <Link to={`/players/${authState.user?.id.value}`}>マイページ</Link>
                 <Link to="/edit">プロフィール編集</Link>

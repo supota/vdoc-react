@@ -53,7 +53,7 @@ const TopPage = withRouter((props) => {
               players.map(player => (
                 <li className="player-box" key={player.id.value}>
                   <Link to={'/players/' + player.id.value} className="icon">
-                    <img src={player.profilePhotoUrl} alt="" />
+                    <img src={player.profilePhotoUrl} alt="プロフィールアイコン" />
                   </Link>
                   <Link to={'/players/' + player.id.value} className="name">{player.name}</Link>
                 </li>
@@ -81,7 +81,7 @@ const TopPage = withRouter((props) => {
           <h2>ユーザーの声</h2>
           <div className="comment-box">
             <li className="player-box" key="example">
-              <img className="icon" src={ImageProvider.Icon} alt="" />
+              <img className="icon" src={ImageProvider.Icon} alt="匿名ユーザのアイコン" />
               <p className="name"></p>
             </li>
             <p className="comment">
@@ -90,7 +90,7 @@ const TopPage = withRouter((props) => {
           </div>
           <div className="comment-box -reverse">
             <li className="player-box" key="example-2">
-              <img className="icon" src={ImageProvider.Icon} alt="" />
+              <img className="icon" src={ImageProvider.Icon} alt="匿名ユーザのアイコン" />
               <p className="name"></p>
             </li>
             <p className="comment">
@@ -100,7 +100,7 @@ const TopPage = withRouter((props) => {
         </section>
         <section className="-white">
           <div className="promotion-box">
-            <img src={ImageProvider.CatchCopy} alt="" />
+            <img src={ImageProvider.CatchCopy} alt="キャッチコピー画像" />
           </div>
         </section>
       </main>

@@ -49,28 +49,28 @@ const PlayerPage: React.FC<IProps> = props => {
               {player.facebookUrl ?
                 <li key="facebook">
                   <a href={player.facebookUrl} id="facebook" target="_blank">
-                    <img src={ImageProvider.Facebook} alt="" />
+                    <img src={ImageProvider.Facebook} alt="フェイスブック" />
                   </a>
                 </li>
                 : null}
               {player.twitterUrl ?
                 <li key="twitter">
                   <a href={player.twitterUrl} id="twitter" target="_blank">
-                    <img src={ImageProvider.Twitter} alt="" />
+                    <img src={ImageProvider.Twitter} alt="ツイッター" />
                   </a>
                 </li>
                 : null}
               {player.instagramUrl ?
                 <li key="Instagram">
                   <a href={player.instagramUrl} id="twitter" target="_blank">
-                    <img src={ImageProvider.Instagram} alt="" />
+                    <img src={ImageProvider.Instagram} alt="インスタグラム" />
                   </a>
                 </li>
                 : null}
               {player.siteUrl ?
                 <li key="site">
                   <a href={player.siteUrl} id="site" target="_blank">
-                    <img src={ImageProvider.Link} alt="" />
+                    <img src={ImageProvider.Link} alt="サイトのリンク" />
                   </a>
                 </li>
                 : null}

@@ -47,7 +47,7 @@ const NonRoutePlayerList = (props: IProps) => {
             }}
           >
             <Link to={'/players/' + player.id.value} className="icon">
-              <img src={player.profilePhotoUrl} alt="" />
+              <img src={player.profilePhotoUrl} alt="プロフィールアイコン" />
             </Link>
             <Link to={'/players/' + player.id.value} className="name">{player.name}</Link>
           </li>
