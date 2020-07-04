@@ -40,7 +40,9 @@ h2 {
     width: 100px;
     height: 2px;
   }
-
+  &.none:after {
+    display: none;
+  }
   @media screen and (max-width: 1024px) {
     font-size: 1.75rem;
     line-height: 3rem;
@@ -72,4 +74,27 @@ h3 {
   @media screen and (max-width: 480px) {
     font-size: 1.25rem;
   }
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 3rem;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 1.25rem;
+    line-height: 2rem;
+  }
+
+  @media screen and (max-width: 896px) {
+    font-size: 1.125rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 1.125rem;
+  }
+}
+
+p {
+  line-height: 1.25rem;
 }

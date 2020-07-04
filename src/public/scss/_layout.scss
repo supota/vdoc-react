@@ -89,16 +89,36 @@ header {
 .footer {
   position: relative;
   z-index: 100;
-  width: 100%;
-  padding: 15px 0;
+  width: 94%;
+  padding: 15px 3%;
   background: #333333;
+  font-size: 13px;
   text-align: right;
+  display: flex;
+  align-items: center;
+  &-list {
+    li a {
+      color: white;
+      text-decoration: none;
+    }
+    span {
+      margin: 0 10px;
+      color: white;
+    }
+    @media screen and (max-width: 896px) {
+      margin-bottom: 10px;
+    }
+  }
   .footer_copyright {
     font-style: normal;
     font-weight: 900;
     font-size: 13px;
     line-height: 15px;
-    margin:0 3%;
+    margin:0 0 0 auto;
     color: #fff;
+  }
+  @media screen and (max-width: 896px) {
+    display: block;
+    text-align: left;
   }
 }
