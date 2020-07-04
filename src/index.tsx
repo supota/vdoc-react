@@ -16,6 +16,8 @@ import { LoginPage } from './presentation/pages/Login';
 import { ConfirmationPage } from './presentation/pages/Confirmation';
 import { MyPage } from './presentation/pages/Mypage';
 import { NotFoundPage } from './presentation/pages/NotFound';
+import { PrivacyPage } from './presentation/pages/Privacy';
+import { TermsPage } from './presentation/pages/Terms';
 
 import { Loading } from './presentation/organisms/Loading';
 
@@ -39,6 +41,10 @@ ReactDOM.render(
         <Route path="/confirm" component={ConfirmationPage} />
 
         <Route path="/mypage" component={MyPage} />
+
+        <Route path="/privacy" component={PrivacyPage} />
+
+        <Route path="/terms" component={TermsPage} />
 
         <Route component={NotFoundPage} />
       </Switch>

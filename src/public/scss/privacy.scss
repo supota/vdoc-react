@@ -1,0 +1,22 @@
+.privacyPolicy {
+  margin-top: 82px;
+  margin-bottom: 60px;
+  h4 {
+    margin: 10px 0 5px 0;
+  }
+  p {
+    line-height: 1.5rem;
+  }
+  .txt {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5%;
+    margin: 0 10%;
+    width: 70%;
+    @media screen and (max-width: 896px) {
+      padding: 6%;
+      margin: 0 3%;
+      width: 82%;
+    }
+  }
+}
